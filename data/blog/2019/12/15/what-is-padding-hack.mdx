@@ -2,11 +2,9 @@
 title: Padding Hack으로 반응형 SVG 만들기
 date: '2019-12-15'
 tags: ["SVG", "CSS"]
-draft: true
+draft: false
 summary: Padding Hack을 이용해 SVG를 반응형으로 구현해보자
 ---
-
-# Padding Hack으로 반응형 SVG 만들기
 
 ![vue-datamaps-example.png](/static/images/posts/2019/12/15/vue-datamaps-example.png)
 
@@ -38,13 +36,13 @@ SVG 지도를 반응형으로 구현하기 위해 패딩 핵(Padding Hack)을 �
 > 개발자 도구에서 해당 div 요소를 선택하고 부여 된 `padding` 속성 값을 선택/선택해제 하면서 확인 해보자.  
 
 
-* padding-top 10% 
+**padding-top 10%**
 
 <div
     style={{
-        "width": "100%",
-        "padding-top": "10%",
-        "background-color": "yellow"
+        width: "100%",
+        paddingTop: "10%",
+        backgroundColor: "yellow"
     }}>
 </div>
 
@@ -52,15 +50,13 @@ SVG 지도를 반응형으로 구현하기 위해 패딩 핵(Padding Hack)을 �
   <div style="width:100%;padding-top:10%;background-color: yellow;"></div>
 ```
 
-
-* padding-bottom 20%
-
+**padding-bottom 20%**
 
 <div
     style={{
-        "width": "100%",
-        "paddingBottom": "20%",
-        "background-color": "yellow"
+        width: "100%",
+        paddingTop: "20%",
+        backgroundColor: "yellow"
     }}>
 </div>
 
@@ -68,13 +64,13 @@ SVG 지도를 반응형으로 구현하기 위해 패딩 핵(Padding Hack)을 �
   <div style="width:100%;padding-bottom:20%;background-color: yellow;"></div>
 ```
 
-* width 50%; pading-top 30%
+**width 50%; pading-top 30%**
 
 <div
     style={{
-        "width": "50%",
-        "paddingBottom": "30%",
-        "background-color": "yellow"
+        width: "100%",
+        paddingTop: "30%",
+        backgroundColor: "yellow"
     }}>
 </div>
 
@@ -85,27 +81,25 @@ SVG 지도를 반응형으로 구현하기 위해 패딩 핵(Padding Hack)을 �
 
 이번에는 추가된 외부 div 요소가 컨테이닝 블록으로 식별되어 외부 div 요소의 너비 내에서 `padding` 값이 계산 되는 예제이다.
 
-* 외부 요소의 크기가 400px 이고, 내부 요소의 width 100%, padding-top 50%
-```
+**외부 요소의 크기가 400px 이고, 내부 요소의 width 100%, padding-top 50%**
+
 <div
     style={{
-        "position": "relative"
-        "width": "400px",
-        "height": "400px"
-        "border": "1px solid",
-        "background-color": "red"
+        position: 'relative',
+        width: '400px',
+        height: '400px',
+        border: '1px solid',
 }}>
     <div
         style={{
-            "position": "abosolute",
-            "width": "100%",
-            "height": "0",
-            "paddingTop": "50%",
-            "background-color": "yellow"
+            position: 'abosolute',
+            width: '100%',
+            height: 0,
+            paddingTop: '50%',
+            backgroundColor: 'yellow'
         }}>
     </div>
 </div>
-```
 
 ```html
 <div style="position:relative;width:400px;height:400px;border:1px solid;">
@@ -113,11 +107,23 @@ SVG 지도를 반응형으로 구현하기 위해 패딩 핵(Padding Hack)을 �
 </div>
 ```
 
-:::
+**외부 요소의 크기가 400px 이고, 내부 요소의 width 50%, padding-bottom 50%**
 
-* 외부 요소의 크기가 400px 이고, 내부 요소의 width 50%, padding-bottom 50%
-
-:::demo
+<div style={{
+    position: 'relative',
+    width: '400px',
+    height: '400px',
+    border: '1px solid'
+}}>
+    <div style={{
+        position:'abosolute',
+        width: '50%',
+        height: 0,
+        paddingBottom:'50%',
+        backgroundColor: 'yellow'
+    }}>
+    </div>
+</div>
 
 ```html
 <div style="position:relative;width:400px;height:400px;border:1px solid;">
@@ -125,13 +131,7 @@ SVG 지도를 반응형으로 구현하기 위해 패딩 핵(Padding Hack)을 �
 </div>
 ```
 
-:::
-
-:::tip
-
-* [MDN문서- 컨테이닝 블록의 모든 것](https://developer.mozilla.org/ko/docs/Web/CSS/All_About_The_Containing_Block)
-
-:::
+> [MDN문서- 컨테이닝 블록의 모든 것](https://developer.mozilla.org/ko/docs/Web/CSS/All_About_The_Containing_Block)
 
 ## Padding Hack 적용하기
 
@@ -153,7 +153,7 @@ SVG의 경우 height 와 width 속성을 제거한다.
 
 SVG를 div 컨테이너로 감싼다.
 
-```html{1,5}
+```html
 <div class="container">
   <svg class="map">
     <!-- ... -->
@@ -165,7 +165,7 @@ SVG를 div 컨테이너로 감싼다.
 
 위의 div 예제의 스타일과 다르게 컨테이너 높이를 축소하고, padding 값을 지정한다.
 
-```css{2}
+```css
 .container {
   height: 0;
   width: 100%;
@@ -174,13 +174,10 @@ SVG를 div 컨테이너로 감싼다.
 }
 ```
 
-:::tip
-
-다음 수식을 사용하여 padding 값을 지정하면 컨테이너의 가로 세로 비율이 svg 의 가로 세로 비율과 같아진다.
-
-* (svg height / svg width) * width-value
-
-:::
+> 다음 수식을 사용하여 padding값을 지정하면 컨테이너의 가로 세로 비율이 svg 의 가로 세로 비율과 같아진다.
+>
+> * (svg height / svg width) * width-value
+>
 
 ### 4단계
 
