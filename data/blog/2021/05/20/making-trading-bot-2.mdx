@@ -2,24 +2,22 @@
 title: InfluxDB를 활용한 주식차트 만들기
 date: '2021-05-20'
 tags: ["InfluxDB", "Trading Bot"]
-draft: true
+draft: false
 summary: 지난번에는 막연히 차트의 기본이 되는 캔들(Candle) 데이터에 대한 흥미로 시작했었다면 이번에는 "실시간 시장 데이터를 분석해서 자동으로 사고파는 프로그램을 만들자"라는 구체적인 목표를 갖고 시작했다.
 ---
 
-# InfluxDB를 활용한 주식차트 만들기
-
-트레이딩 봇 개발 2탄
-
-[[toc]]
+## Overview
 
 > 이 글은 2020년 10월경 진행하면서 기록한 내용을 바탕으로 재작성되었습니다.
 
+<TOCInline toc={props.toc} exclude="Overview" toHeading={2} />
+
 ## 배경
 
-* 이전 글에서 진행했던 Amazon Athena SQL로 캔들 데이터 생성하는 방법은 SQL 구문이 길고 복잡하고 비용이 많이 들었다.
-* 구글 검색을 통해서 실시간 데이터 처리에 용이한 "시계열 데이터 베이스(TSBD)"의 존재를 알았다.
-* 캔들스틱 차트 분석을 학습하면서 차트의 기술적 분석에 흥미가 생겼다.
-* 다이내믹한 암호화폐 시장을 경험하면서 기계적 매매의 필요성과 중요성을 깨달았다.
+- 이전 글에서 진행했던 Amazon Athena SQL로 캔들 데이터 생성하는 방법은 SQL 구문이 길고 복잡하고 비용이 많이 들었다.
+- 구글 검색을 통해서 실시간 데이터 처리에 용이한 "시계열 데이터 베이스(TSBD)"의 존재를 알았다.
+- 캔들스틱 차트 분석을 학습하면서 차트의 기술적 분석에 흥미가 생겼다.
+- 다이나믹한 암호화폐 시장을 경험하면서 기계적 매매의 필요성과 중요성을 깨달았다.
 
 ## 데이터 수집
 
@@ -27,7 +25,7 @@ summary: 지난번에는 막연히 차트의 기본이 되는 캔들(Candle) 데
 
 그 첫 번째 작업으로 거래소의 이벤트를 구독해서 웹 소켓 통신으로 시장 데이터를 제공받고 인플럭스DB(InfluxDB)에 저장하는 노드 (node.js) 서버를 구현했다. 관계형 데이터베이스의 테이블(table)에 대응되는 개념으로 시계열 데이터베이스인 인플럭스DB에는 메저 먼트 (measurements)라는 게 있어서 `trade`라는 이름으로 메저 먼트를 생성해 다음과 같이 실시간 시장 데이터를 저장했다.
 
-![01_trade.png](./img/01_trade.png)
+![01_trade.png](/static/images/posts/2021/05/20/01_trade.png)
 
 ## 시장 데이터 가공
 
@@ -113,13 +111,13 @@ END;
 
 백엔드는 인플럭스DB에서 가공한 캔들 스틱 데이터를 조회하는 새로운 노드 서버를 추가하고 프런트엔드는 뷰(Vue.js)와 오픈소스 (tvjsx/trading-vue-js)를 사용해서 캔들 스틱과 차트의 기술적분석에 주로 사용하려는 이동 평균선(Moving Average), 스토캐스틱(Stochastic), 볼린저 밴드(Bollinger Band) 지표를 시각화했다.
 
-![02_chart.png](./img/02_chart.png)
+![02_chart.png](/static/images/posts/2021/05/20/02_chart.png)
 
-## 정리
+## Conclusion
 
 인플럭스DB를 사용함으로써 손쉽게 시장 데이터를 캔들로 변환할 수 있어서 알고리즘 매매에 사용할 수 있는 보조지표 값들을 구할 수 있게 되었다. 이 보조지표 값들을 가지고 백테스팅(Backtesting)을 해서 매매 전략을 만들고 거래소의 REST API를 통해서 실제로 사고파는 트레이딩 봇을 만들 수 있게 되었다.
 
-## 참고 링크
+## Reference
 
-* [이전 포스팅 - Amazon Athena SQL로 캔들 데이터 생성하기](/blog/2021/04/25/making-trading-bot-1.html)
+* [이전 포스팅 - Amazon Athena SQL로 캔들 데이터 생성하기](/blog/2021/04/making-trading-bot-1)
 * [오픈소스 tvjsx/trading-vue-js](https://github.com/tvjsx/trading-vue-js)

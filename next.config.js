@@ -7,13 +7,14 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 // You might need to insert additional domains in script-src if you are using external services
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' giscus.app;
-  style-src 'self' 'unsafe-inline';
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' utteranc.es codesandbox.io;
+  style-src 'self' 'unsafe-inline' codesandbox.io;
   img-src * blob: data:;
   media-src 'none';
   connect-src *;
   font-src 'self';
-  frame-src giscus.app
+  frame-src utteranc.es codesandbox.io;;
+  worker-src 'self' codesandbox.io;
 `
 
 const securityHeaders = [

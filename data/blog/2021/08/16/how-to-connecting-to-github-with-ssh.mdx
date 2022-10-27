@@ -3,24 +3,21 @@ title: SSH로 GitHub / CodeCommit 연결하기
 date: '2021-08-16'
 tags: ["git", "CodeCommit"]
 draft: true
-summary: 2021년 8월 13일부로 비밀번호 인증지원이 종료되어 이전에 사용하던 방식을 사용할 수 없게 되어서 이 기회에 SSH 접속 방식으로 변경 하게 되었다.
+summary: 2021년 8월 13일부로 비밀번호 인증 지원이 종료되어 이전에 사용하던 방식을 사용할 수 없게 되어서 이 기회에 SSH 접속 방식으로 변경하게 되었다.
 ---
 
-# SSH로 GitHub / CodeCommit 연결하기
+## Overview
 
-[[toc]]
+<TOCInline toc={props.toc} exclude="Overview" toHeading={2,3} />
 
 ## 비밀번호 인증 지원 종료
 
-2021년 8월 13일부로 비밀번호 인증지원이 종료되어 [이전에 사용하던 방식](/blog/2019/04/21/how-to-git-mulitple-account.html)을 사용할 수 없게 되어서 이 기회에 SSH 접속 방식으로 변경 하게 되었다.
+2021년 8월 13일부로 비밀번호 인증 지원이 종료되어 [이전에 사용하던 방식](/blog/2019/04/how-to-git-mulitple-account)을 사용할 수 없게 되어서 이 기회에 SSH 접속 방식으로변경 하게 되었다.
 
 ![001.png](/static/images/posts/2021/08/16/001.png)
 
-:::tip
+> 비밀번호 인증 지원 종료에 대한 안내는 [여기](https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/)에서 확인 할 수 있습니다.
 
-비밀번호 인증 지원 종료에 대한 안내는 [여기](https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/)에서 확인 할 수 있습니다.
-
-:::
 
 ## 원격 주소 확인하기
 
@@ -120,20 +117,27 @@ pbcopy < ~/.ssh/id_ed25519.pub
 ### GitHub에 SSH 키 연결 하기
 
 1. 우측 상단 프로필을 클릭해서 **Settings** 메뉴로 접속한다.
-![002.png](/static/images/posts/2021/08/16/002.png)
+
+<div>
+![002.png](/static/images/posts/2021/08/16/002.png){: width="100px" height="100px"}
+</div>
 
 2. 좌측 사이드바에서 **SSH and GPG keys** 를 클릭한다.
+
 ![003.png](/static/images/posts/2021/08/16/003.png)
 
 3. **New SSH key** 를 클릭한다.
+
 ![004.png](/static/images/posts/2021/08/16/004.png)
 
 4. 여러개의 키를 등록할 경우 Title 에 구분할 수 있는 이름을 주고, 위에서 복사한 값을 key 에 붙여 넣는다.
+
 ![005.png](/static/images/posts/2021/08/16/005.png)
 
 5. **Add SSH key** 를 클릭하고 깃허브 계정 비밀번호를 입력하면 추가가 완료된다.
 
 6. 테스트 해보면 잘 동작 한다.
+
 ![006.png](/static/images/posts/2021/08/16/006.png)
 
 ## SSH로 코드커밋에 연결하기
