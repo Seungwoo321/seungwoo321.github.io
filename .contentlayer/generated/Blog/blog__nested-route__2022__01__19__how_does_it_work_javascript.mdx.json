@@ -1,0 +1,79 @@
+{
+  "title": "자바스크립트의 동작원리",
+  "date": "2022-01-19T00:00:00.000Z",
+  "tags": [
+    "Frontend",
+    "JavaScript"
+  ],
+  "draft": false,
+  "summary": "자바스크립트 엔진, 런타임, 호출 스택, 이벤트 루프를 간단하게 정리했습니다.",
+  "body": {
+    "raw": "\n# 자바스크립트의 동작원리\n\n자바스크립트 엔진, 런타임, 호출 스택, 이벤트 루프를 간단하게 정리했습니다.\n\n## 엔진\n\n대표적으로 Chrome 과 Node.js에서 사용하는 Google V8 엔진이 있으며 메모리 할당이 일어나는 **Memory Heap** 과 코드 실행에 따라 호출 스택이 쌓이는 **Call Stack**으로 구성되어 있습니다.\n\n## 런타임\n\n런타임은 프로그램이 실행되는 동작과 그 환경이라고 할 수 있는데, 자바스크립트의 런타임은 DOM 을 제어하거나 AJAX, setTimeout 과같이 Web API를 사용하는 웹 브라우저가 있고, 웹 서버와 같이 확장성 있는 네트워크 프로그램 제작을 위해 고안된 node.js 가 있습니다.\n\n## 호출 스택\n\n자바스크립트 코드가 실행되는 환경인 실행 컨텍스트(Execution Context)를 생성하고 이를 저장하는 자료구조입니다. 코드의 실행이 끝날 때 호출 스택에서 제거됩니다. 호출 스택의 최대 허용치를 넘게 되면 \"Maximum call stack size exceeded\" 에러를 발생시킵니다.\n\n## 이벤트 루프\n\n이벤트 루프는 Call Stack 과 Callback Queue (또는 Event Queue, Task Queue 라 불림)의 상태를 체크하여 Call Stack 이 빈 상태가 되면 Callback Queue의 첫 번째 콜백을 Call Stack으로 밀어 넣어서 수행되도록 합니다. 이렇게 블로킹 문제를 해결하고 동시성을 확보합니다.\n\n예를 들어 setTimeout이나 AJAX 요청과 같은 비동기 함수가 실행되면 콜백 함수가 Callback Queue에서 대기하다가 Call Stack 이 비었을 때 이벤트 루프에 의해서 Call Stack으로 이동하여 수행됩니다.\n\n### 블로킹\n\n자바스크립트는 싱글 스레드 기반의 언어로 Call Stack 이 하나이기 때문에 한 번에 한 가지 일만 수행할 수 있습니다. 따라서 시간이 많이 소요되는 함수가 있을 때 Call Stack에서 해당 함수를 수행하는 동안에는 아무 작업도 못하는 블로킹 상태가 됩니다.\n\n### 동시성\n\n싱글 코어에서 여러 개의 스레드를 번갈아 가며 실행하여 마치 동시에 실행되는 것처럼 보이게 하는 것입니다. 멀티 코어에서 실제로 동시에 여러 작업이 병렬적으로 처리되는 것을 병렬성이라고 합니다.\n\n### 렌더큐\n\n이벤트 큐와 유사한 큐로 더 높은 우선순위를 가집니다. 콜 스택에 작업이 쌓여 있으면 렌더가 동작하지 않기 때문에 브라우저 렌더링에 방해되지 않도록 오래 걸리는 작업은 작은 단위로 쪼개거나 비동기로 동작 시키는 것이 좋습니다.\n\n:::tip\n렌더 큐 (Render Queue) 외에도 Microtask Queue, Animation Frames, Job Queue 와 같이 이벤트 루프에 의해 감시되고 우선순위가 결정되는 큐들이 있습니다.\n:::\n\n## 내용 출처 및 참고 링크\n\n- [https://joshua1988.github.io/web-development/translation/javascript/how-js-works-inside-engine](https://joshua1988.github.io/web-development/translation/javascript/how-js-works-inside-engine)\n- [https://velog.io/@dyllis/동시성이-무엇일까](https://velog.io/@dyllis/%EB%8F%99%EC%8B%9C%EC%84%B1%EC%9D%B4-%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C)\n- [https://beomy.github.io/tech/javascript/javascript-runtime/](https://beomy.github.io/tech/javascript/javascript-runtime/)\n\n<Comment/>\n",
+    "code": "var Component=(()=>{var h=Object.create;var r=Object.defineProperty;var u=Object.getOwnPropertyDescriptor;var p=Object.getOwnPropertyNames;var m=Object.getPrototypeOf,b=Object.prototype.hasOwnProperty;var f=(i,e)=>()=>(e||i((e={exports:{}}).exports,e),e.exports),k=(i,e)=>{for(var a in e)r(i,a,{get:e[a],enumerable:!0})},l=(i,e,a,c)=>{if(e&&typeof e==\"object\"||typeof e==\"function\")for(let t of p(e))!b.call(i,t)&&t!==a&&r(i,t,{get:()=>e[t],enumerable:!(c=u(e,t))||c.enumerable});return i};var x=(i,e,a)=>(a=i!=null?h(m(i)):{},l(e||!i||!i.__esModule?r(a,\"default\",{value:i,enumerable:!0}):a,i)),C=i=>l(r({},\"__esModule\",{value:!0}),i);var s=f((w,d)=>{d.exports=_jsx_runtime});var E={};k(E,{default:()=>v,frontmatter:()=>g});var n=x(s()),g={title:\"\\uC790\\uBC14\\uC2A4\\uD06C\\uB9BD\\uD2B8\\uC758 \\uB3D9\\uC791\\uC6D0\\uB9AC\",date:\"2022-01-19\",tags:[\"Frontend\",\"JavaScript\"],draft:!1,summary:\"\\uC790\\uBC14\\uC2A4\\uD06C\\uB9BD\\uD2B8 \\uC5D4\\uC9C4, \\uB7F0\\uD0C0\\uC784, \\uD638\\uCD9C \\uC2A4\\uD0DD, \\uC774\\uBCA4\\uD2B8 \\uB8E8\\uD504\\uB97C \\uAC04\\uB2E8\\uD558\\uAC8C \\uC815\\uB9AC\\uD588\\uC2B5\\uB2C8\\uB2E4.\"};function o(i){let e=Object.assign({h1:\"h1\",a:\"a\",span:\"span\",p:\"p\",h2:\"h2\",strong:\"strong\",h3:\"h3\",ul:\"ul\",li:\"li\"},i.components),{Comment:a}=e;return a||y(\"Comment\",!0,\"53:1-53:11\"),(0,n.jsxs)(n.Fragment,{children:[(0,n.jsxs)(e.h1,{id:\"\\uC790\\uBC14\\uC2A4\\uD06C\\uB9BD\\uD2B8\\uC758-\\uB3D9\\uC791\\uC6D0\\uB9AC\",children:[(0,n.jsx)(e.a,{href:\"#\\uC790\\uBC14\\uC2A4\\uD06C\\uB9BD\\uD2B8\\uC758-\\uB3D9\\uC791\\uC6D0\\uB9AC\",\"aria-hidden\":\"true\",tabIndex:\"-1\",children:(0,n.jsx)(e.span,{className:\"icon icon-link\"})}),\"\\uC790\\uBC14\\uC2A4\\uD06C\\uB9BD\\uD2B8\\uC758 \\uB3D9\\uC791\\uC6D0\\uB9AC\"]}),(0,n.jsx)(e.p,{children:\"\\uC790\\uBC14\\uC2A4\\uD06C\\uB9BD\\uD2B8 \\uC5D4\\uC9C4, \\uB7F0\\uD0C0\\uC784, \\uD638\\uCD9C \\uC2A4\\uD0DD, \\uC774\\uBCA4\\uD2B8 \\uB8E8\\uD504\\uB97C \\uAC04\\uB2E8\\uD558\\uAC8C \\uC815\\uB9AC\\uD588\\uC2B5\\uB2C8\\uB2E4.\"}),(0,n.jsxs)(e.h2,{id:\"\\uC5D4\\uC9C4\",children:[(0,n.jsx)(e.a,{href:\"#\\uC5D4\\uC9C4\",\"aria-hidden\":\"true\",tabIndex:\"-1\",children:(0,n.jsx)(e.span,{className:\"icon icon-link\"})}),\"\\uC5D4\\uC9C4\"]}),(0,n.jsxs)(e.p,{children:[\"\\uB300\\uD45C\\uC801\\uC73C\\uB85C Chrome \\uACFC Node.js\\uC5D0\\uC11C \\uC0AC\\uC6A9\\uD558\\uB294 Google V8 \\uC5D4\\uC9C4\\uC774 \\uC788\\uC73C\\uBA70 \\uBA54\\uBAA8\\uB9AC \\uD560\\uB2F9\\uC774 \\uC77C\\uC5B4\\uB098\\uB294 \",(0,n.jsx)(e.strong,{children:\"Memory Heap\"}),\" \\uACFC \\uCF54\\uB4DC \\uC2E4\\uD589\\uC5D0 \\uB530\\uB77C \\uD638\\uCD9C \\uC2A4\\uD0DD\\uC774 \\uC313\\uC774\\uB294 \",(0,n.jsx)(e.strong,{children:\"Call Stack\"}),\"\\uC73C\\uB85C \\uAD6C\\uC131\\uB418\\uC5B4 \\uC788\\uC2B5\\uB2C8\\uB2E4.\"]}),(0,n.jsxs)(e.h2,{id:\"\\uB7F0\\uD0C0\\uC784\",children:[(0,n.jsx)(e.a,{href:\"#\\uB7F0\\uD0C0\\uC784\",\"aria-hidden\":\"true\",tabIndex:\"-1\",children:(0,n.jsx)(e.span,{className:\"icon icon-link\"})}),\"\\uB7F0\\uD0C0\\uC784\"]}),(0,n.jsx)(e.p,{children:\"\\uB7F0\\uD0C0\\uC784\\uC740 \\uD504\\uB85C\\uADF8\\uB7A8\\uC774 \\uC2E4\\uD589\\uB418\\uB294 \\uB3D9\\uC791\\uACFC \\uADF8 \\uD658\\uACBD\\uC774\\uB77C\\uACE0 \\uD560 \\uC218 \\uC788\\uB294\\uB370, \\uC790\\uBC14\\uC2A4\\uD06C\\uB9BD\\uD2B8\\uC758 \\uB7F0\\uD0C0\\uC784\\uC740 DOM \\uC744 \\uC81C\\uC5B4\\uD558\\uAC70\\uB098 AJAX, setTimeout \\uACFC\\uAC19\\uC774 Web API\\uB97C \\uC0AC\\uC6A9\\uD558\\uB294 \\uC6F9 \\uBE0C\\uB77C\\uC6B0\\uC800\\uAC00 \\uC788\\uACE0, \\uC6F9 \\uC11C\\uBC84\\uC640 \\uAC19\\uC774 \\uD655\\uC7A5\\uC131 \\uC788\\uB294 \\uB124\\uD2B8\\uC6CC\\uD06C \\uD504\\uB85C\\uADF8\\uB7A8 \\uC81C\\uC791\\uC744 \\uC704\\uD574 \\uACE0\\uC548\\uB41C node.js \\uAC00 \\uC788\\uC2B5\\uB2C8\\uB2E4.\"}),(0,n.jsxs)(e.h2,{id:\"\\uD638\\uCD9C-\\uC2A4\\uD0DD\",children:[(0,n.jsx)(e.a,{href:\"#\\uD638\\uCD9C-\\uC2A4\\uD0DD\",\"aria-hidden\":\"true\",tabIndex:\"-1\",children:(0,n.jsx)(e.span,{className:\"icon icon-link\"})}),\"\\uD638\\uCD9C \\uC2A4\\uD0DD\"]}),(0,n.jsx)(e.p,{children:'\\uC790\\uBC14\\uC2A4\\uD06C\\uB9BD\\uD2B8 \\uCF54\\uB4DC\\uAC00 \\uC2E4\\uD589\\uB418\\uB294 \\uD658\\uACBD\\uC778 \\uC2E4\\uD589 \\uCEE8\\uD14D\\uC2A4\\uD2B8(Execution Context)\\uB97C \\uC0DD\\uC131\\uD558\\uACE0 \\uC774\\uB97C \\uC800\\uC7A5\\uD558\\uB294 \\uC790\\uB8CC\\uAD6C\\uC870\\uC785\\uB2C8\\uB2E4. \\uCF54\\uB4DC\\uC758 \\uC2E4\\uD589\\uC774 \\uB05D\\uB0A0 \\uB54C \\uD638\\uCD9C \\uC2A4\\uD0DD\\uC5D0\\uC11C \\uC81C\\uAC70\\uB429\\uB2C8\\uB2E4. \\uD638\\uCD9C \\uC2A4\\uD0DD\\uC758 \\uCD5C\\uB300 \\uD5C8\\uC6A9\\uCE58\\uB97C \\uB118\\uAC8C \\uB418\\uBA74 \"Maximum call stack size exceeded\" \\uC5D0\\uB7EC\\uB97C \\uBC1C\\uC0DD\\uC2DC\\uD0B5\\uB2C8\\uB2E4.'}),(0,n.jsxs)(e.h2,{id:\"\\uC774\\uBCA4\\uD2B8-\\uB8E8\\uD504\",children:[(0,n.jsx)(e.a,{href:\"#\\uC774\\uBCA4\\uD2B8-\\uB8E8\\uD504\",\"aria-hidden\":\"true\",tabIndex:\"-1\",children:(0,n.jsx)(e.span,{className:\"icon icon-link\"})}),\"\\uC774\\uBCA4\\uD2B8 \\uB8E8\\uD504\"]}),(0,n.jsx)(e.p,{children:\"\\uC774\\uBCA4\\uD2B8 \\uB8E8\\uD504\\uB294 Call Stack \\uACFC Callback Queue (\\uB610\\uB294 Event Queue, Task Queue \\uB77C \\uBD88\\uB9BC)\\uC758 \\uC0C1\\uD0DC\\uB97C \\uCCB4\\uD06C\\uD558\\uC5EC Call Stack \\uC774 \\uBE48 \\uC0C1\\uD0DC\\uAC00 \\uB418\\uBA74 Callback Queue\\uC758 \\uCCAB \\uBC88\\uC9F8 \\uCF5C\\uBC31\\uC744 Call Stack\\uC73C\\uB85C \\uBC00\\uC5B4 \\uB123\\uC5B4\\uC11C \\uC218\\uD589\\uB418\\uB3C4\\uB85D \\uD569\\uB2C8\\uB2E4. \\uC774\\uB807\\uAC8C \\uBE14\\uB85C\\uD0B9 \\uBB38\\uC81C\\uB97C \\uD574\\uACB0\\uD558\\uACE0 \\uB3D9\\uC2DC\\uC131\\uC744 \\uD655\\uBCF4\\uD569\\uB2C8\\uB2E4.\"}),(0,n.jsx)(e.p,{children:\"\\uC608\\uB97C \\uB4E4\\uC5B4 setTimeout\\uC774\\uB098 AJAX \\uC694\\uCCAD\\uACFC \\uAC19\\uC740 \\uBE44\\uB3D9\\uAE30 \\uD568\\uC218\\uAC00 \\uC2E4\\uD589\\uB418\\uBA74 \\uCF5C\\uBC31 \\uD568\\uC218\\uAC00 Callback Queue\\uC5D0\\uC11C \\uB300\\uAE30\\uD558\\uB2E4\\uAC00 Call Stack \\uC774 \\uBE44\\uC5C8\\uC744 \\uB54C \\uC774\\uBCA4\\uD2B8 \\uB8E8\\uD504\\uC5D0 \\uC758\\uD574\\uC11C Call Stack\\uC73C\\uB85C \\uC774\\uB3D9\\uD558\\uC5EC \\uC218\\uD589\\uB429\\uB2C8\\uB2E4.\"}),(0,n.jsxs)(e.h3,{id:\"\\uBE14\\uB85C\\uD0B9\",children:[(0,n.jsx)(e.a,{href:\"#\\uBE14\\uB85C\\uD0B9\",\"aria-hidden\":\"true\",tabIndex:\"-1\",children:(0,n.jsx)(e.span,{className:\"icon icon-link\"})}),\"\\uBE14\\uB85C\\uD0B9\"]}),(0,n.jsx)(e.p,{children:\"\\uC790\\uBC14\\uC2A4\\uD06C\\uB9BD\\uD2B8\\uB294 \\uC2F1\\uAE00 \\uC2A4\\uB808\\uB4DC \\uAE30\\uBC18\\uC758 \\uC5B8\\uC5B4\\uB85C Call Stack \\uC774 \\uD558\\uB098\\uC774\\uAE30 \\uB54C\\uBB38\\uC5D0 \\uD55C \\uBC88\\uC5D0 \\uD55C \\uAC00\\uC9C0 \\uC77C\\uB9CC \\uC218\\uD589\\uD560 \\uC218 \\uC788\\uC2B5\\uB2C8\\uB2E4. \\uB530\\uB77C\\uC11C \\uC2DC\\uAC04\\uC774 \\uB9CE\\uC774 \\uC18C\\uC694\\uB418\\uB294 \\uD568\\uC218\\uAC00 \\uC788\\uC744 \\uB54C Call Stack\\uC5D0\\uC11C \\uD574\\uB2F9 \\uD568\\uC218\\uB97C \\uC218\\uD589\\uD558\\uB294 \\uB3D9\\uC548\\uC5D0\\uB294 \\uC544\\uBB34 \\uC791\\uC5C5\\uB3C4 \\uBABB\\uD558\\uB294 \\uBE14\\uB85C\\uD0B9 \\uC0C1\\uD0DC\\uAC00 \\uB429\\uB2C8\\uB2E4.\"}),(0,n.jsxs)(e.h3,{id:\"\\uB3D9\\uC2DC\\uC131\",children:[(0,n.jsx)(e.a,{href:\"#\\uB3D9\\uC2DC\\uC131\",\"aria-hidden\":\"true\",tabIndex:\"-1\",children:(0,n.jsx)(e.span,{className:\"icon icon-link\"})}),\"\\uB3D9\\uC2DC\\uC131\"]}),(0,n.jsx)(e.p,{children:\"\\uC2F1\\uAE00 \\uCF54\\uC5B4\\uC5D0\\uC11C \\uC5EC\\uB7EC \\uAC1C\\uC758 \\uC2A4\\uB808\\uB4DC\\uB97C \\uBC88\\uAC08\\uC544 \\uAC00\\uBA70 \\uC2E4\\uD589\\uD558\\uC5EC \\uB9C8\\uCE58 \\uB3D9\\uC2DC\\uC5D0 \\uC2E4\\uD589\\uB418\\uB294 \\uAC83\\uCC98\\uB7FC \\uBCF4\\uC774\\uAC8C \\uD558\\uB294 \\uAC83\\uC785\\uB2C8\\uB2E4. \\uBA40\\uD2F0 \\uCF54\\uC5B4\\uC5D0\\uC11C \\uC2E4\\uC81C\\uB85C \\uB3D9\\uC2DC\\uC5D0 \\uC5EC\\uB7EC \\uC791\\uC5C5\\uC774 \\uBCD1\\uB82C\\uC801\\uC73C\\uB85C \\uCC98\\uB9AC\\uB418\\uB294 \\uAC83\\uC744 \\uBCD1\\uB82C\\uC131\\uC774\\uB77C\\uACE0 \\uD569\\uB2C8\\uB2E4.\"}),(0,n.jsxs)(e.h3,{id:\"\\uB80C\\uB354\\uD050\",children:[(0,n.jsx)(e.a,{href:\"#\\uB80C\\uB354\\uD050\",\"aria-hidden\":\"true\",tabIndex:\"-1\",children:(0,n.jsx)(e.span,{className:\"icon icon-link\"})}),\"\\uB80C\\uB354\\uD050\"]}),(0,n.jsx)(e.p,{children:\"\\uC774\\uBCA4\\uD2B8 \\uD050\\uC640 \\uC720\\uC0AC\\uD55C \\uD050\\uB85C \\uB354 \\uB192\\uC740 \\uC6B0\\uC120\\uC21C\\uC704\\uB97C \\uAC00\\uC9D1\\uB2C8\\uB2E4. \\uCF5C \\uC2A4\\uD0DD\\uC5D0 \\uC791\\uC5C5\\uC774 \\uC313\\uC5EC \\uC788\\uC73C\\uBA74 \\uB80C\\uB354\\uAC00 \\uB3D9\\uC791\\uD558\\uC9C0 \\uC54A\\uAE30 \\uB54C\\uBB38\\uC5D0 \\uBE0C\\uB77C\\uC6B0\\uC800 \\uB80C\\uB354\\uB9C1\\uC5D0 \\uBC29\\uD574\\uB418\\uC9C0 \\uC54A\\uB3C4\\uB85D \\uC624\\uB798 \\uAC78\\uB9AC\\uB294 \\uC791\\uC5C5\\uC740 \\uC791\\uC740 \\uB2E8\\uC704\\uB85C \\uCABC\\uAC1C\\uAC70\\uB098 \\uBE44\\uB3D9\\uAE30\\uB85C \\uB3D9\\uC791 \\uC2DC\\uD0A4\\uB294 \\uAC83\\uC774 \\uC88B\\uC2B5\\uB2C8\\uB2E4.\"}),(0,n.jsx)(e.p,{children:\":::tip \\uB80C\\uB354 \\uD050 (Render Queue) \\uC678\\uC5D0\\uB3C4 Microtask Queue, Animation Frames, Job Queue \\uC640 \\uAC19\\uC774 \\uC774\\uBCA4\\uD2B8 \\uB8E8\\uD504\\uC5D0 \\uC758\\uD574 \\uAC10\\uC2DC\\uB418\\uACE0 \\uC6B0\\uC120\\uC21C\\uC704\\uAC00 \\uACB0\\uC815\\uB418\\uB294 \\uD050\\uB4E4\\uC774 \\uC788\\uC2B5\\uB2C8\\uB2E4. :::\"}),(0,n.jsxs)(e.h2,{id:\"\\uB0B4\\uC6A9-\\uCD9C\\uCC98-\\uBC0F-\\uCC38\\uACE0-\\uB9C1\\uD06C\",children:[(0,n.jsx)(e.a,{href:\"#\\uB0B4\\uC6A9-\\uCD9C\\uCC98-\\uBC0F-\\uCC38\\uACE0-\\uB9C1\\uD06C\",\"aria-hidden\":\"true\",tabIndex:\"-1\",children:(0,n.jsx)(e.span,{className:\"icon icon-link\"})}),\"\\uB0B4\\uC6A9 \\uCD9C\\uCC98 \\uBC0F \\uCC38\\uACE0 \\uB9C1\\uD06C\"]}),(0,n.jsxs)(e.ul,{children:[(0,n.jsx)(e.li,{children:(0,n.jsx)(e.a,{href:\"https://joshua1988.github.io/web-development/translation/javascript/how-js-works-inside-engine\",children:\"https://joshua1988.github.io/web-development/translation/javascript/how-js-works-inside-engine\"})}),(0,n.jsx)(e.li,{children:(0,n.jsx)(e.a,{href:\"https://velog.io/@dyllis/%EB%8F%99%EC%8B%9C%EC%84%B1%EC%9D%B4-%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C\",children:\"https://velog.io/@dyllis/\\uB3D9\\uC2DC\\uC131\\uC774-\\uBB34\\uC5C7\\uC77C\\uAE4C\"})}),(0,n.jsx)(e.li,{children:(0,n.jsx)(e.a,{href:\"https://beomy.github.io/tech/javascript/javascript-runtime/\",children:\"https://beomy.github.io/tech/javascript/javascript-runtime/\"})})]}),(0,n.jsx)(a,{})]})}function j(i={}){let{wrapper:e}=i.components||{};return e?(0,n.jsx)(e,Object.assign({},i,{children:(0,n.jsx)(o,i)})):o(i)}var v=j;function y(i,e,a){throw new Error(\"Expected \"+(e?\"component\":\"object\")+\" `\"+i+\"` to be defined: you likely forgot to import, pass, or provide it.\"+(a?\"\\nIt\\u2019s referenced in your code at `\"+a+\"` in `/Users/mzc02-swlee/dev/repository/seungwoo321.vercel.app/_mdx_bundler_entry_point-f204728e-e2b6-45ac-8287-ffb1595113ed.mdx`\":\"\"))}return C(E);})();\n;return Component;"
+  },
+  "_id": "blog/nested-route/2022/01/19/how_does_it_work_javascript.mdx",
+  "_raw": {
+    "sourceFilePath": "blog/nested-route/2022/01/19/how_does_it_work_javascript.mdx",
+    "sourceFileName": "how_does_it_work_javascript.mdx",
+    "sourceFileDir": "blog/nested-route/2022/01/19",
+    "contentType": "mdx",
+    "flattenedPath": "blog/nested-route/2022/01/19/how_does_it_work_javascript"
+  },
+  "type": "Blog",
+  "readingTime": {
+    "text": "5 min read",
+    "minutes": 4.045,
+    "time": 242700,
+    "words": 809
+  },
+  "slug": "nested-route/2022/01/19/how_does_it_work_javascript",
+  "path": "blog/nested-route/2022/01/19/how_does_it_work_javascript",
+  "filePath": "blog/nested-route/2022/01/19/how_does_it_work_javascript.mdx",
+  "toc": [
+    {
+      "value": "자바스크립트의 동작원리",
+      "url": "#자바스크립트의-동작원리",
+      "depth": 1
+    },
+    {
+      "value": "엔진",
+      "url": "#엔진",
+      "depth": 2
+    },
+    {
+      "value": "런타임",
+      "url": "#런타임",
+      "depth": 2
+    },
+    {
+      "value": "호출 스택",
+      "url": "#호출-스택",
+      "depth": 2
+    },
+    {
+      "value": "이벤트 루프",
+      "url": "#이벤트-루프",
+      "depth": 2
+    },
+    {
+      "value": "블로킹",
+      "url": "#블로킹",
+      "depth": 3
+    },
+    {
+      "value": "동시성",
+      "url": "#동시성",
+      "depth": 3
+    },
+    {
+      "value": "렌더큐",
+      "url": "#렌더큐",
+      "depth": 3
+    },
+    {
+      "value": "내용 출처 및 참고 링크",
+      "url": "#내용-출처-및-참고-링크",
+      "depth": 2
+    }
+  ]
+}
