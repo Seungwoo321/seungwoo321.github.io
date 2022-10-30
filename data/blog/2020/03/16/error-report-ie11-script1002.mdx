@@ -6,11 +6,17 @@ draft: false
 summary: Internet Explorer 11에서 확인 시 빈 페이지가 로딩되고 콘솔 창에는 Script1002 오류만 찍혀 있었다.
 ---
 
+<TOCInline toc={props.toc} exclude="Overview" toHeading={2,3} asDisclosure/>
+
+## Overview
+
 vue-pivottable 컴포넌트의 스타일을 수정하고 최종적으로 프로젝트에서는 `import { VsPivottable, VsPivottableUi } from 'vs-pivottable'`과 같이 커스텀 된 형태로 사용하고 싶었다.
 
 그런데 Internet Explorer 11에서 확인 시 빈 페이지가 로딩되고 콘솔 창에는 Script1002 오류만 찍혀 있었다.
 
-### 코드
+---
+
+### 문제가 발생한 코드
 
 코드는 이렇다.
 
@@ -59,6 +65,8 @@ node_module에서 **vue-pivottable** 패키지를 불러오면 es6로 작성된 
 ### 해결
 
 vue.config.js의 `transpileDependencies` 옵션을 사용하여 Babel을 적용할 라이브러리를 지정할 수 있다. `transpileDependencies: ['vue-pivottable']` 만 추가하면 Internet Explorer 11에서 정상 렌더링 된다.
+
+---
 
 ## Reference
 

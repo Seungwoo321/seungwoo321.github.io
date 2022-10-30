@@ -13,7 +13,7 @@ const ContentSecurityPolicy = `
   media-src 'none';
   connect-src *;
   font-src 'self';
-  frame-src utteranc.es codesandbox.io;;
+  frame-src utteranc.es codesandbox.io jsfiddle.net;
   worker-src 'self' codesandbox.io;
 `
 

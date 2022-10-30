@@ -5,7 +5,7 @@ const siteMetadata = {
   title: "SEUNGWOO's TECH LOG",
   author: 'Seungwoo Lee',
   headerTitle: "SEUNGWOO's TECH LOG",
-  description: 'A blog created with Next.js and Tailwind.css',
+  description: 'JavaScript 등 프론트엔드 개발자의 학습 및 성장 과정을 기록합니다.',
   language: 'ko-KR',
   theme: 'system', // system, dark or light
   siteUrl: 'https://tailwind-nextjs-starter-blog.vercel.app',

@@ -6,9 +6,15 @@ draft: false
 summary: 지역과 관련된 데이터를 시각화하기 위해 SVG와 d3 함수를 이용해서 표현한 지도에 패딩 핵(Padding Hack)이란 기법을 통해서 반응형으로 구현한 경험을 정리하자.
 ---
 
-![vue-datamaps-example.png](/static/images/posts/2019/12/15/vue-datamaps-example.png)
+<TOCInline toc={props.toc} exclude="Overview" toHeading={2,3} asDisclosure/>
+
+## Overview
 
 지역과 관련된 데이터를 시각화하기 위해 SVG와 d3 함수를 이용해서 표현한 지도에 패딩 핵(Padding Hack)이란 기법을 통해서 반응형으로 구현한 경험을 정리하자.
+
+![vue-datamaps-example.png](/static/images/posts/2019/12/15/vue-datamaps-example.png)
+
+---
 
 ## DataMaps 라이브러리에서 구현된 반응형 살펴보기
 
@@ -36,7 +42,7 @@ d3.js로 지도를 조금 더 쉽게 그릴 수 있게 구현된 라이브러리
 > 개발자 도구에서 div 요소를 선택하고 부여된 `padding` 속성 값을 조절하면서 확인해 보자. 
 
 
-**padding-top 10%**
+**padding-top 10% 실행결과**
 
 <div
     style={{
@@ -50,9 +56,7 @@ d3.js로 지도를 조금 더 쉽게 그릴 수 있게 구현된 라이브러리
   <div style="width:100%;padding-top:10%;background-color: yellow;"></div>
 ```
 
-----
-
-**padding-bottom 20%**
+**padding-bottom 20% 실행결과**
 
 <div
     style={{
@@ -66,9 +70,7 @@ d3.js로 지도를 조금 더 쉽게 그릴 수 있게 구현된 라이브러리
   <div style="width:100%;padding-bottom:20%;background-color: yellow;"></div>
 ```
 
-----
-
-**width 50%; pading-top 30%**
+**width 50%; pading-top 30% 실행결과**
 
 <div
     style={{
@@ -82,11 +84,9 @@ d3.js로 지도를 조금 더 쉽게 그릴 수 있게 구현된 라이브러리
   <div style="width:50%;padding-top:30%;background-color: yellow;"></div>
 ```
 
-----
-
 이번에는 추가된 외부 div 요소가 컨테이닝 블록으로 식별되어 외부 div 요소의 너비 내에서 `padding` 값이 계산되는 예제이다.
 
-**외부 요소의 크기가 400px 이고, 내부 요소의 width 100%, padding-top 50%**
+**외부 요소의 크기가 400px 이고, 내부 요소의 width 100%, padding-top 50% 실행결과**
 
 <div
     style={{
@@ -112,9 +112,7 @@ d3.js로 지도를 조금 더 쉽게 그릴 수 있게 구현된 라이브러리
 </div>
 ```
 
-----
-
-**외부 요소의 크기가 400px 이고, 내부 요소의 width 50%, padding-bottom 50%**
+**외부 요소의 크기가 400px 이고, 내부 요소의 width 50%, padding-bottom 50% 실행결과**
 
 <div style={{
     position: 'relative',
@@ -198,7 +196,6 @@ SVG를 div 컨테이너로 감싼다.
   width: 100%;
   height: 100%;
 }
-
 ```
 
 ### 반응형 SVG 지도 Vue 컴포넌트
@@ -313,6 +310,8 @@ path {
         sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
     ></iframe>
 </div>
+
+---
 
 ## Reference
 

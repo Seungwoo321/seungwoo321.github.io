@@ -6,9 +6,9 @@ draft: false
 summary: 2021년 8월 13일부로 비밀번호 인증 지원이 종료되어 이전에 사용하던 방식을 사용할 수 없게 되어서 이 기회에 SSH 접속 방식으로 변경하게 되었다.
 ---
 
-## Overview
+<TOCInline toc={props.toc} exclude="Overview" toHeading={2,3} asDisclosure/>
 
-<TOCInline toc={props.toc} exclude="Overview" toHeading={2,3} />
+---
 
 ## 비밀번호 인증 지원 종료
 
@@ -118,25 +118,25 @@ pbcopy < ~/.ssh/id_ed25519.pub
 
 1. 우측 상단 프로필을 클릭해서 **Settings** 메뉴로 접속한다.
 
-<Image alt="002" src="/static/images/posts/2021/08/16/002.png" width={'100px'} />
+<Image alt="Click 'Settings' in profile image" src="/static/images/posts/2021/08/16/002.png" width='250' height="550" />
 
 2. 좌측 사이드바에서 **SSH and GPG keys** 를 클릭한다.
 
-![003.png](/static/images/posts/2021/08/16/003.png)
+<Image alt="Click 'SSH and GPG Kets' in sidebar" src="/static/images/posts/2021/08/16/003.png" width="220" height="550" />
 
 3. **New SSH key** 를 클릭한다.
 
-![004.png](/static/images/posts/2021/08/16/004.png)
+<Image alt="Click 'New SSH key' button" src="/static/images/posts/2021/08/16/004.png" width="750" height="350" />
 
 4. 여러개의 키를 등록할 경우 Title 에 구분할 수 있는 이름을 주고, 위에서 복사한 값을 key 에 붙여 넣는다.
 
-![005.png](/static/images/posts/2021/08/16/005.png)
+![Enter title and key](/static/images/posts/2021/08/16/005.png)
 
 5. **Add SSH key** 를 클릭하고 깃허브 계정 비밀번호를 입력하면 추가가 완료된다.
 
 6. 테스트 해보면 잘 동작 한다.
 
-![006.png](/static/images/posts/2021/08/16/006.png)
+![Test](/static/images/posts/2021/08/16/006.png)
 
 ## SSH로 코드커밋에 연결하기
 
@@ -144,9 +144,9 @@ pbcopy < ~/.ssh/id_ed25519.pub
 
 CodeCommit 에서 SSH 키를 사용 할 때는 다음 내용을 반드시 읽고 확인한다.
 
-:::danger
-공개 키는 ssh-rsa 형식 또는 PEM 형식으로 인코딩되어야 합니다. 공개 키의 최소 비트 길이는 2048비트이고 최대 길이는 16384비트입니다. 이것은 업로드하는 파일의 크기와 별개입니다. 예를 들어 2048비트 키를 생성할 수 있으며 결과 PEM 파일의 길이는 1679바이트입니다. 공개 키를 다른 형식이나 크기로 제공하면 키 형식이 유효하지 않다는 오류 메시지가 표시됩니다.
-:::
+>
+> <span style={{ color: 'red' }}>공개 키는 ssh-rsa 형식 또는 PEM 형식으로 인코딩되어야 합니다. 공개 키의 최소 비트 길이는 2048비트이고 최대 길이는 16384비트입니다. 이것은 업로드하는 파일의 크기와 별개입니다. 예를 들어 2048비트 키를 생성할 수 있으며 결과 PEM 파일의 길이는 1679바이트입니다. 공개 키를 다른 형식이나 크기로 제공하면 키 형식이 유효하지 않다는 오류 메시지가 표시됩니다.</span>
+>
 
 ```bash
 $ ssh-keygen
@@ -178,7 +178,7 @@ $ ssh-keygen -t rsa -b 4096
     IdentityFile ~/.ssh/코드커밋 접속을 위해 생성한 SSH 키 
     ```
 
-## 정리
+## 마무리
 
 * 깃허브와 코드커밋에서 요구하는 SSH 키의 형식이 다르다.
 * SSH 키를 생성하고 ssh-agent 서비스에 등록한 다음 퍼블릭 키값을 사용하려는 깃허브 계정과 코드커밋에 접속하려는 IAM 계정에 업로드 하고 .ssh/config 에 필요한 설정을 추가 한다.
@@ -186,7 +186,9 @@ $ ssh-keygen -t rsa -b 4096
 
 ![009.png](/static/images/posts/2021/08/16/009.png)
 
-## 참조링크
+---
+
+## Reference
 
 * [깃허브 공식문서](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh)
 * [AWS 공식문서 - 리눅스 & 맥](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-ssh-unixes.html)

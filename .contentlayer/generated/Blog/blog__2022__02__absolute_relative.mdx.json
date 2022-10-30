@@ -1,0 +1,69 @@
+{
+  "title": "absolute와 relative의 차이에 대해서 설명하세요",
+  "date": "2022-02-02T00:00:00.000Z",
+  "tags": [
+    "Frontend",
+    "CSS"
+  ],
+  "draft": false,
+  "summary": "CSS 포지션 absolute와 relative의 차이에 대해 정리하자",
+  "body": {
+    "raw": "\n<TOCInline toc={props.toc} exclude=\"Overview\" toHeading={2,3} asDisclosure/>\n\n---\n\nCSS 포지션 absolute와 relative의 차이에 대해 정리하자\n\n## absolute\n\n* 페이지 레이아웃에서 요소를 위한 공간이 생성되지 않습니다\n* 가장 가까운 위치에 있는 조상을 기준으로 오프셋을 적용합니다.\n\n## relative\n\n* 페이지 레이아웃의 요소에 제공된 공간은 `static`일 때와 동일합니다.\n* 자기 자신을 기준으로 오프셋을 적용합니다.\n\n## 예제\n\n### absolute 일 때\n\n* `position:absolute`\n* `top:20px`\n* `left:20px`\n\n<iframe\n    width=\"100%\"\n    height=\"200\"\n    src=\"//jsfiddle.net/seungwoo321/qfw5ekmL/embedded/result/\"\n    allowfullscreen=\"allowfullscreen\"\n    allowpaymentrequest\n    frameborder=\"0\"\n></iframe>\n\n### relative 일 때\n\n* `position:relative`\n* `top:20px`\n* `left:20px`\n\n<iframe\n    width=\"100%\"\n    height=\"200\"\n    src=\"//jsfiddle.net/seungwoo321/0Lhcqrzm/embedded/result/\"\n    allowfullscreen=\"allowfullscreen\"\n    allowpaymentrequest\n    frameborder=\"0\"\n></iframe>\n\n### static 일 때\n\n* `position:static`\n* `top:20px` (효과없음)\n* `left:20px` (효과없음)\n\n<iframe\n    width=\"100%\"\n    height=\"200\"\n    src=\"//jsfiddle.net/seungwoo321/pyh71a9u/embedded/result/\"\n    allowfullscreen=\"allowfullscreen\"\n    allowpaymentrequest\n    frameborder=\"0\"\n></iframe>\n\n## 참조링크\n- [MDN문서 - position](https://developer.mozilla.org/en-US/docs/Web/CSS/position)",
+    "code": "var Component=(()=>{var h=Object.create;var d=Object.defineProperty;var u=Object.getOwnPropertyDescriptor;var p=Object.getOwnPropertyNames;var f=Object.getPrototypeOf,m=Object.prototype.hasOwnProperty;var b=(n,e)=>()=>(e||n((e={exports:{}}).exports,e),e.exports),x=(n,e)=>{for(var l in e)d(n,l,{get:e[l],enumerable:!0})},a=(n,e,l,t)=>{if(e&&typeof e==\"object\"||typeof e==\"function\")for(let r of p(e))!m.call(n,r)&&r!==l&&d(n,r,{get:()=>e[r],enumerable:!(t=u(e,r))||t.enumerable});return n};var w=(n,e,l)=>(l=n!=null?h(f(n)):{},a(e||!n||!n.__esModule?d(l,\"default\",{value:n,enumerable:!0}):l,n)),g=n=>a(d({},\"__esModule\",{value:!0}),n);var o=b((S,c)=>{c.exports=_jsx_runtime});var I={};x(I,{default:()=>j,frontmatter:()=>v});var i=w(o()),v={title:\"absolute\\uC640 relative\\uC758 \\uCC28\\uC774\\uC5D0 \\uB300\\uD574\\uC11C \\uC124\\uBA85\\uD558\\uC138\\uC694\",date:\"2022-02-02\",tags:[\"Frontend\",\"CSS\"],draft:!1,summary:\"CSS \\uD3EC\\uC9C0\\uC158 absolute\\uC640 relative\\uC758 \\uCC28\\uC774\\uC5D0 \\uB300\\uD574 \\uC815\\uB9AC\\uD558\\uC790\"};function s(n){let e=Object.assign({hr:\"hr\",p:\"p\",h2:\"h2\",a:\"a\",span:\"span\",ul:\"ul\",li:\"li\",code:\"code\",h3:\"h3\"},n.components),{TOCInline:l}=e;return l||y(\"TOCInline\",!0,\"9:1-9:77\"),(0,i.jsxs)(i.Fragment,{children:[(0,i.jsx)(l,{toc:n.toc,exclude:\"Overview\",toHeading:3,asDisclosure:!0}),(0,i.jsx)(e.hr,{}),(0,i.jsx)(e.p,{children:\"CSS \\uD3EC\\uC9C0\\uC158 absolute\\uC640 relative\\uC758 \\uCC28\\uC774\\uC5D0 \\uB300\\uD574 \\uC815\\uB9AC\\uD558\\uC790\"}),(0,i.jsxs)(e.h2,{id:\"absolute\",children:[(0,i.jsx)(e.a,{href:\"#absolute\",\"aria-hidden\":\"true\",tabIndex:\"-1\",children:(0,i.jsx)(e.span,{className:\"icon icon-link\"})}),\"absolute\"]}),(0,i.jsxs)(e.ul,{children:[(0,i.jsx)(e.li,{children:\"\\uD398\\uC774\\uC9C0 \\uB808\\uC774\\uC544\\uC6C3\\uC5D0\\uC11C \\uC694\\uC18C\\uB97C \\uC704\\uD55C \\uACF5\\uAC04\\uC774 \\uC0DD\\uC131\\uB418\\uC9C0 \\uC54A\\uC2B5\\uB2C8\\uB2E4\"}),(0,i.jsx)(e.li,{children:\"\\uAC00\\uC7A5 \\uAC00\\uAE4C\\uC6B4 \\uC704\\uCE58\\uC5D0 \\uC788\\uB294 \\uC870\\uC0C1\\uC744 \\uAE30\\uC900\\uC73C\\uB85C \\uC624\\uD504\\uC14B\\uC744 \\uC801\\uC6A9\\uD569\\uB2C8\\uB2E4.\"})]}),(0,i.jsxs)(e.h2,{id:\"relative\",children:[(0,i.jsx)(e.a,{href:\"#relative\",\"aria-hidden\":\"true\",tabIndex:\"-1\",children:(0,i.jsx)(e.span,{className:\"icon icon-link\"})}),\"relative\"]}),(0,i.jsxs)(e.ul,{children:[(0,i.jsxs)(e.li,{children:[\"\\uD398\\uC774\\uC9C0 \\uB808\\uC774\\uC544\\uC6C3\\uC758 \\uC694\\uC18C\\uC5D0 \\uC81C\\uACF5\\uB41C \\uACF5\\uAC04\\uC740 \",(0,i.jsx)(e.code,{children:\"static\"}),\"\\uC77C \\uB54C\\uC640 \\uB3D9\\uC77C\\uD569\\uB2C8\\uB2E4.\"]}),(0,i.jsx)(e.li,{children:\"\\uC790\\uAE30 \\uC790\\uC2E0\\uC744 \\uAE30\\uC900\\uC73C\\uB85C \\uC624\\uD504\\uC14B\\uC744 \\uC801\\uC6A9\\uD569\\uB2C8\\uB2E4.\"})]}),(0,i.jsxs)(e.h2,{id:\"\\uC608\\uC81C\",children:[(0,i.jsx)(e.a,{href:\"#\\uC608\\uC81C\",\"aria-hidden\":\"true\",tabIndex:\"-1\",children:(0,i.jsx)(e.span,{className:\"icon icon-link\"})}),\"\\uC608\\uC81C\"]}),(0,i.jsxs)(e.h3,{id:\"absolute-\\uC77C-\\uB54C\",children:[(0,i.jsx)(e.a,{href:\"#absolute-\\uC77C-\\uB54C\",\"aria-hidden\":\"true\",tabIndex:\"-1\",children:(0,i.jsx)(e.span,{className:\"icon icon-link\"})}),\"absolute \\uC77C \\uB54C\"]}),(0,i.jsxs)(e.ul,{children:[(0,i.jsx)(e.li,{children:(0,i.jsx)(e.code,{children:\"position:absolute\"})}),(0,i.jsx)(e.li,{children:(0,i.jsx)(e.code,{children:\"top:20px\"})}),(0,i.jsx)(e.li,{children:(0,i.jsx)(e.code,{children:\"left:20px\"})})]}),(0,i.jsx)(\"iframe\",{width:\"100%\",height:\"200\",src:\"//jsfiddle.net/seungwoo321/qfw5ekmL/embedded/result/\",allowfullscreen:\"allowfullscreen\",allowpaymentrequest:!0,frameborder:\"0\"}),(0,i.jsxs)(e.h3,{id:\"relative-\\uC77C-\\uB54C\",children:[(0,i.jsx)(e.a,{href:\"#relative-\\uC77C-\\uB54C\",\"aria-hidden\":\"true\",tabIndex:\"-1\",children:(0,i.jsx)(e.span,{className:\"icon icon-link\"})}),\"relative \\uC77C \\uB54C\"]}),(0,i.jsxs)(e.ul,{children:[(0,i.jsx)(e.li,{children:(0,i.jsx)(e.code,{children:\"position:relative\"})}),(0,i.jsx)(e.li,{children:(0,i.jsx)(e.code,{children:\"top:20px\"})}),(0,i.jsx)(e.li,{children:(0,i.jsx)(e.code,{children:\"left:20px\"})})]}),(0,i.jsx)(\"iframe\",{width:\"100%\",height:\"200\",src:\"//jsfiddle.net/seungwoo321/0Lhcqrzm/embedded/result/\",allowfullscreen:\"allowfullscreen\",allowpaymentrequest:!0,frameborder:\"0\"}),(0,i.jsxs)(e.h3,{id:\"static-\\uC77C-\\uB54C\",children:[(0,i.jsx)(e.a,{href:\"#static-\\uC77C-\\uB54C\",\"aria-hidden\":\"true\",tabIndex:\"-1\",children:(0,i.jsx)(e.span,{className:\"icon icon-link\"})}),\"static \\uC77C \\uB54C\"]}),(0,i.jsxs)(e.ul,{children:[(0,i.jsx)(e.li,{children:(0,i.jsx)(e.code,{children:\"position:static\"})}),(0,i.jsxs)(e.li,{children:[(0,i.jsx)(e.code,{children:\"top:20px\"}),\" (\\uD6A8\\uACFC\\uC5C6\\uC74C)\"]}),(0,i.jsxs)(e.li,{children:[(0,i.jsx)(e.code,{children:\"left:20px\"}),\" (\\uD6A8\\uACFC\\uC5C6\\uC74C)\"]})]}),(0,i.jsx)(\"iframe\",{width:\"100%\",height:\"200\",src:\"//jsfiddle.net/seungwoo321/pyh71a9u/embedded/result/\",allowfullscreen:\"allowfullscreen\",allowpaymentrequest:!0,frameborder:\"0\"}),(0,i.jsxs)(e.h2,{id:\"\\uCC38\\uC870\\uB9C1\\uD06C\",children:[(0,i.jsx)(e.a,{href:\"#\\uCC38\\uC870\\uB9C1\\uD06C\",\"aria-hidden\":\"true\",tabIndex:\"-1\",children:(0,i.jsx)(e.span,{className:\"icon icon-link\"})}),\"\\uCC38\\uC870\\uB9C1\\uD06C\"]}),(0,i.jsx)(e.ul,{children:(0,i.jsx)(e.li,{children:(0,i.jsx)(e.a,{href:\"https://developer.mozilla.org/en-US/docs/Web/CSS/position\",children:\"MDN\\uBB38\\uC11C - position\"})})})]})}function _(n={}){let{wrapper:e}=n.components||{};return e?(0,i.jsx)(e,Object.assign({},n,{children:(0,i.jsx)(s,n)})):s(n)}var j=_;function y(n,e,l){throw new Error(\"Expected \"+(e?\"component\":\"object\")+\" `\"+n+\"` to be defined: you likely forgot to import, pass, or provide it.\"+(l?\"\\nIt\\u2019s referenced in your code at `\"+l+\"` in `/Users/mzc02-swlee/dev/repository/seungwoo321.vercel.app/_mdx_bundler_entry_point-8d0db700-5d39-4a10-b9cb-3b30d1e1abe1.mdx`\":\"\"))}return g(I);})();\n;return Component;"
+  },
+  "_id": "blog/2022/02/absolute_relative.mdx",
+  "_raw": {
+    "sourceFilePath": "blog/2022/02/absolute_relative.mdx",
+    "sourceFileName": "absolute_relative.mdx",
+    "sourceFileDir": "blog/2022/02",
+    "contentType": "mdx",
+    "flattenedPath": "blog/2022/02/absolute_relative"
+  },
+  "type": "Blog",
+  "readingTime": {
+    "text": "1 min read",
+    "minutes": 0.96,
+    "time": 57600,
+    "words": 192
+  },
+  "slug": "2022/02/absolute_relative",
+  "path": "blog/2022/02/absolute_relative",
+  "filePath": "blog/2022/02/absolute_relative.mdx",
+  "toc": [
+    {
+      "value": "absolute",
+      "url": "#absolute",
+      "depth": 2
+    },
+    {
+      "value": "relative",
+      "url": "#relative",
+      "depth": 2
+    },
+    {
+      "value": "예제",
+      "url": "#예제",
+      "depth": 2
+    },
+    {
+      "value": "absolute 일 때",
+      "url": "#absolute-일-때",
+      "depth": 3
+    },
+    {
+      "value": "relative 일 때",
+      "url": "#relative-일-때",
+      "depth": 3
+    },
+    {
+      "value": "static 일 때",
+      "url": "#static-일-때",
+      "depth": 3
+    },
+    {
+      "value": "참조링크",
+      "url": "#참조링크",
+      "depth": 2
+    }
+  ]
+}

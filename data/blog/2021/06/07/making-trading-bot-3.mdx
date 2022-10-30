@@ -6,13 +6,13 @@ draft: false
 summary: 2017년 1월부터 2020년 10월까지의 비트코인 차트에 이동 평균선(Moving Average), 스토캐스틱(Stochastic), 볼린저 밴드(Bollinger Band) 지표를 사용해서 조건을 이리저리 바꿔가며 다양하게 알고리즘을 시험해 보았다.
 ---
 
+<TOCInline toc={props.toc} exclude="Overview" toHeading={2,3} asDisclosure/>
+
 ## Overview
 
-<TOCInline toc={props.toc} exclude="Overview" toHeading={2} />
-
-## 배경
-
 처음에는 막막하기만 했던 기본 캔들 데이터 생성을 인플럭스DB (InfluxDB)를 사용해서 쉽게 구현할 수 있었다. 다음은 언제 사고 언제 파는 게 좋을지를 과거 데이터를 통해 시뮬레이션 해보기 위해서 거래소에서 제공하는 REST API를 통해서 2017년부터 현재까지의 캔들 데이터를 인플럭스DB에 수집하는 스크립트를 노드 (node.js)로 작성했다. 증권 거래소와 달리 암호화폐 거래소는 REST API를 지원하므로 웹 개발자로서는 접근이 훨씬 용이해서 실전 봇 까지 바로 진행할 수 있었다.
+
+---
 
 ## 시뮬레이션
 
@@ -42,14 +42,15 @@ summary: 2017년 1월부터 2020년 10월까지의 비트코인 차트에 이동
 
 시뮬레이션과 차이를 보이면서 실제 매매 환경에서 알고리즘을 개선해나갔고 시장의 상황에 따라서 수익이 나기도 했지만 지속적인 유지 보수와 리스크 관리가 필요했다.
 
-## Conclusion
+## 마무리
 
-매매 알고리즘을 테스트하고 더 나은 알고리즘을 적용하는 것의 의미를 두기 위해 실전 매매와 시뮬레이션 환경이 최대한 비슷하게 동작하도록 개선이 필요해 보인다. 어느 한쪽을 수정해서 두 매매 환경의 차이를 좁히면 될 것 같다.
+매매 알고리즘을 테스트하고 더 나은 알고리즘을 적용하는 것의 의미를 두기 위해 실전 매매와 시뮬레이션 환경이 최대한 비슷하게 동작하도록 개선이 필요해 보인다.
+어느 한쪽을 수정해서 두 매매 환경의 차이를 좁히면 되지 않을까 싶다.
+
+---
 
 ## Reference
 
-* [이전 포스팅 - InfluxDB를 활용한 주식차트 만들기](/blog/2021/05/20/making-trading-bot-2.html)
 * [Data Forge](https://github.com/data-forge/data-forge-ts)
 * [data-forge-indicators](https://github.com/data-forge/data-forge-indicators)
 * [grademark](https://github.com/grademark/grademark)
-* [트레이드스터디](https://www.tradestudy.co.kr/)

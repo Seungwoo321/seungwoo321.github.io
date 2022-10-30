@@ -6,17 +6,21 @@ draft: false
 summary: PivotUtilities 객체의 메서드로 사용된 numberFormat() 함수는 내부 익명 함수를 리턴한다. 리턴하는 내부 함수는 클로저를 형성함으로써 usFmt, usFmInt, usFmtPct는 각각의 독립적인 렉시컬 스코프 환경을 갖게 된다.
 ---
 
-![happy-javascript.jpg](/static/images/posts/2021/05/02/happy-javascript.jpg)
+<TOCInline toc={props.toc} exclude="Overview" toHeading={2,3} asDisclosure/>
+
+## Overview
 
 클로저를 이해하고 있다고 생각했지만 실제로 말로 설명이 되지 않는다는 걸 깨닫고 이 책을 읽기 시작했다. 클로저 외에도 평소에 모르고 넘어갈 수 있었던 부분도 알게되서 생각보다 많은 도움이 된 책이다. 완벽하게 기억에 남을 때까지 반복해서 읽어야겠다.
 
-## 과제수행: 클로저 사용 찾아보기
+![happy-javascript.jpg](/static/images/posts/2021/05/02/happy-javascript.jpg)
 
-***인상 깊은 구절 - (1)***
+---
+
+## 클로저 사용 찾아보기
 
 > 잠시 이 책을 덮어보라. 한 가지 과제를 주겠다. 최근에 작성한 자바스크립트 코드를 열어 보라. 함수를 값으로 사용한 경우를 찾아보고, 알지 못했지만 이미 클로저를 사용하고 있는 부분을 확인해 보자. 기다리겠다. 자 ... 이제 보이는가! p.245
 
-첫 번째 인상 깊은 구절을 보고 클로저를 사용한 코드를 찾아보았다. vue-pivottable의 Issues 중 #19, #38를 해결하면서 작성한 예제용 코드에서 클로저를 사용한 예를 찾을 수 있었다.
+이 구절을 보고 클로저를 사용한 코드를 찾아보았다. vue-pivottable의 Issues 중 #19, #38를 해결하면서 작성한 예제용 코드에서 클로저를 사용한 예를 찾을 수 있었다.
 
 
 ```js:/src/helper/utils.js
@@ -99,15 +103,15 @@ export default {
 
 ```
 
-## 정리하기
-
-***인상 깊은 구절 - (2)***
+## 정리
 
 > 클로저는 함수를 렉시컬 스코프 밖에서 호출해도 함수는 자신의 렉시컬 스코프를 기억하고 접근할 수 있는 특성을 의미한다. p. 255
 
 PivotUtilities 객체의 메서드로 사용된 numberFormat() 함수는 내부 익명 함수를 리턴한다. 리턴하는 내부 함수는 클로저를 형성함으로써 usFmt, usFmInt, usFmtPct는 각각의 독립적인 렉시컬 스코프 환경을 갖게 된다.
 
 usFmt, usFmInt, usFmtPct 변수에 의해서 리턴된 내부 함수가 호출될 때 이 내부의 익명 함수는 본래 자신의 렉시컬 스코프 환경을 기억해서, opts 변수를 참조할 수 있게 된다.
+
+---
 
 ## Reference
 
