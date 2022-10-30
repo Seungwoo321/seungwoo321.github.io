@@ -10,7 +10,7 @@ const siteMetadata = {
   theme: 'system', // system, dark or light
   siteUrl: 'https://seungwoo321.vercel.app/',
   siteRepo: 'https://github.com/Seungwoo321/seungwoo321.dev',
-  siteLogo: '',
+  siteLogo: '/static/images/logo.png',
   image: '/static/images/avatar.png',
   socialBanner: '/static/images/template2.png',
   email: 'seungwoo321@gmail.com',
