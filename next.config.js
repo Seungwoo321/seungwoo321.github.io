@@ -8,7 +8,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 const ContentSecurityPolicy = `
   default-src 'self';
   script-src 'self' 'unsafe-eval' 'unsafe-inline' utteranc.es codesandbox.io;
-  style-src 'self' 'unsafe-inline' codesandbox.io;
+  style-src 'self' 'unsafe-inline' codesandbox.io googletagmanager.com;
   img-src * blob: data:;
   media-src 'none';
   connect-src *;
