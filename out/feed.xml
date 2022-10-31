@@ -71,16 +71,6 @@
   </item>
 
   <item>
-    <guid>https://seungwoo321.vercel.app//blog/2020/03/13/basic-css</guid>
-    <title>CSS 기본 정리</title>
-    <link>https://seungwoo321.vercel.app//blog/2020/03/13/basic-css</link>
-    <description>이 글은 freeCodeCamp의 Basic CSS를 공부하면서 주요 내용을 정리한 글입니다.</description>
-    <pubDate>Fri, 13 Mar 2020 00:00:00 GMT</pubDate>
-    <author>seungwoo321@gmail.com (Seungwoo Lee)</author>
-    <category>CSS</category>
-  </item>
-
-  <item>
     <guid>https://seungwoo321.vercel.app//blog/2020/03/16/error-report-ie11-script1002</guid>
     <title>IE 11 Syntax Error - Script1002</title>
     <link>https://seungwoo321.vercel.app//blog/2020/03/16/error-report-ie11-script1002</link>
@@ -101,13 +91,13 @@
   </item>
 
   <item>
-    <guid>https://seungwoo321.vercel.app//blog/2021/05/20/making-trading-bot-2</guid>
-    <title>InfluxDB를 활용한 주식차트 만들기</title>
-    <link>https://seungwoo321.vercel.app//blog/2021/05/20/making-trading-bot-2</link>
-    <description>지난번에는 막연히 차트의 기본이 되는 캔들(Candle) 데이터에 대한 흥미로 시작했었다면 이번에는 &quot;실시간 시장 데이터를 분석해서 자동으로 사고파는 프로그램을 만들자&quot;라는 구체적인 목표를 갖고 시작했다.</description>
-    <pubDate>Thu, 20 May 2021 00:00:00 GMT</pubDate>
+    <guid>https://seungwoo321.vercel.app//blog/2020/03/13/basic-css</guid>
+    <title>CSS 기본 정리</title>
+    <link>https://seungwoo321.vercel.app//blog/2020/03/13/basic-css</link>
+    <description>이 글은 freeCodeCamp의 Basic CSS를 공부하면서 주요 내용을 정리한 글입니다.</description>
+    <pubDate>Fri, 13 Mar 2020 00:00:00 GMT</pubDate>
     <author>seungwoo321@gmail.com (Seungwoo Lee)</author>
-    <category>InfluxDB</category><category>Trading Bot</category>
+    <category>CSS</category>
   </item>
 
   <item>
@@ -128,6 +118,16 @@
     <pubDate>Sat, 31 Jul 2021 00:00:00 GMT</pubDate>
     <author>seungwoo321@gmail.com (Seungwoo Lee)</author>
     <category>Frontend</category><category>JavaScript</category><category>Closure</category>
+  </item>
+
+  <item>
+    <guid>https://seungwoo321.vercel.app//blog/2021/05/20/making-trading-bot-2</guid>
+    <title>InfluxDB를 활용한 주식차트 만들기</title>
+    <link>https://seungwoo321.vercel.app//blog/2021/05/20/making-trading-bot-2</link>
+    <description>지난번에는 막연히 차트의 기본이 되는 캔들(Candle) 데이터에 대한 흥미로 시작했었다면 이번에는 &quot;실시간 시장 데이터를 분석해서 자동으로 사고파는 프로그램을 만들자&quot;라는 구체적인 목표를 갖고 시작했다.</description>
+    <pubDate>Thu, 20 May 2021 00:00:00 GMT</pubDate>
+    <author>seungwoo321@gmail.com (Seungwoo Lee)</author>
+    <category>InfluxDB</category><category>Trading Bot</category>
   </item>
 
   <item>
@@ -181,13 +181,13 @@
   </item>
 
   <item>
-    <guid>https://seungwoo321.vercel.app//blog/2022/01/24/how_does_it_work_browser_rendering</guid>
-    <title>브라우저 렌더링 과정</title>
-    <link>https://seungwoo321.vercel.app//blog/2022/01/24/how_does_it_work_browser_rendering</link>
-    <description>브라우저 렌더링 과정은 크게 다음 4단계로 설명 할 수 있습니다.</description>
-    <pubDate>Mon, 24 Jan 2022 00:00:00 GMT</pubDate>
+    <guid>https://seungwoo321.vercel.app//blog/2022/01/28/making-trading-bot-4</guid>
+    <title>트레이딩 봇 2.0 개발 후기</title>
+    <link>https://seungwoo321.vercel.app//blog/2022/01/28/making-trading-bot-4</link>
+    <description>위의 시뮬레이션으로 테스트한 전략을 실제로 적용해 보기 위해서 grademark의 src/lib/backtest.ts 파일의 로직을 그대로 작성하면서 단지 원본 코드에서 사용하는 포지션 상태 값을 sqlite로 관리하도록 하고 거래소와의 REST API 통신으로 실제 매매를 수행하도록 했습니다.</description>
+    <pubDate>Fri, 28 Jan 2022 00:00:00 GMT</pubDate>
     <author>seungwoo321@gmail.com (Seungwoo Lee)</author>
-    <category>Frontend</category><category>JavaScript</category>
+    <category>Trading Bot</category>
   </item>
 
   <item>
@@ -201,13 +201,13 @@
   </item>
 
   <item>
-    <guid>https://seungwoo321.vercel.app//blog/2022/01/28/making-trading-bot-4</guid>
-    <title>트레이딩 봇 2.0 개발 후기</title>
-    <link>https://seungwoo321.vercel.app//blog/2022/01/28/making-trading-bot-4</link>
-    <description>위의 시뮬레이션으로 테스트한 전략을 실제로 적용해 보기 위해서 grademark의 src/lib/backtest.ts 파일의 로직을 그대로 작성하면서 단지 원본 코드에서 사용하는 포지션 상태 값을 sqlite로 관리하도록 하고 거래소와의 REST API 통신으로 실제 매매를 수행하도록 했습니다.</description>
-    <pubDate>Fri, 28 Jan 2022 00:00:00 GMT</pubDate>
+    <guid>https://seungwoo321.vercel.app//blog/2022/01/24/how_does_it_work_browser_rendering</guid>
+    <title>브라우저 렌더링 과정</title>
+    <link>https://seungwoo321.vercel.app//blog/2022/01/24/how_does_it_work_browser_rendering</link>
+    <description>브라우저 렌더링 과정은 크게 다음 4단계로 설명 할 수 있습니다.</description>
+    <pubDate>Mon, 24 Jan 2022 00:00:00 GMT</pubDate>
     <author>seungwoo321@gmail.com (Seungwoo Lee)</author>
-    <category>Trading Bot</category>
+    <category>Frontend</category><category>JavaScript</category>
   </item>
 
   <item>
