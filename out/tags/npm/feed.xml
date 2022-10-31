@@ -1,0 +1,24 @@
+
+  <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+      <title>SEUNGWOO&#39;s TECH LOG</title>
+      <link>https://seungwoo321.vercel.app//blog</link>
+      <description>JavaScript 등 프론트엔드 개발자의 학습 및 성장 과정을 기록합니다.</description>
+      <language>ko-KR</language>
+      <managingEditor>seungwoo321@gmail.com (Seungwoo Lee)</managingEditor>
+      <webMaster>seungwoo321@gmail.com (Seungwoo Lee)</webMaster>
+      <lastBuildDate>Sun, 02 Feb 2020 00:00:00 GMT</lastBuildDate>
+      <atom:link href="https://seungwoo321.vercel.app//tags/npm/feed.xml" rel="self" type="application/rss+xml"/>
+      
+  <item>
+    <guid>https://seungwoo321.vercel.app//blog/2020/02/02/how-to-private-npm</guid>
+    <title>비공개 NPM 저장소 구성하기</title>
+    <link>https://seungwoo321.vercel.app//blog/2020/02/02/how-to-private-npm</link>
+    <description>오픈소스 sinopia를 사용해서 Prvate NPM 저장소를 구성하고 스코프 문제를 해결한 경험을 정리하자.</description>
+    <pubDate>Sun, 02 Feb 2020 00:00:00 GMT</pubDate>
+    <author>seungwoo321@gmail.com (Seungwoo Lee)</author>
+    <category>NPM</category>
+  </item>
+
+    </channel>
+  </rss>

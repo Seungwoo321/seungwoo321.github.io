@@ -1,0 +1,114 @@
+
+  <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+      <title>SEUNGWOO&#39;s TECH LOG</title>
+      <link>https://seungwoo321.vercel.app//blog</link>
+      <description>JavaScript 등 프론트엔드 개발자의 학습 및 성장 과정을 기록합니다.</description>
+      <language>ko-KR</language>
+      <managingEditor>seungwoo321@gmail.com (Seungwoo Lee)</managingEditor>
+      <webMaster>seungwoo321@gmail.com (Seungwoo Lee)</webMaster>
+      <lastBuildDate>Wed, 02 Feb 2022 00:00:00 GMT</lastBuildDate>
+      <atom:link href="https://seungwoo321.vercel.app//tags/frontend/feed.xml" rel="self" type="application/rss+xml"/>
+      
+  <item>
+    <guid>https://seungwoo321.vercel.app//blog/2022/02/absolute_relative</guid>
+    <title>absolute와 relative의 차이에 대해서 설명하세요</title>
+    <link>https://seungwoo321.vercel.app//blog/2022/02/absolute_relative</link>
+    <description>CSS 포지션 absolute와 relative의 차이에 대해 정리하자</description>
+    <pubDate>Wed, 02 Feb 2022 00:00:00 GMT</pubDate>
+    <author>seungwoo321@gmail.com (Seungwoo Lee)</author>
+    <category>Frontend</category><category>CSS</category>
+  </item>
+
+  <item>
+    <guid>https://seungwoo321.vercel.app//blog/2021/05/02/book-you-dont-know-js-1</guid>
+    <title>타입과 문법, 스코프와 클로저 YOU DON&#39;T KNOW JS 책을 읽고</title>
+    <link>https://seungwoo321.vercel.app//blog/2021/05/02/book-you-dont-know-js-1</link>
+    <description>PivotUtilities 객체의 메서드로 사용된 numberFormat() 함수는 내부 익명 함수를 리턴한다. 리턴하는 내부 함수는 클로저를 형성함으로써 usFmt, usFmInt, usFmtPct는 각각의 독립적인 렉시컬 스코프 환경을 갖게 된다.</description>
+    <pubDate>Sun, 02 May 2021 00:00:00 GMT</pubDate>
+    <author>seungwoo321@gmail.com (Seungwoo Lee)</author>
+    <category>Frontend</category><category>JavaScript</category><category>Closure</category>
+  </item>
+
+  <item>
+    <guid>https://seungwoo321.vercel.app//blog/2021/07/31/what_closure_means</guid>
+    <title>클로저(Closure)는 무엇이며, 어떻게/왜 사용하나요 ?</title>
+    <link>https://seungwoo321.vercel.app//blog/2021/07/31/what_closure_means</link>
+    <description>클로저를 이해 하기 위해서 Scope, Scope Chain, Context 에 대한 이해가 선행되어야 합니다.</description>
+    <pubDate>Sat, 31 Jul 2021 00:00:00 GMT</pubDate>
+    <author>seungwoo321@gmail.com (Seungwoo Lee)</author>
+    <category>Frontend</category><category>JavaScript</category><category>Closure</category>
+  </item>
+
+  <item>
+    <guid>https://seungwoo321.vercel.app//blog/2022/01/19/how_does_it_work_javascript</guid>
+    <title>자바스크립트의 동작원리</title>
+    <link>https://seungwoo321.vercel.app//blog/2022/01/19/how_does_it_work_javascript</link>
+    <description>자바스크립트 엔진, 런타임, 호출 스택, 이벤트 루프를 간단하게 정리했습니다.</description>
+    <pubDate>Wed, 19 Jan 2022 00:00:00 GMT</pubDate>
+    <author>seungwoo321@gmail.com (Seungwoo Lee)</author>
+    <category>Frontend</category><category>JavaScript</category>
+  </item>
+
+  <item>
+    <guid>https://seungwoo321.vercel.app//blog/2022/01/24/how_does_it_work_browser_rendering</guid>
+    <title>브라우저 렌더링 과정</title>
+    <link>https://seungwoo321.vercel.app//blog/2022/01/24/how_does_it_work_browser_rendering</link>
+    <description>브라우저 렌더링 과정은 크게 다음 4단계로 설명 할 수 있습니다.</description>
+    <pubDate>Mon, 24 Jan 2022 00:00:00 GMT</pubDate>
+    <author>seungwoo321@gmail.com (Seungwoo Lee)</author>
+    <category>Frontend</category><category>JavaScript</category>
+  </item>
+
+  <item>
+    <guid>https://seungwoo321.vercel.app//blog/2022/01/26/pros-and-cons-of-ssr-and-csr</guid>
+    <title>SSR과 CSR의 장단점</title>
+    <link>https://seungwoo321.vercel.app//blog/2022/01/26/pros-and-cons-of-ssr-and-csr</link>
+    <description>SSR(Server Side Rendering)과 CSR(Client Side Rendering)의 장단점 정리해 보자</description>
+    <pubDate>Wed, 26 Jan 2022 00:00:00 GMT</pubDate>
+    <author>seungwoo321@gmail.com (Seungwoo Lee)</author>
+    <category>Frontend</category>
+  </item>
+
+  <item>
+    <guid>https://seungwoo321.vercel.app//blog/2022/01/29/what_is_event_delegation</guid>
+    <title>이벤트 위임(Event Delegation)</title>
+    <link>https://seungwoo321.vercel.app//blog/2022/01/29/what_is_event_delegation</link>
+    <description>DOM의 이벤트 버블링(Event Bubbling) 특성을 활용해 이벤트 리스너를 하위 요소에 추가하는 대신 상위 요소에 추가하는 기법입니다.</description>
+    <pubDate>Sat, 29 Jan 2022 00:00:00 GMT</pubDate>
+    <author>seungwoo321@gmail.com (Seungwoo Lee)</author>
+    <category>Frontend</category><category>JavaScript</category>
+  </item>
+
+  <item>
+    <guid>https://seungwoo321.vercel.app//blog/2022/01/30/event_listener_this</guid>
+    <title>이벤트 핸들러 내부의 this</title>
+    <link>https://seungwoo321.vercel.app//blog/2022/01/30/event_listener_this</link>
+    <description>이벤트를 핸들러 내부의 this를 예제로 정리해보자.</description>
+    <pubDate>Sun, 30 Jan 2022 00:00:00 GMT</pubDate>
+    <author>seungwoo321@gmail.com (Seungwoo Lee)</author>
+    <category>Frontend</category><category>JavaScript</category>
+  </item>
+
+  <item>
+    <guid>https://seungwoo321.vercel.app//blog/2022/01/31/why_can_I_change_a_constant_object</guid>
+    <title>어떻게 const로 선언한 객체의 속성값이 바뀌는 것일까</title>
+    <link>https://seungwoo321.vercel.app//blog/2022/01/31/why_can_I_change_a_constant_object</link>
+    <description>const 키워드를 사용하여 선언된 변수는 블록 범위의 상수입니다. 상수의 값은 재할당할 수 없으며 다시 선언할 수도 없습니다. 그러나 상수가 객체 또는 배열인 경우 해당 속성이나 항목을 업데이트하거나 제거 할 수 있습니다.</description>
+    <pubDate>Mon, 31 Jan 2022 00:00:00 GMT</pubDate>
+    <author>seungwoo321@gmail.com (Seungwoo Lee)</author>
+    <category>Frontend</category><category>JavaScript</category>
+  </item>
+
+  <item>
+    <guid>https://seungwoo321.vercel.app//blog/2022/10/16/css-box-model</guid>
+    <title>CSS 박스 모델</title>
+    <link>https://seungwoo321.vercel.app//blog/2022/10/16/css-box-model</link>
+    <description>CSS는 HTML요소를 화면에 출력하는데 크게 인라인 (inline) 박스와 블록 (block) 박스로 구분합니다.</description>
+    <pubDate>Sun, 16 Oct 2022 00:00:00 GMT</pubDate>
+    <author>seungwoo321@gmail.com (Seungwoo Lee)</author>
+    <category>Frontend</category><category>CSS</category>
+  </item>
+
+    </channel>
+  </rss>

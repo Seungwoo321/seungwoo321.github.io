@@ -1,0 +1,44 @@
+
+  <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+      <title>SEUNGWOO&#39;s TECH LOG</title>
+      <link>https://seungwoo321.vercel.app//blog</link>
+      <description>JavaScript 등 프론트엔드 개발자의 학습 및 성장 과정을 기록합니다.</description>
+      <language>ko-KR</language>
+      <managingEditor>seungwoo321@gmail.com (Seungwoo Lee)</managingEditor>
+      <webMaster>seungwoo321@gmail.com (Seungwoo Lee)</webMaster>
+      <lastBuildDate>Sun, 21 Apr 2019 00:00:00 GMT</lastBuildDate>
+      <atom:link href="https://seungwoo321.vercel.app//tags/codecommit/feed.xml" rel="self" type="application/rss+xml"/>
+      
+  <item>
+    <guid>https://seungwoo321.vercel.app//blog/2019/04/21/how-to-git-mulitple-account</guid>
+    <title>여러 개의 GitHub/CodeCommit 인증정보 관리하기</title>
+    <link>https://seungwoo321.vercel.app//blog/2019/04/21/how-to-git-mulitple-account</link>
+    <description>이렇게 하면 단일 컴퓨터에서 여러 GItHub/CodeCommit 인증정보를 매번 입력하지 않고 HTTPS 프로토콜로 리모트 저장소에 접근할 수 있다.</description>
+    <pubDate>Sun, 21 Apr 2019 00:00:00 GMT</pubDate>
+    <author>seungwoo321@gmail.com (Seungwoo Lee)</author>
+    <category>git</category><category>CodeCommit</category>
+  </item>
+
+  <item>
+    <guid>https://seungwoo321.vercel.app//blog/2021/08/16/how-to-connecting-to-github-with-ssh</guid>
+    <title>SSH로 GitHub / CodeCommit 연결하기</title>
+    <link>https://seungwoo321.vercel.app//blog/2021/08/16/how-to-connecting-to-github-with-ssh</link>
+    <description>2021년 8월 13일부로 비밀번호 인증 지원이 종료되어 이전에 사용하던 방식을 사용할 수 없게 되어서 이 기회에 SSH 접속 방식으로 변경하게 되었다.</description>
+    <pubDate>Mon, 16 Aug 2021 00:00:00 GMT</pubDate>
+    <author>seungwoo321@gmail.com (Seungwoo Lee)</author>
+    <category>git</category><category>CodeCommit</category>
+  </item>
+
+  <item>
+    <guid>https://seungwoo321.vercel.app//blog/2022/01/20/how_to_install_redmine</guid>
+    <title>Amazon Linux2 OS에 레드마인을 설치하는 방법</title>
+    <link>https://seungwoo321.vercel.app//blog/2022/01/20/how_to_install_redmine</link>
+    <description>AWS 코드 커밋(CodeCommit)에 구성된 모든 프로젝트들의 이슈 추적과 코드 리뷰 등을 위해 레드마인(Redmine)을 Amazon Linux2 OS에 설치하는 과정에 대한 기록과 이에 대한 후기입니다.</description>
+    <pubDate>Thu, 20 Jan 2022 00:00:00 GMT</pubDate>
+    <author>seungwoo321@gmail.com (Seungwoo Lee)</author>
+    <category>CodeCommit</category><category>trouble shooting</category><category>Redmine</category>
+  </item>
+
+    </channel>
+  </rss>

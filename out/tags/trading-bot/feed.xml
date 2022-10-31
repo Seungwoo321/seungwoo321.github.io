@@ -1,0 +1,74 @@
+
+  <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+      <title>SEUNGWOO&#39;s TECH LOG</title>
+      <link>https://seungwoo321.vercel.app//blog</link>
+      <description>JavaScript 등 프론트엔드 개발자의 학습 및 성장 과정을 기록합니다.</description>
+      <language>ko-KR</language>
+      <managingEditor>seungwoo321@gmail.com (Seungwoo Lee)</managingEditor>
+      <webMaster>seungwoo321@gmail.com (Seungwoo Lee)</webMaster>
+      <lastBuildDate>Sun, 25 Apr 2021 00:00:00 GMT</lastBuildDate>
+      <atom:link href="https://seungwoo321.vercel.app//tags/trading-bot/feed.xml" rel="self" type="application/rss+xml"/>
+      
+  <item>
+    <guid>https://seungwoo321.vercel.app//blog/2021/04/making-trading-bot-1</guid>
+    <title>Amazon Athena SQL로 캔들 데이터 생성하기</title>
+    <link>https://seungwoo321.vercel.app//blog/2021/04/making-trading-bot-1</link>
+    <description>글루 서비스를 사용하는 데서 막혔고 다른 방법을 고민하다가 아테나에서의 SQL 작성으로 원하는 시간 프레임의 캔들 데이터를 만들 수 있었다.</description>
+    <pubDate>Sun, 25 Apr 2021 00:00:00 GMT</pubDate>
+    <author>seungwoo321@gmail.com (Seungwoo Lee)</author>
+    <category>Athena</category><category>SQL</category><category>Trading Bot</category>
+  </item>
+
+  <item>
+    <guid>https://seungwoo321.vercel.app//blog/2021/05/20/making-trading-bot-2</guid>
+    <title>InfluxDB를 활용한 주식차트 만들기</title>
+    <link>https://seungwoo321.vercel.app//blog/2021/05/20/making-trading-bot-2</link>
+    <description>지난번에는 막연히 차트의 기본이 되는 캔들(Candle) 데이터에 대한 흥미로 시작했었다면 이번에는 &quot;실시간 시장 데이터를 분석해서 자동으로 사고파는 프로그램을 만들자&quot;라는 구체적인 목표를 갖고 시작했다.</description>
+    <pubDate>Thu, 20 May 2021 00:00:00 GMT</pubDate>
+    <author>seungwoo321@gmail.com (Seungwoo Lee)</author>
+    <category>InfluxDB</category><category>Trading Bot</category>
+  </item>
+
+  <item>
+    <guid>https://seungwoo321.vercel.app//blog/2021/06/07/making-trading-bot-3</guid>
+    <title>자동매매 알고리즘 개발과 트레이딩 봇 실전 6개월</title>
+    <link>https://seungwoo321.vercel.app//blog/2021/06/07/making-trading-bot-3</link>
+    <description>2017년 1월부터 2020년 10월까지의 비트코인 차트에 이동 평균선(Moving Average), 스토캐스틱(Stochastic), 볼린저 밴드(Bollinger Band) 지표를 사용해서 조건을 이리저리 바꿔가며 다양하게 알고리즘을 시험해 보았다.</description>
+    <pubDate>Mon, 07 Jun 2021 00:00:00 GMT</pubDate>
+    <author>seungwoo321@gmail.com (Seungwoo Lee)</author>
+    <category>Trading Bot</category><category>TypeScript</category>
+  </item>
+
+  <item>
+    <guid>https://seungwoo321.vercel.app//blog/2021/12/10/error-report-account-has-insufficient-available-balance</guid>
+    <title>Account has insufficient Available Balance</title>
+    <link>https://seungwoo321.vercel.app//blog/2021/12/10/error-report-account-has-insufficient-available-balance</link>
+    <description>토이 프로젝트로 진행 중인 트레이딩 봇의 로그에 BCHUSD의 계약 수량을 계산하는데 계정에 사용 가능한 잔액이 부족해서 거래소로부터의 거래가 거절되었다는 에러 메시지가 남기 시작했습니다.</description>
+    <pubDate>Fri, 10 Dec 2021 00:00:00 GMT</pubDate>
+    <author>seungwoo321@gmail.com (Seungwoo Lee)</author>
+    <category>Trading Bot</category><category>trouble shooting</category>
+  </item>
+
+  <item>
+    <guid>https://seungwoo321.vercel.app//blog/2022/01/28/making-trading-bot-4</guid>
+    <title>트레이딩 봇 2.0 개발 후기</title>
+    <link>https://seungwoo321.vercel.app//blog/2022/01/28/making-trading-bot-4</link>
+    <description>위의 시뮬레이션으로 테스트한 전략을 실제로 적용해 보기 위해서 grademark의 src/lib/backtest.ts 파일의 로직을 그대로 작성하면서 단지 원본 코드에서 사용하는 포지션 상태 값을 sqlite로 관리하도록 하고 거래소와의 REST API 통신으로 실제 매매를 수행하도록 했습니다.</description>
+    <pubDate>Fri, 28 Jan 2022 00:00:00 GMT</pubDate>
+    <author>seungwoo321@gmail.com (Seungwoo Lee)</author>
+    <category>Trading Bot</category>
+  </item>
+
+  <item>
+    <guid>https://seungwoo321.vercel.app//blog/2022/06/16/starting-docker</guid>
+    <title>프론트엔드 개발자의 Docker 입문기</title>
+    <link>https://seungwoo321.vercel.app//blog/2022/06/16/starting-docker</link>
+    <description>트레이딩 봇 애플리케이션 구동에 필요한 복잡하고 번거로운 설정 과정을 자동화하기 위한 힌트를 얻기 위해서 깃허브의 Topics에 `trading bot`을 검색해 보니 깃허브 스타(Star) 수가 1k 이상인 프로젝트들은 대부분 도커(Docker)와 관련된 설정이 포함되어 있는 것을 알 수 있었습니다.</description>
+    <pubDate>Thu, 16 Jun 2022 00:00:00 GMT</pubDate>
+    <author>seungwoo321@gmail.com (Seungwoo Lee)</author>
+    <category>Docker</category><category>Trading Bot</category>
+  </item>
+
+    </channel>
+  </rss>
