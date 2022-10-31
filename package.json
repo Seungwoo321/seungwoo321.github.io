@@ -5,7 +5,8 @@
   "scripts": {
     "start": "next dev",
     "dev": "INIT_CWD=$PWD next dev",
-    "build": "INIT_CWD=$PWD next build",
+    "build": "INIT_CWD=$PWD next build && next export",
+    "deploy": "next build && touch out/.nojekyll && git add out/ && git commit -m \"Deploy\" && git subtree push --prefix out origin gh-pages",
     "postbuild": "yarn sitemap && yarn rss && yarn search",
     "sitemap": "cross-env NODE_OPTIONS='--experimental-json-modules' node -r esbuild-register ./scripts/sitemap.mjs",
     "rss": "cross-env NODE_OPTIONS='--experimental-json-modules' node -r esbuild-register ./scripts/rss.mjs",
