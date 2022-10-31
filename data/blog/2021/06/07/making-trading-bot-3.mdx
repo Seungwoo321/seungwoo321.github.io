@@ -18,7 +18,7 @@ summary: 2017년 1월부터 2020년 10월까지의 비트코인 차트에 이동
 
 데이터 분석에는 파이썬(Python) 언어를 많이 사용하기 때문에 잠깐의 고민도 있었지만 익숙한 노드를 선택했다. 데이터 조작 및 분석을 위해 파이썬의 Pandas와 같은 라이브러리로 Data-Forge와 이 Data-Forge를 기반으로 알고리즘 거래의 백테스팅을 위한 API를 제공하는 툴킷 grademark를 사용했다.
 
-![backtest.png](/static/images/posts/2021/06/07/backtest.png)
+<img src="/static/images/posts/2021/06/07/backtest.png" alt="backtext" />
 
 2017년 1월부터 2020년 10월까지의 비트코인 차트에 이동 평균선(Moving Average), 스토캐스틱(Stochastic), 볼린저 밴드(Bollinger Band) 지표를 사용해서 조건을 이리저리 바꿔가며 다양하게 알고리즘을 시험해 보았다.
 
@@ -28,7 +28,7 @@ summary: 2017년 1월부터 2020년 10월까지의 비트코인 차트에 이동
 
 차트의 기술적 분석을 트레이드 스터디에서 주로 스토케스틱을 활용한 기법을 배워서 매매 알고리즘 작성에 반드시 필요한 지표 중 하나인데 이 라이브러리에서 지원하지 않았다. 그래서 스토케스틱 지표를 계산하는 함수를 직접 추가하고 PR을 작성했다.
 
-![stochastic.png](/static/images/posts/2021/06/07/stochastic.png)
+<img src="/static/images/posts/2021/06/07/stochastic.png" alt="stochastic" />
 
 직접 만들어서 관리하는 것 외에 처음으로 기여해 본 오픈소스 프로젝트이고 타입 스크립트도 처음 사용해 본 경험 이어서 아주 의미 있는 활동이었다.
 
@@ -36,9 +36,9 @@ summary: 2017년 1월부터 2020년 10월까지의 비트코인 차트에 이동
 
 시뮬레이션에서 사용한 grademark 라이브러리의 로직은 과거 데이터를 가지고 거래를 가정하는 데 매매 조건을 충족해도 바로 거래하지 않는다. 매매해야 된다고 기억했다가 다음 캔들에서 매매를 한다. 반면 직접 거래소와 통신하며 사고팔도록 동작하는 봇은 별도의 상태값을 저장하는 데이터베이스를 두지 않으려고 즉시 거래가 되도록 개발했다. 결과 시뮬레이션과는 많은 차이를 보였다.
 
-![profit1.png](/static/images/posts/2021/06/07/profit1.png)
-![profit2.png](/static/images/posts/2021/06/07/profit2.png)
-![profit3.png](/static/images/posts/2021/06/07/profit3.png)
+<img src="/static/images/posts/2021/06/07/profit1.png" alt="profit1" />
+<img src="/static/images/posts/2021/06/07/profit2.png" alt="profit2" />
+<img src="/static/images/posts/2021/06/07/profit3.png" alt="profit3" />
 
 시뮬레이션과 차이를 보이면서 실제 매매 환경에서 알고리즘을 개선해나갔고 시장의 상황에 따라서 수익이 나기도 했지만 지속적인 유지 보수와 리스크 관리가 필요했다.
 

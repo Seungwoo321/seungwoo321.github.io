@@ -25,7 +25,7 @@ summary: 지난번에는 막연히 차트의 기본이 되는 캔들(Candle) 데
 
 그 첫 번째 작업으로 거래소의 이벤트를 구독해서 웹 소켓 통신으로 시장 데이터를 제공받고 인플럭스DB(InfluxDB)에 저장하는 노드 (node.js) 서버를 구현했다. 관계형 데이터베이스의 테이블(table)에 대응되는 개념으로 시계열 데이터베이스인 인플럭스DB에는 메저 먼트 (measurements)라는 게 있어서 `trade`라는 이름으로 메저 먼트를 생성해 다음과 같이 실시간 시장 데이터를 저장했다.
 
-![01_trade.png](/static/images/posts/2021/05/20/01_trade.png)
+<img src="/static/images/posts/2021/05/20/01_trade.png" alt="trade" />
 
 ## 시장 데이터 가공
 
@@ -111,7 +111,7 @@ END;
 
 백엔드는 인플럭스DB에서 가공한 캔들 스틱 데이터를 조회하는 새로운 노드 서버를 추가하고 프런트엔드는 뷰(Vue.js)와 오픈소스 (tvjsx/trading-vue-js)를 사용해서 캔들 스틱과 차트의 기술적분석에 주로 사용하려는 이동 평균선(Moving Average), 스토캐스틱(Stochastic), 볼린저 밴드(Bollinger Band) 지표를 시각화했다.
 
-![02_chart.png](/static/images/posts/2021/05/20/02_chart.png)
+<img src="/static/images/posts/2021/05/20/02_chart.png" alt="candle stick chart"/>
 
 ## 마무리
 
