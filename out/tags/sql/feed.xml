@@ -1,0 +1,24 @@
+
+  <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+      <title>SEUNGWOO&#39;s TECH LOG</title>
+      <link>https://seungwoo321.github.io/blog</link>
+      <description>JavaScript 등 프론트엔드 개발자의 학습 및 성장 과정을 기록합니다.</description>
+      <language>ko-KR</language>
+      <managingEditor>seungwoo321@gmail.com (Seungwoo Lee)</managingEditor>
+      <webMaster>seungwoo321@gmail.com (Seungwoo Lee)</webMaster>
+      <lastBuildDate>Sun, 25 Apr 2021 00:00:00 GMT</lastBuildDate>
+      <atom:link href="https://seungwoo321.github.io/tags/sql/feed.xml" rel="self" type="application/rss+xml"/>
+      
+  <item>
+    <guid>https://seungwoo321.github.io/blog/2021/04/making-trading-bot-1</guid>
+    <title>Amazon Athena SQL로 캔들 데이터 생성하기</title>
+    <link>https://seungwoo321.github.io/blog/2021/04/making-trading-bot-1</link>
+    <description>글루 서비스를 사용하는 데서 막혔고 다른 방법을 고민하다가 아테나에서의 SQL 작성으로 원하는 시간 프레임의 캔들 데이터를 만들 수 있었다.</description>
+    <pubDate>Sun, 25 Apr 2021 00:00:00 GMT</pubDate>
+    <author>seungwoo321@gmail.com (Seungwoo Lee)</author>
+    <category>Athena</category><category>SQL</category><category>Trading Bot</category>
+  </item>
+
+    </channel>
+  </rss>

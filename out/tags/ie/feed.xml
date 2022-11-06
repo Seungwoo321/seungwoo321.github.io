@@ -1,0 +1,24 @@
+
+  <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+      <title>SEUNGWOO&#39;s TECH LOG</title>
+      <link>https://seungwoo321.github.io/blog</link>
+      <description>JavaScript 등 프론트엔드 개발자의 학습 및 성장 과정을 기록합니다.</description>
+      <language>ko-KR</language>
+      <managingEditor>seungwoo321@gmail.com (Seungwoo Lee)</managingEditor>
+      <webMaster>seungwoo321@gmail.com (Seungwoo Lee)</webMaster>
+      <lastBuildDate>Mon, 16 Mar 2020 00:00:00 GMT</lastBuildDate>
+      <atom:link href="https://seungwoo321.github.io/tags/ie/feed.xml" rel="self" type="application/rss+xml"/>
+      
+  <item>
+    <guid>https://seungwoo321.github.io/blog/2020/03/16/error-report-ie11-script1002</guid>
+    <title>IE 11 Syntax Error - Script1002</title>
+    <link>https://seungwoo321.github.io/blog/2020/03/16/error-report-ie11-script1002</link>
+    <description>Internet Explorer 11에서 확인 시 빈 페이지가 로딩되고 콘솔 창에는 Script1002 오류만 찍혀 있었다.</description>
+    <pubDate>Mon, 16 Mar 2020 00:00:00 GMT</pubDate>
+    <author>seungwoo321@gmail.com (Seungwoo Lee)</author>
+    <category>IE</category><category>trouble shooting</category>
+  </item>
+
+    </channel>
+  </rss>
