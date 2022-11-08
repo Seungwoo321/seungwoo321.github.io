@@ -6,12 +6,9 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 /** @type {import('next').NextConfig} */
 const withPWA = require('next-pwa')({
-  pwa: {
-    dest: 'public',
-    register: true,
-    skipWaiting: true,
-  },
-  reactStrictMode: true,
+  dest: 'public',
+  register: true,
+  skipWaiting: true,
 })
 
 // You might need to insert additional domains in script-src if you are using external services
