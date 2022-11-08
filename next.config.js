@@ -9,9 +9,6 @@ const withPWA = require('next-pwa')({
   register: true,
   skipWaiting: true,
   publicExcludes: ['!google*.html', '!naver*.html'],
-  modifyURLPrefix: {
-    '/': 'seungwoo321.github.io',
-  },
 })
 
 // You might need to insert additional domains in script-src if you are using external services
