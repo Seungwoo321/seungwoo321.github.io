@@ -3,7 +3,7 @@
     "background_color": "#4d514d",
     "display": "standalone",
     "scope": "/",
-    "start_url": "/",
+    "start_url": "https://seungwoo321.github.io",
     "name": "Seungwoo's Techlog",
     "short_name": "Seungwoo's Techlog",
     "icons": [

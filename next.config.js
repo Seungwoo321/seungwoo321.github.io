@@ -1,5 +1,4 @@
 const { withContentlayer } = require('next-contentlayer')
-
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
@@ -9,7 +8,10 @@ const withPWA = require('next-pwa')({
   dest: 'public',
   register: true,
   skipWaiting: true,
-  publicExcludes: ['!google*.html', '!naver*.html', '!_next/**/*'],
+  publicExcludes: ['!google*.html', '!naver*.html'],
+  modifyURLPrefix: {
+    '/': 'seungwoo321.github.io',
+  },
 })
 
 // You might need to insert additional domains in script-src if you are using external services
@@ -68,6 +70,7 @@ const securityHeaders = [
  **/
 module.exports = () => {
   const plugins = [withContentlayer, withBundleAnalyzer, withPWA]
+
   return plugins.reduce((acc, next) => next(acc), {
     reactStrictMode: true,
     images: {
