@@ -14,13 +14,13 @@ const withPWA = require('next-pwa')({
 // You might need to insert additional domains in script-src if you are using external services
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' utteranc.es codesandbox.io *.googletagmanager.com pagead2.googlesyndication.com partner.googleadservices.com tpc.googlesyndication.com www.googletagservices.com adservice.google.com;
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' utteranc.es codesandbox.io *.googletagmanager.com pagead2.googlesyndication.com partner.googleadservices.com tpc.googlesyndication.com www.googletagservices.com adservice.google.com adservice.google.co.kr;
   style-src 'self' 'unsafe-inline' codesandbox.io;
   img-src * blob: data:;
   media-src 'none';
   connect-src *;
   font-src 'self';
-  frame-src utteranc.es codesandbox.io jsfiddle.net googleads.g.doubleclick.net tpc.googlesyndication.com;
+  frame-src utteranc.es codesandbox.io jsfiddle.net googleads.g.doubleclick.net tpc.googlesyndication.com www.google.com;
   worker-src 'self' codesandbox.io;
 `
 
