@@ -1,4 +1,5 @@
 const { withContentlayer } = require('next-contentlayer')
+const runtimeCaching = require('next-pwa/cache')
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
@@ -7,8 +8,12 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 const withPWA = require('next-pwa')({
   dest: 'public',
   register: true,
+  runtimeCaching,
   skipWaiting: true,
   publicExcludes: ['!google*.html', '!naver*.html'],
+  modifyURLPrefix: {
+    '/': 'https://seungwoo321.github.io/',
+  },
 })
 
 // You might need to insert additional domains in script-src if you are using external services
