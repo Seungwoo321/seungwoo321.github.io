@@ -4,6 +4,16 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
 
+/** @type {import('next').NextConfig} */
+const withPWA = require('next-pwa')({
+  pwa: {
+    dest: 'public',
+    register: true,
+    skipWaiting: true,
+  },
+  reactStrictMode: true,
+})
+
 // You might need to insert additional domains in script-src if you are using external services
 const ContentSecurityPolicy = `
   default-src 'self';
@@ -59,7 +69,7 @@ const securityHeaders = [
  * @type {import('next/dist/next-server/server/config').NextConfig}
  **/
 module.exports = () => {
-  const plugins = [withContentlayer, withBundleAnalyzer]
+  const plugins = [withContentlayer, withBundleAnalyzer, withPWA]
   return plugins.reduce((acc, next) => next(acc), {
     reactStrictMode: true,
     images: {
