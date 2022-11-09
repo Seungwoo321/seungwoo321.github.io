@@ -15,7 +15,6 @@ import siteMetadata from '@/data/siteMetadata'
 import { Analytics } from 'pliny/analytics'
 import { SearchProvider } from 'pliny/search'
 import LayoutWrapper from '@/components/LayoutWrapper'
-import GoogleAdsenseScript from '@/components/GoogleAdsenseScript'
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -23,7 +22,6 @@ export default function App({ Component, pageProps }: AppProps) {
       <Head>
         <meta content="width=device-width, initial-scale=1" name="viewport" />
       </Head>
-      <GoogleAdsenseScript />
       <Analytics analyticsConfig={siteMetadata.analytics} />
       <SearchProvider searchConfig={siteMetadata.search}>
         <LayoutWrapper>
