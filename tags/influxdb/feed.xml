@@ -1,0 +1,24 @@
+
+  <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+      <title>SEUNGWOO&#39;s TECH LOG</title>
+      <link>https://seungwoo321.github.io/blog</link>
+      <description>JavaScript 등 프론트엔드 개발자의 학습 및 성장 과정을 기록합니다.</description>
+      <language>ko-KR</language>
+      <managingEditor>seungwoo321@gmail.com (Seungwoo Lee)</managingEditor>
+      <webMaster>seungwoo321@gmail.com (Seungwoo Lee)</webMaster>
+      <lastBuildDate>Thu, 20 May 2021 00:00:00 GMT</lastBuildDate>
+      <atom:link href="https://seungwoo321.github.io/tags/influxdb/feed.xml" rel="self" type="application/rss+xml"/>
+      
+  <item>
+    <guid>https://seungwoo321.github.io/blog/2021/05/20/making-trading-bot-2</guid>
+    <title>InfluxDB를 활용한 주식차트 만들기</title>
+    <link>https://seungwoo321.github.io/blog/2021/05/20/making-trading-bot-2</link>
+    <description>지난번에는 막연히 차트의 기본이 되는 캔들(Candle) 데이터에 대한 흥미로 시작했었다면 이번에는 &quot;실시간 시장 데이터를 분석해서 자동으로 사고파는 프로그램을 만들자&quot;라는 구체적인 목표를 갖고 시작했다.</description>
+    <pubDate>Thu, 20 May 2021 00:00:00 GMT</pubDate>
+    <author>seungwoo321@gmail.com (Seungwoo Lee)</author>
+    <category>InfluxDB</category><category>Trading Bot</category>
+  </item>
+
+    </channel>
+  </rss>
