@@ -1,5 +1,5 @@
 ---
-title: "🎯 VDropdown.vue TypeScript 변환 완전 가이드"
+title: VDropdown.vue TypeScript 변환 완전 가이드
 date: "2025-05-28"
 tags: [vue3, typescript]
 categories: TypeScript

@@ -1,5 +1,5 @@
 ---
-title: 🏷️ 브랜드 타입이 뭔가요? (중학생도 이해하는 설명)
+title: 브랜드 타입이 뭔가요? (중학생도 이해하는 설명)
 date: "2025-05-28"
 tags: ["typescript"]
 categories: TypeScript
