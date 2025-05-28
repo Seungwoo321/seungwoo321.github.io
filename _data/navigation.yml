@@ -7,16 +7,20 @@ main:
 categories:
   - title: Category
     children:
-      - title: Web
-        url: /categories/web
+      - title: TypeScript
+        url: /categories/typescript
       - title: JavaScript
         url: /categories/javascript
+      - title: React
+        url: /categories/react
+      - title: Vue3
+        url: /categories/vue3
+      - title: Vue
+        url: /categories/vue
       - title: NodeJS
         url: /categories/nodejs
       - title: CSS
         url: /categories/css
-      - title: Vue
-        url: /categories/vue
       - title: AWS
         url: /categories/aws
       - title: Linux
@@ -31,5 +35,14 @@ categories:
         url: /categories/etc
   - title: Project
     children:
-      - title: VuePivottable
+      - title: (2025-05) E-Torch Docs 
+        url: https://github.com/Seungwoo321/etorch-docs
+      - title: (2025-05) Code Style 
+        url: https://github.com/Seungwoo321/code-style
+      - title: (2025-02) Vue 3 Pivottable 
+        url: https://github.com/vue-pivottable/vue3-pivottable/
+      - title: (2019-11) Vue Pivottable 
         url: /vue-pivottable
+      - title: (2019-10) Vue Datamaps 
+        url: https://github.com/Seungwoo321/vue-datamaps
+

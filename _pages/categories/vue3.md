@@ -1,9 +1,9 @@
 ---
-title: "Web"
+title: "Vue3"
 layout: category
-permalink: /categories/web/
+permalink: /categories/vue3/
 author_profile: true
-taxonomy: Web
+taxonomy: Vue3
 sidebar:
   nav: "categories"
 ---

@@ -70,26 +70,44 @@ export { VuePivottable, PivotUtilities, Renderer }
 ### 1단계: 타입 오버라이드 파일 생성
 
 ```typescript
-// src/types/pivot-data-override.d.ts
-declare module '@/helper/utilities' {
-  export class PivotData {
-    constructor(props: any)
-    getRowKeys(): any[][]
-    getColKeys(): any[][]
-    getAggregator(rowKey: any[], colKey: any[]): {
-      value(): any
-      format(val: any): string
-    }
-    [key: string]: any
-  }
-  
-  export const aggregators: Record<string, any>
-  export const locales: Record<string, any>
-  export function naturalSort(a: any, b: any): number
-  export function numberFormat(opts?: any): (x: any) => string
-  export function getSort(sorters: any, attr: string): (a: any, b: any) => number
-  export function sortAs(order: any[]): (a: any, b: any) => number
+//  src/helper/utilities.d.ts
+// src/helper/utilities.d.ts (새로 생성)
+// utilities.js와 같은 폴더에 같은 이름으로 .d.ts 생성
+
+// 👇 PivotData 클래스만 간단한 타입으로 오버라이드
+declare class PivotData {
+  constructor(inputProps?: any)
+  props: any
+  getRowKeys (): any[]
+  getColKeys (): any[]
+  getAggregator (rowKey: any, colKey: any): any
+  [key: string]: any
 }
+
+// 👇 복잡한 함수들도 간단한 타입으로 오버라이드
+declare const aggregators: Record<string, any>
+declare const aggregatorTemplates: Record<string, any>
+declare const locales: Record<string, any>
+declare const naturalSort: (a: any, b: any) => number
+declare const numberFormat: (opts?: any) => any
+declare const getSort: any
+declare const sortAs: any
+declare const derivers: any
+
+// 👇 이 부분이 핵심 - utilities.js의 exports를 덮어씀
+export {
+  PivotData,
+  aggregators,
+  aggregatorTemplates,
+  locales,
+  naturalSort,
+  numberFormat,
+  getSort,
+  sortAs,
+  derivers
+}
+
+
 ```
 
 ### 2단계: vite.config.js에서 경로 매핑
@@ -100,7 +118,7 @@ dts({
   rollupTypes: true,
   compilerOptions: {
     paths: {
-      '@/helper/utilities': ['./src/types/pivot-data-override.d.ts']
+      '@/helper/utilities': ['./src/helper/utilities.d.ts']
     }
   }
 })
