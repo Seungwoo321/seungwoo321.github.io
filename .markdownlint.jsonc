@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json.schemastore.org/markdownlint",
+  "line_length": false,
+  "fenced-code-language": false,
+  "heading-increment": false,
+  "no-duplicate-heading": {
+    "siblings_only": true
+  },
+  "no-emphasis-as-heading": false
+}
