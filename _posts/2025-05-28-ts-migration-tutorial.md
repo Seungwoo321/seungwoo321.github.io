@@ -2,7 +2,7 @@
 title: VDropdown.vue TypeScript 변환 완전 가이드
 date: "2025-05-28"
 tags: [vue3, typescript]
-categories: TypeScript
+categories: Vue Pivottable
 permalink: /blog/:year/:month/:day/:title/
 last_modified_at: "2025-05-28"
 ---

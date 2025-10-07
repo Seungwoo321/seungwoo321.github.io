@@ -2,7 +2,7 @@
 title: 모노레포 배포 워크플로우 개선기 TypeScript 마이그레이션 실패에서 배운 교훈
 date: "2025-06-19"
 tags: ["vue", "typescript", "github-actions", "monorepo", "deployment", "ci-cd", "npm", "changesets", "vue-pivottable"]
-categories: TypeScript
+categories: Vue Pivottable
 permalink: /blog/:year/:month/:day/:title/
 last_modified_at: "2025-06-19"
 ---

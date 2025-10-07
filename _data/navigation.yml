@@ -2,49 +2,40 @@
 main:
   - title: Home
     url: /
+  - title: Projects
+    url: /projects/
+  - title: About
+    url: /about/
   - title: GitHub
     url: https://github.com/Seungwoo321
 categories:
-  - title: Category
+  - title: 시리즈
     children:
       - title: AI-DLC
         url: /categories/ai-dlc
-      - title: TypeScript
-        url: /categories/typescript
+      - title: Quant
+        url: /categories/quant
+      - title: Vue Pivottable
+        url: /categories/vue-pivottable
+
+  - title: 노트
+    children:
       - title: JavaScript
         url: /categories/javascript
-      - title: React
-        url: /categories/react
-      - title: Vue3
-        url: /categories/vue3
-      - title: Vue
-        url: /categories/vue
-      - title: NodeJS
-        url: /categories/nodejs
       - title: CSS
         url: /categories/css
-      - title: AWS
-        url: /categories/aws
-      - title: Linux
-        url: /categories/linux
+      - title: TypeScript
+        url: /categories/typescript
+      - title: Vue
+        url: /categories/vue
+      - title: React
+        url: /categories/react
+      - title: NodeJS
+        url: /categories/nodejs
       - title: PS
         url: /categories/ps
       - title: Git
         url: /categories/git
-      - title: Quant
-        url: /categories/quant
-      - title: Etc
-        url: /categories/etc
-  - title: Project
-    children:
-      - title: (2025-05) E-Torch Docs 
-        url: https://github.com/Seungwoo321/etorch-docs
-      - title: (2025-05) Code Style 
-        url: https://github.com/Seungwoo321/code-style
-      - title: (2025-02) Vue 3 Pivottable 
-        url: https://github.com/vue-pivottable/vue3-pivottable/
-      - title: (2019-11) Vue Pivottable 
-        url: /vue-pivottable
-      - title: (2019-10) Vue Datamaps 
-        url: https://github.com/Seungwoo321/vue-datamaps
+      - title: AWS
+        url: /categories/aws
 

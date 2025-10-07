@@ -26,7 +26,7 @@ url: "https://seungwoo321.github.io" # the base hostname & protocol for your sit
 repository: "Seungwoo321/seungwoo321.github.io"
 # github_username:  Seungwoo321
 remote_theme: "mmistakes/minimal-mistakes@4.24.0"
-minimal_mistakes_skin: dirt
+minimal_mistakes_skin: air
 paginate: 5
 paginate_path: /page:num/
 author:

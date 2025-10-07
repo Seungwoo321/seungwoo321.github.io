@@ -2,7 +2,7 @@
 title: Vue Pivottable TypeScript 마이그레이션 빌드 에러 해결 기록
 date: "2025-05-28"
 tags: ["vue", "typescript"]
-categories: TypeScript
+categories: Vue Pivottable
 permalink: /blog/:year/:month/:day/:title/
 last_modified_at: "2025-05-29"
 ---

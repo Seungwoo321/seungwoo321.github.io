@@ -6,27 +6,30 @@ permalink: /about/
 classes: wide
 ---
 
-## Skils
+## 블로그 글쓰기에 대하여
 
-- __Front-End__ : __Vue.js, JavaScript, HTML5, CSS3, Bootstrap, Webpack, D3.js, SVG
-- Back-End: Node.js,  Python, ElasticSearch, Logstash, Kibana
-- Database: MySQL, PostgreSQL, InfluxDB
-- Cloud : AWS(EC2, ELB, AutoScaling, S3, Lambda)
+개발하며 시도하고 경험하는 것들을 기록하려는 공간입니다.
 
-## Certifications
+### 왜 경험을 기록하는가
 
-<div style="display: flex">
-    <img
-        src="/assets/images/aws-certified-solutions-architect-associate.png"
-        width="105px"
-        height="105px"
-    />
-    <div style="margin:auto 0">
-        <div style="font-weight:800;">
-          AWS Certified Solutions Architect - Associate
-        </div>
-        <small>
-          Issued by <a href="https://www.credly.com/org/amazon-web-services">Amazon Web Services Training and Certification</a>
-        </small>
-    </div>
-</div>
+튜토리얼도 도움이 되지만, 다른 개발자의 시행착오를 담은 글들이 더 공감이 갔습니다. 정답뿐 아니라 어떤 길로 가면 안 되는지, 왜 그런 선택을 했는지를 알 수 있으니까요.
+
+이제 저도 그런 글을 쓸 수 있게 되었습니다. JavaScript의 실행 컨텍스트 같은 개념 설명은 이미 많습니다. 저는 개발하며 겪은 과정을 기록하려고 합니다.
+
+### 무엇을 쓰는가
+
+이 블로그에 기록되는 글은 제가 직접 진행한 프로젝트와 경험입니다. 사이드 프로젝트를 만들며 마주친 기술 선택, 오픈소스를 유지보수하며 배운 점, 실무에서 적용한 기술 패턴들을 씁니다.
+
+기술 블로그지만 기술만 쓰지는 않으려고 합니다. 왜 이 기술을 선택했는지, 어떤 상황에서 어떤 결정을 내렸는지, 그 순간의 고민을 함께 기록하려고 합니다.
+
+성공한 것만 쓰지 않습니다. 실패한 시도와 잘못된 선택, 그 과정에서 배운 점도 함께 기록하려고 합니다.
+
+### 어떻게 쓰는가
+
+시간 순서를 따라갑니다. 문제를 마주치고, 시도하고, 실패하고, 다시 시도하는 과정을 씁니다.
+
+시리즈로 씁니다. 실제 경험과 그 과정의 고민을 담다 보면 자연스럽게 길어져서, 여러 글로 나눠 쓰는 방식을 선호합니다.
+
+### 이 블로그가 지향하는 것
+
+기술 블로그이면서 개발 일기입니다. 완벽한 해결책보다는 시도한 과정을 쓰려고 합니다.

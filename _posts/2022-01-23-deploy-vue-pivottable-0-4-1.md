@@ -2,7 +2,7 @@
 title: vue-pivottable v0.4.1 업데이트
 date: '2022-01-23'
 tags: ["vue-pivottable", "Vue"]
-categories: Vue
+categories: Vue Pivottable
 permalink: /blog/:year/:month/:day/:title/
 ---
 
