@@ -7,6 +7,8 @@ main:
 categories:
   - title: Category
     children:
+      - title: AI-DLC
+        url: /categories/ai-dlc
       - title: TypeScript
         url: /categories/typescript
       - title: JavaScript
