@@ -69,6 +69,23 @@ last_modified_at: "2025-10-08"
 
 처음엔 순조로웠습니다. 문서와 코드가 1:1로 매칭되고, AI가 정확히 의도를 파악해서 구현했습니다.
 
+실제로 첫 달만에 상당한 성과가 나왔습니다:
+
+- React Grid Layout의 Tailwind CSS 대안인 [tailwind-grid-layout](https://github.com/Seungwoo321/tailwind-grid-layout) 오픈소스 라이브러리를 3주 만에 완성 ([데모](https://tailwind-grid-layout-omega.vercel.app))
+- 68개의 UI 컴포넌트를 담은 디자인 시스템 페이지 구현
+
+<div style="display: flex; gap: 10px;">
+  <img src="/assets/images/posts/2025/10/08/design-system-colors-dark.png" alt="디자인 시스템 색상 (다크)" style="width: 49%;">
+  <img src="/assets/images/posts/2025/10/08/design-system-colors-light.png" alt="디자인 시스템 색상 (라이트)" style="width: 49%;">
+</div>
+*디자인 시스템의 색상 시스템*
+
+<div style="display: flex; gap: 10px;">
+  <img src="/assets/images/posts/2025/10/08/design-system-components-light.png" alt="디자인 시스템 컴포넌트 (라이트)" style="width: 49%;">
+  <img src="/assets/images/posts/2025/10/08/design-system-components-dark.png" alt="디자인 시스템 컴포넌트 (다크)" style="width: 49%;">
+</div>
+*디자인 시스템의 컴포넌트 예시*
+
 하지만...
 
 ---
