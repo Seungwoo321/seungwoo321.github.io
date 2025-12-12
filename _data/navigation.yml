@@ -11,6 +11,8 @@ main:
 categories:
   - title: 시리즈
     children:
+      - title: AI-Agent
+        url: /categories/ai-agent
       - title: AI-DLC
         url: /categories/ai-dlc
       - title: Quant
