@@ -77,7 +77,10 @@ Frontmatter + 5개 섹션을 완벽하게 완성:
 ### 3.1 긴 출력에서의 품질 저하
 
 LLM은 출력이 길어질수록 앞부분의 맥락을 점점 "잊어버리는" 경향이 있습니다.
-이 현상은 "Lost in the Middle" 문제로 알려져 있으며, 긴 컨텍스트에서 중간 부분의 정보를 제대로 활용하지 못하는 것을 의미합니다.
+
+> **Lost in the Middle**: LLM이 입력의 처음과 끝은 잘 기억하지만 중간 부분은 잊어버리는 경향 ([Liu et al., 2024](https://arxiv.org/abs/2307.03172))
+
+> **Context Degradation**: 출력이 길어질수록 앞부분의 지시를 점점 잊어버리는 문제 ([Chroma Research](https://research.trychroma.com/context-rot))
 
 약 1,400줄의 콘텐츠를 한 번에 생성하라고 하면:
 - **앞부분 섹션**은 프롬프트의 지시를 잘 따릅니다

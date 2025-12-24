@@ -7,7 +7,7 @@ permalink: /blog/:year/:month/:day/:title/
 last_modified_at: "2025-12-16"
 ---
 
-[지난 편](/blog/2025/12/09/ai-agent-pipeline-1-why-learning-app/)에서는 왜 학습 앱을 직접 만들게 되었는지 이야기했습니다.
+[지난 편](/blog/2025/12/09/ai-agent-pipeline-1-why-learning-app/)에서는 왜 학습 앱을 만들기 시작했는지 이야기했습니다.
 
 이번 편에서는 **생성할 콘텐츠를 어떻게 정의했는지** 다룹니다.
 
@@ -15,10 +15,11 @@ last_modified_at: "2025-12-16"
 
 ## 1. 자동화할 대상 정의
 
-지난 편에서 "LLM에 질문하고 노션에 정리하는 과정을 자동화하겠다"고 결정했습니다.
+지난 편에서 원하는 학습 콘텐츠를 LLM으로 자동 생성하겠다고 결정했습니다.
 
-자동화를 하려면 **뭘 자동화할지** 먼저 정해야 합니다.
-에이전트에게 "무엇을 생성할지"를 어떻게 전달할 것인가?
+그러면 **뭘 생성할지** 먼저 정의해야 합니다.
+JavaScript만 해도 수십 개 주제가 있고, 각 주제마다 세부 토픽이 있습니다.
+이 모든 걸 어떻게 정리할 것인가?
 
 이 고민의 결과물이 **토픽 문서**입니다.
 
@@ -101,13 +102,14 @@ docs/topic/
 ```mermaid
 flowchart TB
     subgraph Input
-        A[토픽 문서<br/>docs/topic/*.md]
+        A[토픽 문서]
+        B[카테고리 ID<br/>스크립트 내 정의]
     end
 
     subgraph Shell["generate-metadata.sh"]
-        B[1. metadata-parser 호출]
-        C[2. metadata-generator 호출]
-        D[3. 빈 마크다운 파일 생성]
+        C[1. metadata-parser 호출]
+        D[2. metadata-generator 호출]
+        E[3. 빈 마크다운 파일 생성]
     end
 
     subgraph Temp["/tmp/metadata/"]
@@ -115,20 +117,21 @@ flowchart TB
     end
 
     subgraph Output["public/content/ko/{주제}/{카테고리}/"]
-        E[category.yaml]
-        F[01-topic-a.md]
-        G[02-topic-b.md]
-        H[...]
+        YAML[category.yaml]
+        MD1[01-topic-a.md]
+        MD2[02-topic-b.md]
+        MD3[...]
     end
 
-    A --> B
-    B --> JSON
-    JSON --> C
-    C --> E
-    E --> D
-    D --> F
-    D --> G
-    D --> H
+    A --> C
+    B --> C
+    C --> JSON
+    JSON --> D
+    D --> YAML
+    YAML --> E
+    E --> MD1
+    E --> MD2
+    E --> MD3
 ```
 
 ### metadata-parser 에이전트
@@ -305,7 +308,7 @@ topics:
 ### 쉘스크립트: 빈 콘텐츠 파일 생성
 
 쉘스크립트가 category.yaml을 읽어서 10개의 빈 마크다운 파일을 생성합니다.
-각 파일에는 frontmatter와 Work Status Markers(WSM)가 포함됩니다.
+각 파일에는 frontmatter와 상태 추적용 주석이 포함됩니다.
 
 ```markdown
 ---
