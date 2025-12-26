@@ -141,7 +141,7 @@ Autonomously identify the next content file requiring Core Concepts section...
 
 막막한 상황에서 AI-DLC(AI-assisted Document Lifecycle) 방법론을 적용해보기로 했습니다.
 
-AI-DLC는 AI와 협업하여 소프트웨어를 개발하는 방법론입니다. 다만 AI-DLC 백서는 DDD 변형 기반으로 백엔드와 인프라 개념을 포함하고 있어서, 현재 프로젝트(에이전트 프롬프트를 쉘로 오케스트레이션하는 파이프라인)에 그대로 적용하기는 어려웠습니다.
+AI-DLC는 AI와 협업하여 소프트웨어를 개발하는 방법론입니다. 다만 [AI-DLC 백서](https://github.com/Seungwoo321/aidlc-docs/blob/main/ai-dlc-whitepaper-ko.md)는 DDD 변형 기반으로 백엔드와 인프라 개념을 포함하고 있어서, 현재 프로젝트(에이전트 프롬프트를 쉘로 오케스트레이션하는 파이프라인)에 그대로 적용하기는 어려웠습니다.
 
 그래서 [아키텍처 비교 보고서](https://github.com/Seungwoo321/aidlc-docs/blob/main/frontend-learning-webview.v2/methodology-comparison-report.md)를 작성했습니다. 5가지 아키텍처를 비교한 결과, **Modular Monolithic Pipeline Architecture**를 선택했습니다. 7개 에이전트가 순차적으로 실행되는 구조가 Pipeline의 필터 개념과 자연스럽게 맞았기 때문입니다.
 
