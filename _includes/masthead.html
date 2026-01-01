@@ -24,6 +24,58 @@
           <i class="fas fa-search"></i>
         </button>
         {% endif %}
+        {% if site.languages.size > 1 %}
+        <div class="language-selector">
+          <button class="language-selector__toggle" type="button">
+            <i class="fas fa-globe"></i>
+            <span>{{ page.lang | default: site.default_lang | upcase }}</span>
+          </button>
+          <ul class="language-selector__menu">
+            {%- for lang in site.languages -%}
+              {%- assign lang_name = "" -%}
+              {%- if lang == 'ko' -%}{%- assign lang_name = "한국어" -%}
+              {%- elsif lang == 'en' -%}{%- assign lang_name = "English" -%}
+              {%- elsif lang == 'ja' -%}{%- assign lang_name = "日本語" -%}{%- endif -%}
+              {%- assign current_lang = page.lang | default: site.default_lang -%}
+              {%- assign is_current = false -%}
+              {%- if lang == current_lang -%}{%- assign is_current = true -%}{%- endif -%}
+              {%- assign has_translation = false -%}
+              {%- assign target_url = "" -%}
+              {%- if lang == site.default_lang -%}
+                {%- assign has_translation = true -%}
+                {%- assign target_url = page.url | remove_first: "/" | split: "/" | slice: 1, 100 | join: "/" | prepend: "/" -%}
+                {%- if target_url == "/" -%}{%- assign target_url = page.url -%}{%- endif -%}
+              {%- else -%}
+                {%- for post in site.posts -%}
+                  {%- if post.lang == lang and post.ref == page.ref -%}
+                    {%- assign has_translation = true -%}
+                    {%- assign target_url = post.url -%}
+                    {%- break -%}
+                  {%- endif -%}
+                {%- endfor -%}
+                {%- unless has_translation -%}
+                  {%- for p in site.pages -%}
+                    {%- if p.lang == lang and p.ref == page.ref -%}
+                      {%- assign has_translation = true -%}
+                      {%- assign target_url = p.url -%}
+                      {%- break -%}
+                    {%- endif -%}
+                  {%- endfor -%}
+                {%- endunless -%}
+              {%- endif -%}
+              <li class="language-selector__item{%- if is_current %} active{%- elsif has_translation == false %} disabled{%- endif -%}">
+                {%- if is_current -%}
+                  <span>{{ lang_name }}</span>
+                {%- elsif has_translation -%}
+                  <a href="{{ target_url }}">{{ lang_name }}</a>
+                {%- else -%}
+                  <span class="no-translation">{{ lang_name }}</span>
+                {%- endif -%}
+              </li>
+            {%- endfor -%}
+          </ul>
+        </div>
+        {% endif %}
         <button class="greedy-nav__toggle hidden" type="button">
           <span class="visually-hidden">{{ site.data.ui-text[site.locale].menu_label | default: "Toggle menu" }}</span>
           <div class="navicon"></div>

@@ -1,0 +1,20 @@
+global:
+  language: "日本語"
+  language_code: "ja"
+
+navigation:
+  home: "ホーム"
+  about: "紹介"
+  categories: "カテゴリー"
+  tags: "タグ"
+
+posts:
+  read_more: "続きを読む"
+  related_posts: "関連記事"
+  comments: "コメント"
+  share: "シェア"
+  published: "公開日"
+  updated: "更新日"
+
+language_selector:
+  select_language: "言語を選択"

@@ -7,4 +7,6 @@ gem "jekyll-paginate-v2"
 gem "jekyll-seo-tag"
 gem "jekyll-sitemap"
 gem "jekyll-feed"
+gem "jekyll-mermaid"
+gem "jekyll-multiple-languages-plugin"
 gem 'webrick'

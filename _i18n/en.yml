@@ -1,0 +1,20 @@
+global:
+  language: "English"
+  language_code: "en"
+
+navigation:
+  home: "Home"
+  about: "About"
+  categories: "Categories"
+  tags: "Tags"
+
+posts:
+  read_more: "Read more"
+  related_posts: "Related Posts"
+  comments: "Comments"
+  share: "Share"
+  published: "Published"
+  updated: "Updated"
+
+language_selector:
+  select_language: "Select Language"

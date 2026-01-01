@@ -1,0 +1,20 @@
+global:
+  language: "한국어"
+  language_code: "ko"
+
+navigation:
+  home: "홈"
+  about: "소개"
+  categories: "카테고리"
+  tags: "태그"
+
+posts:
+  read_more: "더 읽기"
+  related_posts: "관련 포스트"
+  comments: "댓글"
+  share: "공유"
+  published: "작성일"
+  updated: "수정일"
+
+language_selector:
+  select_language: "언어 선택"

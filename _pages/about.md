@@ -4,6 +4,8 @@ layout: single
 title: About
 permalink: /about/
 classes: wide
+ref: about
+lang: ko
 ---
 
 ## 블로그 글쓰기에 대하여

@@ -89,6 +89,13 @@ plugins:
   - jekyll-gist
   - jekyll-feed
   - jekyll-include-cache
+  - jekyll-multiple-languages-plugin
+
+# Multiple Languages
+languages: ["ko", "en", "ja"]
+default_lang: "ko"
+default_lang_in_url: false
+exclude_from_localizations: ["assets", "images", "css", "js"]
 
 # mimic GitHub Pages with --safe
 whitelist:
