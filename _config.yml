@@ -21,6 +21,7 @@
 title: DEV LOG
 email: seungwoo321@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
+  프론트엔드 개발자의 개발 일기. 프로젝트를 진행하며 겪은 시행착오와 기술 선택의 과정을 기록합니다.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://seungwoo321.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 repository: "Seungwoo321/seungwoo321.github.io"
@@ -90,6 +91,7 @@ plugins:
   - jekyll-feed
   - jekyll-include-cache
   - jekyll-multiple-languages-plugin
+  - jekyll-seo-tag
 
 # Multiple Languages
 languages: ["ko", "en", "ja"]
