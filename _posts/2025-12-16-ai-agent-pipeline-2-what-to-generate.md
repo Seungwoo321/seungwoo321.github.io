@@ -5,6 +5,8 @@ tags: ["AI", "Claude Code", "프롬프트 엔지니어링", "에이전트", "자
 categories: AI-Agent
 permalink: /blog/:year/:month/:day/:title/
 last_modified_at: "2025-12-16"
+lang: ko
+ref: ai-agent-pipeline-2
 ---
 
 [지난 편](/blog/2025/12/09/ai-agent-pipeline-1-why-learning-app/)에서는 왜 학습 앱을 만들기 시작했는지 이야기했습니다.
