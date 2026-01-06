@@ -6,6 +6,7 @@ categories: AI-Agent
 permalink: /ja/blog/:year/:month/:day/:title/
 last_modified_at: "2025-12-16"
 lang: ja
+locale: ja
 ref: ai-agent-pipeline-2
 hidden: true
 ---

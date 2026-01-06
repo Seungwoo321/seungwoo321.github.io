@@ -153,6 +153,7 @@ defaults:
       comments: true
       related: true
       excerpt_separator: <!--more-->
+      locale: ko
       sidebar:
         nav: "categories"
   # Exclude verification files from sitemap
