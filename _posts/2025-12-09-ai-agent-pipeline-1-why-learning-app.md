@@ -5,6 +5,8 @@ tags: ["AI", "Claude Code", "학습", "사이드프로젝트"]
 categories: AI-Agent
 permalink: /blog/:year/:month/:day/:title/
 last_modified_at: "2025-12-09"
+lang: ko
+ref: ai-agent-pipeline-1
 ---
 
 LLM으로 공부하다가 지치신 적 있으신가요?

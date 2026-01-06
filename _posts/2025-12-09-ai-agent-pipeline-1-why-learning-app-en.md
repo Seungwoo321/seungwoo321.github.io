@@ -6,6 +6,7 @@ categories: AI-Agent
 permalink: /en/blog/:year/:month/:day/:title/
 last_modified_at: "2025-12-09"
 lang: en
+ref: ai-agent-pipeline-1
 ---
 
 Have you ever gotten tired of studying with LLMs?
