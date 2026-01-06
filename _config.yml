@@ -18,10 +18,10 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: DEV LOG
+title: DEV LOG - 프론트엔드 개발자의 기술 블로그
 email: seungwoo321@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  프론트엔드 개발자의 개발 일기. 프로젝트를 진행하며 겪은 시행착오와 기술 선택의 과정을 기록합니다.
+  프론트엔드 개발자의 개발 일기. JavaScript, Vue.js, React 등 프로젝트를 진행하며 겪은 시행착오와 기술 선택의 과정을 기록합니다. AI 에이전트, 트레이딩 봇 등 다양한 사이드 프로젝트 경험도 공유합니다.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://seungwoo321.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 repository: "Seungwoo321/seungwoo321.github.io"
@@ -31,7 +31,7 @@ minimal_mistakes_skin: air
 paginate: 5
 paginate_path: /page:num/
 author:
-  name: "이승우"
+  name: "Seungwoo321"
   avatar: /assets/images/avata.png
   location: Seoul
   email: seungwoo321@gmail.com
@@ -40,7 +40,7 @@ author:
 # Social profiles for Schema.org JSON-LD
 social:
   type: Person
-  name: "이승우"
+  name: "Seungwoo321"
   links:
     - "https://github.com/Seungwoo321"
 
