@@ -32,10 +32,12 @@ minimal_mistakes_skin: air
 # Pagination (jekyll-paginate-v2)
 pagination:
   enabled: true
+  collection: posts
   per_page: 5
   permalink: /page/:num/
   title: ':title - Page :num'
   sort_reverse: true
+  sort_field: 'date'
   trail:
     before: 2
     after: 2
@@ -101,6 +103,14 @@ adsense:
 
 encoding: "utf-8"
 
+# Sass settings - silence deprecation warnings from remote theme
+sass:
+  quiet_deps: true
+  silence_deprecations:
+    - slash-div
+    - global-builtin
+    - import
+
 # Plugins (previously gems:)
 plugins:
   - jekyll-paginate-v2
@@ -108,15 +118,12 @@ plugins:
   - jekyll-gist
   - jekyll-feed
   - jekyll-include-cache
-  - jekyll-multiple-languages-plugin
   - jekyll-seo-tag
   - jekyll-remote-theme
 
-# Multiple Languages
+# Multiple Languages (manual implementation via lang/ref attributes)
 languages: ["ko", "en", "ja"]
 default_lang: "ko"
-default_lang_in_url: false
-exclude_from_localizations: ["assets", "images", "css", "js"]
 
 # mimic GitHub Pages with --safe
 whitelist:

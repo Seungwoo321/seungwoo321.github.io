@@ -11,7 +11,17 @@ layout: archive
   {% assign all_posts = site.posts %}
 {% endif %}
 
-{%- assign current_lang = page.lang | default: site.default_lang | default: "ko" -%}
+{%- comment -%} Detect language from page.lang or URL path {%- endcomment -%}
+{%- assign current_lang = page.lang -%}
+{%- unless current_lang -%}
+  {%- if page.url contains '/en/' -%}
+    {%- assign current_lang = "en" -%}
+  {%- elsif page.url contains '/ja/' -%}
+    {%- assign current_lang = "ja" -%}
+  {%- else -%}
+    {%- assign current_lang = site.default_lang | default: "ko" -%}
+  {%- endif -%}
+{%- endunless -%}
 {%- assign displayed_refs = "" -%}
 
 {% assign entries_layout = page.entries_layout | default: 'list' %}
@@ -20,51 +30,68 @@ layout: archive
     {%- assign post_lang = post.lang | default: "ko" -%}
     {%- assign post_ref = post.ref -%}
 
-    {%- if post_ref -%}
-      {%- comment -%} Post has ref - check if we should display it {%- endcomment -%}
-      {%- assign ref_check = displayed_refs | split: "," | where_exp: "r", "r == post_ref" -%}
-      {%- if ref_check.size == 0 -%}
-        {%- comment -%} This ref hasn't been displayed yet {%- endcomment -%}
-        {%- assign best_post = nil -%}
-        {%- assign fallback_post = nil -%}
+    {%- if post.hidden -%}
+      {%- continue -%}
+    {%- endif -%}
 
-        {%- comment -%} Find best matching post for this ref {%- endcomment -%}
-        {%- for p in all_posts -%}
+    {%- if post_ref -%}
+      {%- comment -%} Post has ref - check if we already displayed this ref {%- endcomment -%}
+      {%- assign ref_displayed = false -%}
+      {%- assign refs_array = displayed_refs | split: "|||" -%}
+      {%- for displayed_ref in refs_array -%}
+        {%- if displayed_ref == post_ref -%}
+          {%- assign ref_displayed = true -%}
+          {%- break -%}
+        {%- endif -%}
+      {%- endfor -%}
+
+      {%- unless ref_displayed -%}
+        {%- comment -%} Find and display best matching post for this ref {%- endcomment -%}
+        {%- assign found_and_displayed = false -%}
+        {%- assign fallback_post_title = "" -%}
+        {%- assign fallback_post_url = "" -%}
+        {%- assign fallback_post_date = "" -%}
+        {%- assign fallback_post_excerpt = "" -%}
+
+        {%- for p in site.posts -%}
           {%- if p.ref == post_ref -%}
             {%- assign p_lang = p.lang | default: "ko" -%}
             {%- if p_lang == current_lang -%}
-              {%- assign best_post = p -%}
-            {%- elsif p_lang == "ko" -%}
-              {%- assign fallback_post = p -%}
+              {% include archive-single.html type=entries_layout post=p %}
+              {%- assign found_and_displayed = true -%}
+              {%- break -%}
+            {%- elsif p_lang == "ko" and fallback_post_url == "" -%}
+              {%- assign fallback_post_url = p.url -%}
             {%- endif -%}
           {%- endif -%}
         {%- endfor -%}
 
-        {%- comment -%} Use best match or fallback {%- endcomment -%}
-        {%- if best_post -%}
-          {%- assign post = best_post -%}
-          {% include archive-single.html type=entries_layout %}
-        {%- elsif fallback_post -%}
-          {%- assign post = fallback_post -%}
-          {% include archive-single.html type=entries_layout %}
-        {%- endif -%}
+        {%- comment -%} If no best match found, display fallback {%- endcomment -%}
+        {%- unless found_and_displayed -%}
+          {%- if fallback_post_url != "" -%}
+            {%- for p in site.posts -%}
+              {%- if p.url == fallback_post_url -%}
+                {% include archive-single.html type=entries_layout post=p %}
+                {%- break -%}
+              {%- endif -%}
+            {%- endfor -%}
+          {%- endif -%}
+        {%- endunless -%}
 
         {%- comment -%} Mark this ref as displayed {%- endcomment -%}
         {%- if displayed_refs == "" -%}
           {%- assign displayed_refs = post_ref -%}
         {%- else -%}
-          {%- assign displayed_refs = displayed_refs | append: "," | append: post_ref -%}
+          {%- assign displayed_refs = displayed_refs | append: "|||" | append: post_ref -%}
         {%- endif -%}
-      {%- endif -%}
+      {%- endunless -%}
     {%- else -%}
-      {%- comment -%} Post has no ref - show if it matches current language or is Korean {%- endcomment -%}
-      {%- if post_lang == current_lang or post_lang == "ko" -%}
-        {% include archive-single.html type=entries_layout %}
+      {%- comment -%} Post has no ref - show Korean posts only (they are the originals) {%- endcomment -%}
+      {%- if post_lang == "ko" -%}
+        {% include archive-single.html type=entries_layout post=post %}
       {%- endif -%}
     {%- endif -%}
   {% endfor %}
 </div>
-
-
 
 {% include paginator.html %}

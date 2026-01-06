@@ -33,12 +33,11 @@
         <li><a href="#" class="disabled current">{{ index }}</a></li>
       {% else %}
         {% comment %} Build page path based on current page's base path {% endcomment %}
-        {% assign base_path = page.url | split: '/page/' | first %}
-        {% if base_path == page.url %}
-          {% assign page_path = base_path | append: 'page/' | append: index | append: '/' %}
-        {% else %}
-          {% assign page_path = base_path | append: '/page/' | append: index | append: '/' %}
-        {% endif %}
+        {% assign base_path = page.url | split: '/page/' | first | replace: 'index.html', '' %}
+        {% unless base_path == '/' %}
+          {% assign base_path = base_path | append: '/' %}
+        {% endunless %}
+        {% assign page_path = base_path | append: 'page/' | append: index | append: '/' | replace: '//', '/' %}
         <li><a href="{{ page_path | relative_url }}">{{ index }}</a></li>
       {% endif %}
     {% endfor %}
@@ -52,9 +51,12 @@
       {% if paginator.page == paginator.total_pages %}
         <li><a href="#" class="disabled current">{{ paginator.total_pages }}</a></li>
       {% else %}
-        {% assign base_path = page.url | split: '/page/' | first %}
-        {% assign last_page_path = base_path | append: '/page/' | append: paginator.total_pages | append: '/' %}
-        <li><a href="{{ last_page_path | replace: '//', '/' | relative_url }}">{{ paginator.total_pages }}</a></li>
+        {% assign base_path = page.url | split: '/page/' | first | replace: 'index.html', '' %}
+        {% unless base_path == '/' %}
+          {% assign base_path = base_path | append: '/' %}
+        {% endunless %}
+        {% assign last_page_path = base_path | append: 'page/' | append: paginator.total_pages | append: '/' | replace: '//', '/' %}
+        <li><a href="{{ last_page_path | relative_url }}">{{ paginator.total_pages }}</a></li>
       {% endif %}
     {% endif %}
 

@@ -5,6 +5,8 @@ tags: ["AI", "Claude Code", "프롬프트 엔지니어링", "에이전트", "자
 categories: AI-Agent
 permalink: /blog/:year/:month/:day/:title/
 last_modified_at: "2025-12-26"
+lang: ko
+ref: ai-agent-pipeline-4
 ---
 
 [지난 편](/blog/2025/12/23/ai-agent-pipeline-3-why-seven-agents/)에서는 하나의 프롬프트가 왜 안 됐는지, 그리고 7개 에이전트로 분리한 과정을 다뤘습니다.

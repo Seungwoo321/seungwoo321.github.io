@@ -1,71 +1,72 @@
 ---
-title: "[AI 에이전트 파이프라인 #5] 프롬프트 완성까지의 4단계"
+title: "[AI Agent Pipeline #5] 4 Stages to Completing the Prompt"
 date: "2025-12-30"
-tags: ["AI", "Claude Code", "프롬프트 엔지니어링", "에이전트", "자동화"]
+tags: ["AI", "Claude Code", "Prompt Engineering", "Agent", "Automation"]
 categories: AI-Agent
-permalink: /blog/:year/:month/:day/:title/
+permalink: /en/blog/:year/:month/:day/:title/
 last_modified_at: "2025-12-30"
-lang: ko
+lang: en
 ref: ai-agent-pipeline-5
+hidden: true
 ---
 
-[지난 편](/blog/2025/12/26/ai-agent-pipeline-4-why-still-failed/)에서는 막막한 상황에서 AI-DLC 방법론을 적용하기로 결정한 이야기를 다뤘습니다.
+In the [previous article](/en/blog/2025/12/26/ai-agent-pipeline-4-why-still-failed/), we covered the story of deciding to apply the AI-DLC methodology when stuck.
 
-이번 편에서는 AI-DLC를 적용하면서 프롬프트를 어떻게 완성해나갔는지 정리해봤습니다.
+This article summarizes how I completed the prompts while applying AI-DLC.
 
 <!--more-->
 
-## 1. 프롬프트 완성까지의 4단계
+## 1. 4 Stages to Completing the Prompt
 
-AI-DLC 방법론을 적용하면서 프롬프트 작성 방식을 네 번 바꿨습니다.
+While applying the AI-DLC methodology, I changed my prompt writing approach four times.
 
-| 단계 | 시기 | 설계 방식 | 결과 |
+| Stage | Period | Design Approach | Result |
 |:---:|:---|:---|:---|
-| 1 | 10월 초 | 유닛 분해와 설계 | AI-DLC 기반 체계적 설계 |
-| 2 | 10월 중 | 마크다운 프롬프트 | 마크다운 혼동 문제 발견 |
-| 3 | 10월 말 | Contract 문서 참조 방식 | 개선되었으나 불안정 |
-| 4 | 11월 | XML 태그 구조 | **100% 안정** |
+| 1 | Early Oct | Unit decomposition and design | Systematic design based on AI-DLC |
+| 2 | Mid Oct | Markdown prompts | Discovered markdown confusion issue |
+| 3 | Late Oct | Contract document reference | Improved but unstable |
+| 4 | Nov | XML tag structure | **100% stable** |
 
-현재는 `<role>`, `<input_contract>`, `<output_contract>` 같은 XML 태그로 프롬프트를 구조화하고 있습니다. 이 구조로 전환한 후 first-try 성공률이 100%에 가까워졌고, 약 1,400줄의 마크다운 콘텐츠를 안정적으로 생성할 수 있게 되었습니다.
+Currently, I structure prompts with XML tags like `<role>`, `<input_contract>`, `<output_contract>`. After switching to this structure, first-try success rate approached 100%, and I can now reliably generate about 1,400 lines of markdown content.
 
-이어지는 섹션에서 각 단계를 정리해봤습니다.
+The following sections summarize each stage.
 
 ---
 
-## 2. 1단계: 유닛 분해와 설계
+## 2. Stage 1: Unit Decomposition and Design
 
-AI-DLC에서는 시스템을 유닛으로 분해하고, 각 유닛별로 설계 문서를 작성한 뒤, 이를 기반으로 구현합니다. 이 프로젝트에서는 에이전트 프롬프트가 구현 대상이니까, 최종적으로 프롬프트 작성이 되는 겁니다. 5개 유닛(Pipe, Contract, Prompt, Orchestration, Quality)으로 분해되고, 프롬프트 작성을 위한 설계가 진행되었습니다.
+In AI-DLC, you decompose the system into units, write design documents for each unit, and implement based on these. In this project, agent prompts are the implementation target, so ultimately it comes down to writing prompts. The system was decomposed into 5 units (Pipe, Contract, Prompt, Orchestration, Quality), and design for prompt writing proceeded.
 
-- **Pipe**: 에이전트 간 데이터 전달 메커니즘
-- **Contract**: 에이전트별 입출력 계약 정의
-- **Prompt**: 에이전트 프롬프트 작성
-- **Orchestration**: 쉘 스크립트로 실행 순서 관리
-- **Quality**: 품질 검증 기준
+- **Pipe**: Data transfer mechanism between agents
+- **Contract**: Input/output contract definition per agent
+- **Prompt**: Agent prompt writing
+- **Orchestration**: Execution order management with shell scripts
+- **Quality**: Quality verification criteria
 
-[AI-DLC 프롬프트](https://github.com/Seungwoo321/aidlc-docs/tree/main/frontend-learning-webview.v2/prompts)를 단계별로 실행하면서 다음과 같은 문서 구조가 만들어졌습니다. 다만 18개 프롬프트 중 15번(unit-05 계획 생성)까지만 실행했습니다. 14번까지 핵심 기능 구현이 완료된 상태에서, 15번으로 품질 검증 유닛의 계획만 생성해두고 실제 파이프라인 테스트로 전환했습니다. 이후 섹션에서 다루는 XML 태그 구조 같은 개선 사항들은 테스트 과정에서 발견하고 적용한 것입니다.
+By executing [AI-DLC prompts](https://github.com/Seungwoo321/aidlc-docs/tree/main/frontend-learning-webview.v2/prompts) step by step, the following document structure was created. However, out of 18 prompts, I only executed up to #15 (unit-05 plan generation). With core functionality implementation complete by #14, I generated only the plan for the quality verification unit with #15 and switched to actual pipeline testing. Improvements like the XML tag structure covered in later sections were discovered and applied during testing.
 
 ```
 docs/aidlc-docs/
-├── system-intent.md                      # 시스템 개발 의도
-├── methodology-comparison-report.md      # 아키텍처 비교 보고서
-├── prompts/                              # AI-DLC 프롬프트 (18개, 15번까지 실행)
+├── system-intent.md                      # System development intent
+├── methodology-comparison-report.md      # Architecture comparison report
+├── prompts/                              # AI-DLC prompts (18 total, executed up to #15)
 │   ├── 01-system-architect-role.md
 │   ├── 02-inception-unit-decomposition.md
 │   ├── 03-construction-unit1-domain.md
 │   ├── ...
 │   └── 018-operations-quality-monitoring.md
 ├── inception/
-│   ├── plan.md                           # 실행 계획
+│   ├── plan.md                           # Execution plan
 │   └── units/
-│       ├── unit-01-pipe-mechanism.md     # 파이프 메커니즘 유닛
-│       ├── unit-02-filter-contracts.md   # 필터 계약 유닛
-│       ├── unit-03-agent-prompts.md      # 에이전트 프롬프트 유닛
-│       ├── unit-04-orchestration.md      # 오케스트레이션 유닛
-│       ├── unit-05-quality-metrics.md    # 품질 검증 유닛
-│       └── integration_plan.md           # 통합 계획
+│       ├── unit-01-pipe-mechanism.md     # Pipe mechanism unit
+│       ├── unit-02-filter-contracts.md   # Filter contracts unit
+│       ├── unit-03-agent-prompts.md      # Agent prompts unit
+│       ├── unit-04-orchestration.md      # Orchestration unit
+│       ├── unit-05-quality-metrics.md    # Quality metrics unit
+│       └── integration_plan.md           # Integration plan
 ├── specifications/
-│   ├── work-status-markers-spec.md       # WSM 명세
-│   └── contracts/                        # 에이전트별 계약 문서
+│   ├── work-status-markers-spec.md       # WSM specification
+│   └── contracts/                        # Contract documents per agent
 │       ├── content-initiator-contract.md
 │       ├── overview-writer-contract.md
 │       ├── concepts-writer-contract.md
@@ -74,7 +75,7 @@ docs/aidlc-docs/
 │       ├── quiz-writer-contract.md
 │       └── content-validator-contract.md
 ├── guides/
-│   └── agent-handoff-guide.md            # 에이전트 핸드오프 가이드
+│   └── agent-handoff-guide.md            # Agent handoff guide
 ├── construction/
 │   ├── unit-02-filter-contracts/
 │   │   ├── domain_design.md
@@ -85,24 +86,24 @@ docs/aidlc-docs/
 │       ├── logical_design.md
 │       ├── implementation.md
 │       └── src/
-│           ├── content-generator-v7.sh   # 오케스트레이션 스크립트
+│           ├── content-generator-v7.sh   # Orchestration script
 │           └── lib/
-│               └── common-utils.sh       # 공통 유틸리티
+│               └── common-utils.sh       # Common utilities
 └── logs/
-    └── content-generator-v7.log          # 실행 로그
+    └── content-generator-v7.log          # Execution log
 ```
 
-`inception/` 폴더에는 실행 계획과 5개 유닛 정의가 들어 있습니다. 각 유닛은 파이프라인의 핵심 구성요소를 담당합니다. `specifications/` 폴더에는 에이전트 간 데이터 전달을 위한 상태 마커(Work Status Markers) 명세와 7개 에이전트 각각의 계약 문서가 정의되어 있습니다. `guides/` 폴더에는 에이전트 간 핸드오프 규칙을 정리한 가이드가 있습니다.
+The `inception/` folder contains the execution plan and 5 unit definitions. Each unit handles a core component of the pipeline. The `specifications/` folder defines the Work Status Markers spec for data transfer between agents and contract documents for each of the 7 agents. The `guides/` folder contains a guide summarizing handoff rules between agents.
 
-`construction/` 폴더가 실제 설계가 이뤄지는 곳입니다. 각 유닛별로 도메인 설계(`domain_design.md`)와 논리 설계(`logical_design.md`)가 작성되었습니다. 도메인 설계에서는 해당 유닛이 해결해야 할 문제와 핵심 개념을 정의하고, 논리 설계에서는 구체적인 구현 방식을 설계합니다. `unit-04-orchestration/src/`에는 쉘 스크립트로 구현된 오케스트레이션 코드가 들어 있습니다.
+The `construction/` folder is where actual design happens. For each unit, domain design (`domain_design.md`) and logical design (`logical_design.md`) were written. Domain design defines the problems the unit should solve and core concepts, while logical design designs specific implementation approaches. `unit-04-orchestration/src/` contains orchestration code implemented in shell scripts.
 
 ---
 
-## 3. 2단계: 마크다운 프롬프트 생성
+## 3. Stage 2: Markdown Prompt Generation
 
-앞 섹션에서 AI-DLC를 통해 Contract 문서들이 작성되었습니다. 이 문서들을 프롬프트로 변환하면서 4편의 v6과는 완전히 다른 구조가 만들어졌습니다.
+In the previous section, Contract documents were written through AI-DLC. Converting these documents to prompts created a completely different structure from v6 in article 4.
 
-Input Contract와 Output Contract가 명시적인 섹션으로 분리되었습니다. 에이전트가 무엇을 입력받고 무엇을 출력해야 하는지 계약 형태로 정의되었고, Execution Instructions에는 단계별 실행 지침이 체크리스트로 작성되었습니다. 이렇게 Contract 문서의 내용을 마크다운 헤더로 구조화해서 프롬프트에 직접 포함시킨 것입니다.
+Input Contract and Output Contract were separated into explicit sections. What the agent receives as input and what it should output were defined in contract form, and Execution Instructions contained step-by-step execution instructions as checklists. This is how Contract document content was structured with markdown headers and included directly in prompts.
 
 ```markdown
 ---
@@ -135,7 +136,7 @@ model: sonnet
 
 ### File State
 
-| 항목 | 요구사항 |
+| Item | Requirement |
 |------|----------|
 | Required Files | Target markdown file with Overview section |
 | File Encoding | UTF-8 |
@@ -144,7 +145,7 @@ model: sonnet
 
 ### Work Status Markers
 
-| 필드 | 필수 값 |
+| Field | Required Value |
 |------|---------|
 | CURRENT_AGENT | concepts-writer |
 | STATUS | IN_PROGRESS |
@@ -166,7 +167,7 @@ model: sonnet
 
 ### Work Status Markers Updates
 
-| 필드 | 업데이트 값 |
+| Field | Update Value |
 |------|------------|
 | CURRENT_AGENT | visualization-writer |
 | STATUS | IN_PROGRESS (unchanged) |
@@ -219,7 +220,7 @@ Read the Overview section to understand:
 3. Include best practices or solutions
 4. Progress from basic to advanced
 
-**Order**: Basic → Advanced (교육적 순서)
+**Order**: Basic → Advanced (educational order)
 
 ### Step 3: Design concept structure for each concept
 
@@ -232,17 +233,17 @@ For each selected concept, plan:
 - **Expert content**: ECMAScript spec + Performance subsections
 - **Visualization** (recommended): Component name and type
 
-### Step 4: Write Easy section (중학생 수준)
+### Step 4: Write Easy section (middle school level)
 
 **Structure** (4-5 subsections with bold headers):
 
 1. **Opening statement** with emoji (one sentence concept summary)
-2. **무슨 뜻이냐구요?** or similar question header
-   - Everyday analogy (서랍, 풍선, 신호등, 교실, etc.)
+2. **What does this mean?** or similar question header
+   - Everyday analogy (drawers, balloons, traffic lights, classroom, etc.)
    - Explain technical terms in parentheses immediately
-3. **🤔 왜 문제가 되나요?** or **💡 왜 좋은가요?**
+3. **🤔 Why is this a problem?** or **💡 Why is this good?**
    - Why it matters with concrete example
-4. **🆚 다른 방법과 뭐가 다른가요?** or similar comparison
+4. **🆚 How is it different from other methods?** or similar comparison
    - Compare with alternative approaches
 5. **Additional insight** (optional, if needed)
 
@@ -254,7 +255,7 @@ For each selected concept, plan:
 - Question-answer structure for engagement
 - Middle school level language
 
-### Step 5: Write Normal section (일반 개발자)
+### Step 5: Write Normal section (general developers)
 
 **MUST follow this structure**:
 
@@ -266,7 +267,7 @@ For each selected concept, plan:
 
 - Use technical terms as-is (with brief explanations)
 - Focus on cause-effect relationships
-- Use subsections (**핵심 포인트**, **주의사항**, etc.) with bold headers
+- Use subsections (**Key Points**, **Cautions**, etc.) with bold headers
 - Include bullet points for key takeaways
 
 **Code writing**:
@@ -280,7 +281,7 @@ For each selected concept, plan:
 - Add comments only on key parts (< 20% of code)
 - Split complex logic into multiple Code blocks
 
-### Step 6: Write Expert section (전문가 20년+)
+### Step 6: Write Expert section (20+ year experts)
 
 **Required subsections**:
 
@@ -310,11 +311,11 @@ For each selected concept, plan:
 - Write 3-5 Concept blocks per topic
 - Use kebab-case for IDs
 - Easy: 4-5 subsections, emojis, everyday analogies, NO code
-- Easy: Question-answer structure (**무슨 뜻이냐구요?**, **🤔 왜 문제가 되나요?**, etc.)
+- Easy: Question-answer structure (**What does this mean?**, **🤔 Why is this a problem?**, etc.)
 - Normal: MUST start with `#### Text`
 - Normal: Alternate `#### Text` and `#### Code:` sections
 - Normal Code: 3-8 lines each, executable, ES6+, no semicolons
-- Expert: Quote ECMAScript spec with section numbers (bold format **13.3.2절**)
+- Expert: Quote ECMAScript spec with section numbers (bold format **Section 13.3.2**)
 - Expert: Include performance metrics and engine details
 - Code Snippet: 3-5 lines, essentials only
 - Visualization: Use `[Concept]Visualization` naming pattern
@@ -339,17 +340,17 @@ For each selected concept, plan:
 ...
 ```
 
-AI-DLC를 통해 작성된 설계 문서를 기반으로 프롬프트가 구현되었습니다. **그런데 결과가 여전히 불안정했습니다.**
+Prompts were implemented based on design documents written through AI-DLC. **But the results were still unstable.**
 
-원인을 찾기 위해 실패 로그들을 분석했습니다. 위의 프롬프트를 보세요. `## Role & Responsibility`, `## Input Contract`, `### File State` 같은 마크다운 헤더들이 가득합니다. 그런데 에이전트가 생성해야 할 콘텐츠도 `## Concept:`, `### Easy`, `### Normal` 같은 마크다운 헤더입니다. 프롬프트도 마크다운, 생성할 콘텐츠도 마크다운. AI가 둘을 혼동하고 있었습니다.
+To find the cause, I analyzed failure logs. Look at the prompt above. It's full of markdown headers like `## Role & Responsibility`, `## Input Contract`, `### File State`. But the content the agent should generate also uses markdown headers like `## Concept:`, `### Easy`, `### Normal`. Prompt is markdown, content to generate is also markdown. The AI was confusing the two.
 
 ---
 
-## 4. 3단계: Contract 문서 참조
+## 4. Stage 3: Contract Document Reference
 
-마크다운 혼동 문제를 해결해야 했습니다. 첫 번째 시도로, 프롬프트에서 Contract 내용을 제거하고 문서 경로만 참조하게 했습니다.
+I needed to solve the markdown confusion problem. As a first attempt, I removed Contract content from prompts and had them reference only the document path.
 
-v7에서는 Input/Output Contract를 프롬프트에 직접 포함했습니다. v8에서는 `**Contract**: See contracts/concepts-writer-contract.md` 한 줄로 대체하고, 실행 지침(Instructions)만 프롬프트에 남겼습니다. 에이전트가 필요할 때 Contract 문서를 읽도록 한 것입니다.
+In v7, Input/Output Contracts were included directly in prompts. In v8, I replaced them with a single line `**Contract**: See contracts/concepts-writer-contract.md` and left only execution instructions (Instructions) in the prompt. I had agents read Contract documents when needed.
 
 ```markdown
 ---
@@ -441,17 +442,17 @@ For each selected concept, plan:
 
 ---
 
-### 5. Write Easy section (중학생 수준)
+### 5. Write Easy section (middle school level)
 
 **For each concept**, create Easy section with this structure (4-5 subsections):
 
 1. **Opening statement** with emoji (one sentence concept summary)
-2. **무슨 뜻이냐구요?** or similar question header
-   - Everyday analogy (서랍, 풍선, 신호등, 교실, etc.)
+2. **What does this mean?** or similar question header
+   - Everyday analogy (drawers, balloons, traffic lights, classroom, etc.)
    - Explain technical terms in parentheses immediately
-3. **🤔 왜 문제가 되나요?** or **💡 왜 좋은가요?**
+3. **🤔 Why is this a problem?** or **💡 Why is this good?**
    - Why it matters with concrete example
-4. **🆚 다른 방법과 뭐가 다른가요?** or similar comparison
+4. **🆚 How is it different from other methods?** or similar comparison
    - Compare with alternative approaches
 5. **Additional insight** (optional, if needed)
 
@@ -465,7 +466,7 @@ For each selected concept, plan:
 
 ---
 
-### 6. Write Normal section (일반 개발자)
+### 6. Write Normal section (general developers)
 
 **CRITICAL**: Normal section MUST follow this structure:
 
@@ -477,7 +478,7 @@ For each selected concept, plan:
 
 - Use technical terms as-is (with brief explanations)
 - Focus on cause-effect relationships
-- Use subsections (**핵심 포인트**, **주의사항**, etc.) with bold headers
+- Use subsections (**Key Points**, **Cautions**, etc.) with bold headers
 - Include bullet points for key takeaways
 
 **Code writing guidelines**:
@@ -493,7 +494,7 @@ For each selected concept, plan:
 
 ---
 
-### 7. Write Expert section (전문가 20년+)
+### 7. Write Expert section (20+ year experts)
 
 **Required subsections**:
 
@@ -505,7 +506,7 @@ For each selected concept, plan:
 - Quote ECMAScript specification with section numbers
 - Explain internal mechanisms
 - Reference specific algorithms or operations
-- Use bold for spec section numbers (e.g., **13.3.2절**)
+- Use bold for spec section numbers (e.g., **Section 13.3.2**)
 - Define specialized terms immediately after use
 
 **Performance and Optimization subsection**:
@@ -580,31 +581,31 @@ For each selected concept, plan:
 ...
 ```
 
-결과는 실패였습니다. LLM이 외부 문서를 일관되게 참조하지 않았습니다. 어떤 때는 Contract 문서를 잘 읽고, 어떤 때는 무시했습니다. 그리고 돌이켜 생각해보면, 설령 일관되게 참조했더라도 LLM이 외부 문서를 읽으면 그 내용이 컨텍스트에 포함되므로 마크다운 혼동 문제는 여전했을 겁니다.
+The result was failure. The LLM didn't consistently reference external documents. Sometimes it read Contract documents well, sometimes it ignored them. And thinking back, even if it referenced consistently, when the LLM reads an external document, that content gets included in the context, so the markdown confusion problem would have remained.
 
 ---
 
-## 5. 4단계: XML 태그 구조
+## 5. Stage 4: XML Tag Structure
 
-Contract 문서 참조 방식의 문제는 LLM이 외부 문서를 일관되게 참조하지 않는다는 것이었습니다. 다시 처음부터 방법을 찾기 시작했습니다.
+The problem with the Contract document reference approach was that the LLM didn't consistently reference external documents. I started looking for solutions from scratch again.
 
-### XML 태그를 발견하기까지
+### The Path to Discovering XML Tags
 
-Anthropic 공식 영상과 프롬프트 관련 유튜브 영상들을 찾아보기 시작했고, Claude Code 공식 문서의 프롬프트 관련 내용을 **다시** 정독했습니다. 그리고 공통적으로 눈에 띄었던 게 XML 태그였습니다.
+I started searching for Anthropic official videos and YouTube videos about prompts, and **re-read** the prompt-related content in Claude Code official documentation carefully. And what caught my eye consistently was XML tags.
 
-사실 이전에도 "XML 태그 사용을 권장한다"는 내용을 본 적이 있었지만, 익숙하지 않아서 무시했었습니다.
+Actually, I had seen content recommending "use XML tags" before, but I ignored it because I wasn't familiar with them.
 
-그런데 이번에 다시 보면서 생각이 바뀌었습니다. 권장 여부와 별개로, **마크다운 프롬프트로 마크다운 콘텐츠를 생성하는 이 프로젝트에서는 `<>`로 구조를 구분하는 게 시도해볼 만하다**고 생각했습니다.
+But my thinking changed when I looked again. Regardless of whether it's recommended, **for this project that generates markdown content with markdown prompts, distinguishing structure with `<>` seemed worth trying**.
 
-### 출처
+### Sources
 
-- [Anthropic 공식 문서 - Use XML tags](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/use-xml-tags): "Claude is particularly skilled at interpreting XML tags"
-- [Claude Code 공식 문서 - Be specific about output format](https://docs.anthropic.com/en/docs/claude-code/best-practices#be-specific-about-output-format): XML 태그로 구조화된 출력 형식 예시
-- [Anthropic Prompt Engineering Guide](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview): 전반적인 프롬프트 엔지니어링 가이드
+- [Anthropic Official Docs - Use XML tags](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/use-xml-tags): "Claude is particularly skilled at interpreting XML tags"
+- [Claude Code Official Docs - Be specific about output format](https://docs.anthropic.com/en/docs/claude-code/best-practices#be-specific-about-output-format): Examples of output format structured with XML tags
+- [Anthropic Prompt Engineering Guide](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview): Overall prompt engineering guide
 
-해결책은 **Contract 내용을 프롬프트에 직접 포함**시키되, XML 태그로 구조화하는 것이었습니다.
+The solution was to **include Contract content directly in prompts** but structure it with XML tags.
 
-그래서 먼저 AI-DLC 설계 문서들을 XML 태그 포함 형태로 업데이트했습니다. `<input_contract>`, `<output_contract>` 같은 XML 태그로 Contract 내용을 구조화하고, 이를 프롬프트에 직접 인라인했습니다.
+So I first updated the AI-DLC design documents to include XML tags. I structured Contract content with XML tags like `<input_contract>`, `<output_contract>`, and inlined them directly in prompts.
 
 ```markdown
 ---
@@ -617,26 +618,26 @@ model: sonnet
 # concepts-writer
 
 <role>
-Primary Role: Core Concepts 섹션 작성 (3단계 난이도 설명)
+Primary Role: Write Core Concepts section (3-level difficulty explanations)
 
 Responsibilities:
 
-1. # Core Concepts 섹션 작성 (3-5개 핵심 개념)
+1. Write # Core Concepts section (3-5 core concepts)
 
-2. 각 개념마다 3단계 난이도 (Easy, Normal, Expert) 설명 작성
+2. Write 3-level difficulty (Easy, Normal, Expert) explanations for each concept
 
-3. ### Visualization 메타데이터 생성 (선택적)
+3. Generate ### Visualization metadata (optional)
 
-4. HANDOFF LOG 업데이트 ([DONE] 이벤트 추가)
-5. CURRENT_AGENT 설정 (visualization-writer)
+4. Update HANDOFF LOG (add [DONE] event)
+5. Set CURRENT_AGENT (visualization-writer)
 
 Unique Characteristics:
 
-- 시스템의 핵심 차별점: 3단계 적응형 학습 구현
-- Easy: 중학생 수준 (일상 비유, 이모지, 코드 절대 금지)
-- Normal: 일반 개발자 (기술 용어 + 간단한 코드)
-- Expert: 20년+ 전문가 (ECMAScript 명세, 엔진 구현)
-- Visualization 메타데이터: 선택적으로 시각화 컴포넌트 정의
+- System's key differentiator: 3-level adaptive learning implementation
+- Easy: Middle school level (everyday analogies, emojis, absolutely no code)
+- Normal: General developers (technical terms + simple code)
+- Expert: 20+ year experts (ECMAScript specs, engine implementation)
+- Visualization metadata: Optional, only when concept visualization is needed
 </role>
 
 <input_contract>
@@ -672,28 +673,28 @@ Section Structure:
 ### Concept 1: [Title]
 
 #### Easy 🌱
-[일상 비유 중심 설명 - 4-5개 subsections]
-- 코드 절대 금지
-- 중학생도 이해 가능
-- 이모지 활용
+[Everyday analogy-centered explanation - 4-5 subsections]
+- Absolutely no code
+- Understandable by middle schoolers
+- Use emojis
 
 #### Normal 💼
-[기술 용어 + 코드 교차 설명]
+[Technical terms + code alternating explanation]
 ##### Text Subsection
-[설명]
+[Explanation]
 
 ##### Code: [Title]
-[간단한 코드]
+[Simple code]
 
 #### Expert 🚀
 
 ##### ECMAScript Specification
 
-[명세 인용 및 설명]
+[Spec citation and explanation]
 
 ##### Performance and Optimization
 
-[엔진 구현 및 최적화]
+[Engine implementation and optimization]
 
 Work Status Markers:
 - CURRENT_AGENT: visualization-writer
@@ -704,10 +705,10 @@ Work Status Markers:
 Content Guarantees:
 - 3-5 concepts
 - Each concept has 3 difficulty levels (Easy, Normal, Expert)
-- Easy: 절대 코드 없음, 일상 비유만
-- Normal: Text/Code 교차
+- Easy: Absolutely no code, everyday analogies only
+- Normal: Text/Code alternating
 - Expert: ECMAScript Specification + Performance sections
-- Visualization metadata: 선택적, 개념 시각화 필요 시만
+- Visualization metadata: Optional, only when concept visualization is needed
 </output_contract>
 
 <execution>
@@ -738,24 +739,24 @@ Generate Core Concepts section - Easy Level
 
 For each concept, create Easy 🌱 level:
 
-핵심 원칙: 프로그래밍 경험 없는 중학생도 이해 가능
+Core principle: Understandable even by middle schoolers with no programming experience
 
-대상: 프로그래밍 경험 없는 중학생
+Target: Middle schoolers with no programming experience
 
-언어: 일상 용어, 기술 용어 즉시 설명
+Language: Everyday terms, explain technical terms immediately
 
-방법: 일상 사물 비유 (서랍, 풍선, 신호등, 교실, 편지, 도서관 등)
+Method: Everyday object analogies (drawers, balloons, traffic lights, classroom, letters, library, etc.)
 
-구조:
-- 이모지 사용 (🌱 Easy 헤더에)
-- 4-5개 질문-답변 subsections
-- ##### 질문형 subsection 제목
-- 답변: 2-3 문장, 일상 비유 중심
+Structure:
+- Use emojis (🌱 in Easy header)
+- 4-5 question-answer subsections
+- ##### Question-style subsection titles
+- Answers: 2-3 sentences, everyday analogy-centered
 
-금지사항:
-- ❌ 코드 예시 절대 금지
-- ❌ 기술 용어 단독 사용 금지 (설명 없이)
-- ❌ 추상적 개념만으로 설명 금지
+Prohibitions:
+- ❌ Absolutely no code examples
+- ❌ No using technical terms alone (without explanation)
+- ❌ No explaining with abstract concepts only
 </step>
 
 <step number="5">
@@ -763,28 +764,28 @@ Generate Core Concepts section - Normal Level
 
 For each concept, create Normal 💼 level:
 
-핵심 원칙: 기술 용어 사용 + 간단한 코드로 검증
+Core principle: Use technical terms + verify with simple code
 
-대상: 1-3년 차 개발자
+Target: 1-3 year developers
 
-언어: 기술 용어 그대로 사용 (간단한 설명 병기)
+Language: Use technical terms as-is (with brief explanations)
 
-방법: 설명 (Text) + 검증 (Code) 교차
+Method: Explanation (Text) + Verification (Code) alternating
 
-구조:
+Structure:
 
-- ##### Text Subsection (설명)
+- ##### Text Subsection (explanation)
 
-- ##### Code: [Title] (코드 검증)
+- ##### Code: [Title] (code verification)
 
-- Text > Code 패턴 반복 (설명이 더 많음)
+- Text > Code pattern repeating (more explanation)
 
-코드 특징:
+Code characteristics:
 
-- 간단한 코드 (5-15줄)
-- 실행 가능
-- 주석으로 설명
-- 결과 예측 가능
+- Simple code (5-15 lines)
+- Executable
+- Explained with comments
+- Predictable results
 </step>
 
 <step number="6">
@@ -792,31 +793,31 @@ Generate Core Concepts section - Expert Level
 
 For each concept, create Expert 🚀 level:
 
-핵심 원칙: ECMAScript 명세 + 엔진 구현 분석
+Core principle: ECMAScript spec + engine implementation analysis
 
-대상: 20년+ 경력 전문가, 언어 설계자, 엔진 개발자
+Target: 20+ year experts, language designers, engine developers
 
-언어: ECMAScript 명세 용어 그대로
+Language: ECMAScript spec terminology as-is
 
-방법: 명세 인용 + 엔진 구현 분석
+Method: Spec citation + engine implementation analysis
 
-필수 구조 (2개 subsection):
+Required structure (2 subsections):
 
-1. ##### ECMAScript Specification - 명세 인용 및 설명
+1. ##### ECMAScript Specification - spec citation and explanation
 
-2. ##### Performance and Optimization - 엔진 구현 및 최적화
+2. ##### Performance and Optimization - engine implementation and optimization
 
-명세 인용 형식:
+Spec citation format:
 
-- "ECMAScript 2023, Section X.Y.Z" 형태로 인용
-- 실제 명세 문구 인용 (영문 그대로 또는 한글 번역)
-- 명세의 의미 해석
+- Cite in "ECMAScript 2023, Section X.Y.Z" format
+- Quote actual spec text (English as-is or translated)
+- Interpret meaning of spec
 
-Performance 분석:
+Performance analysis:
 
-- V8, SpiderMonkey 등 엔진 구현 언급
-- 메모리 레이아웃, 최적화 기법
-- 성능 차이, 벤치마크 결과
+- Mention engine implementations like V8, SpiderMonkey
+- Memory layout, optimization techniques
+- Performance differences, benchmark results
 </step>
 </execution>
 
@@ -827,8 +828,8 @@ Performance 분석:
 - ALWAYS check that Overview section exists (prerequisite)
 - ALWAYS generate 3-5 concepts (based on difficulty level)
 - ALWAYS include all 3 difficulty levels for each concept (Easy, Normal, Expert)
-- ALWAYS use 일상 비유 for Easy level
-- ALWAYS use Text/Code 교차 for Normal level
+- ALWAYS use everyday analogies for Easy level
+- ALWAYS use Text/Code alternating for Normal level
 - ALWAYS include ECMAScript Specification + Performance for Expert level
 - ALWAYS generate Visualization metadata if needs_visualization: true
 - ALWAYS update UPDATED timestamp when modifying WSM
@@ -838,9 +839,9 @@ Performance 분석:
 </do>
 
 <do_not>
-- NEVER include 코드 in Easy level (절대 금지)
+- NEVER include code in Easy level (absolutely forbidden)
 - NEVER skip any of the 3 difficulty levels
-- NEVER use 기술 용어 alone in Easy level (항상 설명 병기)
+- NEVER use technical terms alone in Easy level (always explain)
 - NEVER skip ECMAScript Specification in Expert level
 - NEVER skip Performance and Optimization in Expert level
 - NEVER generate less than 3 concepts
@@ -853,54 +854,54 @@ Performance 분석:
 
 <critical>
 ALWAYS use UTF-8 encoding for all file operations
-Korean content (한글) must be properly encoded
+Korean content must be properly encoded
 Verify encoding after file modification
 
 3-Level Difficulty Guidelines:
 
-Easy 🌱 (중학생 수준):
+Easy 🌱 (middle school level):
 
-- ❌ 코드 예시 절대 금지
-- ✅ 일상 사물 비유 필수 (서랍, 풍선, 신호등, 교실 등)
-- ✅ 이모지 활용
-- ✅ 4-5개 질문-답변 subsections
-- ✅ 기술 용어 즉시 설명
+- ❌ Absolutely no code examples
+- ✅ Everyday object analogies required (drawers, balloons, traffic lights, classroom, etc.)
+- ✅ Use emojis
+- ✅ 4-5 question-answer subsections
+- ✅ Explain technical terms immediately
 
-Normal 💼 (일반 개발자):
+Normal 💼 (general developers):
 
-- ✅ 기술 용어 그대로 사용 (간단한 설명 병기)
-- ✅ Text ↔ Code 교차 패턴
-- ✅ 간단한 실행 가능한 코드 (5-15줄)
-- ✅ 설명 > 코드 (설명이 더 많음)
+- ✅ Use technical terms as-is (with brief explanations)
+- ✅ Text ↔ Code alternating pattern
+- ✅ Simple executable code (5-15 lines)
+- ✅ Explanation > Code (more explanation)
 
-Expert 🚀 (전문가 20년+):
+Expert 🚀 (20+ year experts):
 
-- ✅ ECMAScript Specification 섹션 필수
-- ✅ Performance and Optimization 섹션 필수
-- ✅ 명세 인용 (Section 번호 포함)
-- ✅ 엔진 구현 분석 (V8, SpiderMonkey 등)
-- ✅ 최적화 기법, 메모리 레이아웃
+- ✅ ECMAScript Specification section required
+- ✅ Performance and Optimization section required
+- ✅ Spec citation (with Section numbers)
+- ✅ Engine implementation analysis (V8, SpiderMonkey, etc.)
+- ✅ Optimization techniques, memory layout
 </critical>
 </constraints>
 
 ...
 ```
 
-결과는 성공이었습니다. XML 태그로 프롬프트 구조와 생성할 콘텐츠를 명확히 구분하자, first-try 성공률이 ~33%에서 거의 100%에 가깝게 올라갔습니다. 물론 실패 시 롤백하고 재시도하는 메커니즘도 최종 성공률에 기여했는데, 이는 나중에 정리할 예정입니다.
+The result was success. When I clearly separated prompt structure and content to generate with XML tags, first-try success rate went from ~33% to nearly 100%. Of course, the rollback and retry mechanism on failure also contributed to final success rate, which I'll cover later.
 
-`<role>`, `<input_contract>`, `<output_contract>` 태그로 역할/입력/출력을 분리하고, Contract 내용을 프롬프트에 직접 포함하되 XML 태그로 구조화한 것이 효과적이었습니다.
-
----
-
-## 6. 마무리
-
-이번 편에서는 프롬프트 완성까지 4단계 과정을 정리해봤습니다. AI-DLC로 설계하고(1단계), 마크다운 프롬프트로 변환했지만 혼동 문제가 발생했고(2단계), Contract 문서 참조로 해결하려 했으나 실패했고(3단계), 최종적으로 XML 태그로 구조화해서 성공했습니다(4단계).
-
-2편에서 다룬 메타데이터 파이프라인처럼 간단한 경우는 메타프롬프팅만으로도 충분했습니다. 하지만 7개 에이전트가 복잡한 콘텐츠를 생성하는 이번 파이프라인에서는 명확한 계약 방식으로 입력/출력을 정의하고 XML 태그로 프롬프트를 구조화하는 방식이 저에게는 효과적이었습니다.
-
-다음 편에서는 이렇게 완성된 에이전트들이 어떻게 협업하는지 정리합니다.
+Separating role/input/output with `<role>`, `<input_contract>`, `<output_contract>` tags, and including Contract content directly in prompts but structuring with XML tags was effective.
 
 ---
 
-> 이 시리즈는 AI-DLC(AI-assisted Document Lifecycle) 방법론을 실제 프로젝트에 적용한 경험을 공유합니다.
-> AI-DLC에 대한 자세한 내용은 [경제지표 대시보드 개발기 시리즈](/blog/2025/10/06/economic-dashboard-1-why-started/)를 참고해주세요.
+## 6. Conclusion
+
+This article summarized the 4-stage process to completing prompts. I designed with AI-DLC (Stage 1), converted to markdown prompts but confusion issues occurred (Stage 2), tried to solve with Contract document reference but failed (Stage 3), and finally succeeded by structuring with XML tags (Stage 4).
+
+For simple cases like the metadata pipeline covered in article 2, meta-prompting alone was sufficient. But in this pipeline where 7 agents generate complex content, defining input/output with clear contracts and structuring prompts with XML tags was effective for me.
+
+The next article will cover how the completed agents collaborate.
+
+---
+
+> This series shares experiences applying the AI-DLC (AI-assisted Document Lifecycle) methodology to an actual project.
+> For more details about AI-DLC, please refer to the [Economic Dashboard Development Series](/en/blog/2025/10/06/economic-dashboard-1-why-started/).

@@ -5,6 +5,8 @@ tags: ["AI", "Claude Code", "프롬프트 엔지니어링", "에이전트", "자
 categories: AI-Agent
 permalink: /blog/:year/:month/:day/:title/
 last_modified_at: "2025-12-23"
+lang: ko
+ref: ai-agent-pipeline-3
 ---
 
 [지난 편](/blog/2025/12/16/ai-agent-pipeline-2-what-to-generate/)에서는 메타데이터 파이프라인으로 category.yaml과 빈 콘텐츠 파일을 자동 생성했습니다.

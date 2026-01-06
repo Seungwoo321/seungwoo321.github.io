@@ -4,6 +4,8 @@ permalink: /projects/
 layout: single
 author_profile: true
 classes: wide
+lang: ko
+ref: projects
 ---
 
 ## 사이드 프로젝트

@@ -1,4 +1,4 @@
-{% assign document = post | default: page %}
+{% assign document = include.post | default: post | default: page %}
 {% if document.read_time or document.show_date %}
   <p class="page__meta">
     {% if document.show_date and document.date %}

@@ -1,20 +1,40 @@
 {% capture logo_path %}{{ site.logo }}{% endcapture %}
 
+{%- comment -%} Detect current language for navigation {%- endcomment -%}
+{%- assign nav_lang = page.lang -%}
+{%- unless nav_lang -%}
+  {%- if page.url contains '/en/' -%}
+    {%- assign nav_lang = "en" -%}
+  {%- elsif page.url contains '/ja/' -%}
+    {%- assign nav_lang = "ja" -%}
+  {%- else -%}
+    {%- assign nav_lang = site.default_lang | default: "ko" -%}
+  {%- endif -%}
+{%- endunless -%}
+{%- assign lang_prefix = "" -%}
+{%- if nav_lang != "ko" -%}
+  {%- assign lang_prefix = "/" | append: nav_lang -%}
+{%- endif -%}
+
 <div class="masthead">
   <div class="masthead__inner-wrap">
     <div class="masthead__menu">
       <nav id="site-nav" class="greedy-nav">
         {% unless logo_path == empty %}
-          <a class="site-logo" href="{{ '/' | relative_url }}"><img src="{{ logo_path | relative_url }}" alt="{{ site.masthead_title | default: site.title }}"></a>
+          <a class="site-logo" href="{{ lang_prefix | append: '/' | relative_url }}"><img src="{{ logo_path | relative_url }}" alt="{{ site.masthead_title | default: site.title }}"></a>
         {% endunless %}
-        <a class="site-title" href="{{ '/' | relative_url }}">
+        <a class="site-title" href="{{ lang_prefix | append: '/' | relative_url }}">
           {{ site.masthead_title | default: site.title }}
           {% if site.subtitle %}<span class="site-subtitle">{{ site.subtitle }}</span>{% endif %}
         </a>
         <ul class="visible-links">
           {%- for link in site.data.navigation.main -%}
             <li class="masthead__menu-item">
-              <a href="{{ link.url | relative_url }}"{% if link.description %} title="{{ link.description }}"{% endif %}>{{ link.title }}</a>
+              {%- if link.url contains 'http' -%}
+                <a href="{{ link.url }}"{% if link.description %} title="{{ link.description }}"{% endif %}>{{ link.title }}</a>
+              {%- else -%}
+                <a href="{{ lang_prefix | append: link.url | relative_url }}"{% if link.description %} title="{{ link.description }}"{% endif %}>{{ link.title }}</a>
+              {%- endif -%}
             </li>
           {%- endfor -%}
         </ul>
@@ -24,7 +44,31 @@
           <i class="fas fa-search"></i>
         </button>
         {% endif %}
-        {% if site.languages.size > 1 %}
+        {%- comment -%} Language selector {%- endcomment -%}
+        {%- assign show_lang_selector = false -%}
+        {%- if page.ref -%}
+          {%- if page.ref == "home" -%}
+            {%- assign show_lang_selector = true -%}
+          {%- else -%}
+            {%- comment -%} Check posts for translations {%- endcomment -%}
+            {%- for post in site.posts -%}
+              {%- if post.ref == page.ref and post.lang != page.lang -%}
+                {%- assign show_lang_selector = true -%}
+                {%- break -%}
+              {%- endif -%}
+            {%- endfor -%}
+            {%- comment -%} Check pages for translations {%- endcomment -%}
+            {%- unless show_lang_selector -%}
+              {%- for p in site.pages -%}
+                {%- if p.ref == page.ref and p.lang != page.lang -%}
+                  {%- assign show_lang_selector = true -%}
+                  {%- break -%}
+                {%- endif -%}
+              {%- endfor -%}
+            {%- endunless -%}
+          {%- endif -%}
+        {%- endif -%}
+        {% if show_lang_selector %}
         <div class="language-selector">
           <button class="language-selector__toggle" type="button">
             <i class="fas fa-globe"></i>
@@ -41,11 +85,15 @@
               {%- if lang == current_lang -%}{%- assign is_current = true -%}{%- endif -%}
               {%- assign has_translation = false -%}
               {%- assign target_url = "" -%}
-              {%- if lang == site.default_lang -%}
+              {%- if page.ref == "home" -%}
                 {%- assign has_translation = true -%}
-                {%- assign target_url = page.url | remove_first: "/" | split: "/" | slice: 1, 100 | join: "/" | prepend: "/" -%}
-                {%- if target_url == "/" -%}{%- assign target_url = page.url -%}{%- endif -%}
+                {%- if lang == "ko" -%}
+                  {%- assign target_url = "/" -%}
+                {%- else -%}
+                  {%- assign target_url = "/" | append: lang | append: "/" -%}
+                {%- endif -%}
               {%- else -%}
+                {%- comment -%} Check posts {%- endcomment -%}
                 {%- for post in site.posts -%}
                   {%- if post.lang == lang and post.ref == page.ref -%}
                     {%- assign has_translation = true -%}
@@ -53,6 +101,7 @@
                     {%- break -%}
                   {%- endif -%}
                 {%- endfor -%}
+                {%- comment -%} Check pages {%- endcomment -%}
                 {%- unless has_translation -%}
                   {%- for p in site.pages -%}
                     {%- if p.lang == lang and p.ref == page.ref -%}
@@ -63,15 +112,15 @@
                   {%- endfor -%}
                 {%- endunless -%}
               {%- endif -%}
-              <li class="language-selector__item{%- if is_current %} active{%- elsif has_translation == false %} disabled{%- endif -%}">
+              {%- if has_translation -%}
+              <li class="language-selector__item{%- if is_current %} active{%- endif -%}">
                 {%- if is_current -%}
                   <span>{{ lang_name }}</span>
-                {%- elsif has_translation -%}
-                  <a href="{{ target_url }}">{{ lang_name }}</a>
                 {%- else -%}
-                  <span class="no-translation">{{ lang_name }}</span>
+                  <a href="{{ target_url }}">{{ lang_name }}</a>
                 {%- endif -%}
               </li>
+              {%- endif -%}
             {%- endfor -%}
           </ul>
         </div>
