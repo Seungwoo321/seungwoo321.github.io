@@ -25,16 +25,25 @@ description: >- # this means to ignore newlines until "baseurl:"
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://seungwoo321.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 repository: "Seungwoo321/seungwoo321.github.io"
-# github_username:  Seungwoo321
+locale: "ko_KR"
 remote_theme: "mmistakes/minimal-mistakes@4.24.0"
 minimal_mistakes_skin: air
 paginate: 5
 paginate_path: /page:num/
 author:
+  name: "이승우"
   avatar: /assets/images/avata.png
   location: Seoul
   email: seungwoo321@gmail.com
   github: Seungwoo321
+
+# Social profiles for Schema.org JSON-LD
+social:
+  type: Person
+  name: "이승우"
+  links:
+    - "https://github.com/Seungwoo321"
+
 og_image: /assets/images/og.png
 include:
   - .htaccess
@@ -135,3 +144,12 @@ defaults:
       excerpt_separator: <!--more-->
       sidebar:
         nav: "categories"
+  # Exclude verification files from sitemap
+  - scope:
+      path: "google603171b62dec4aac.html"
+    values:
+      sitemap: false
+  - scope:
+      path: "naverd0af24031866c2cb391f545d6da12043.html"
+    values:
+      sitemap: false
