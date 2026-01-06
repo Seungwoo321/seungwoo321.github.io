@@ -6,15 +6,62 @@ layout: archive
 
 <h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts | default: "Recent Posts" }}</h3>
 {% if paginator %}
-  {% assign posts = paginator.posts %}
+  {% assign all_posts = paginator.posts %}
 {% else %}
-  {% assign posts = site.posts %}
+  {% assign all_posts = site.posts %}
 {% endif %}
+
+{%- assign current_lang = page.lang | default: site.default_lang | default: "ko" -%}
+{%- assign displayed_refs = "" -%}
 
 {% assign entries_layout = page.entries_layout | default: 'list' %}
 <div class="entries-{{ entries_layout }}">
-  {% for post in posts %}
-    {% include archive-single.html type=entries_layout %}
+  {% for post in all_posts %}
+    {%- assign post_lang = post.lang | default: "ko" -%}
+    {%- assign post_ref = post.ref -%}
+
+    {%- if post_ref -%}
+      {%- comment -%} Post has ref - check if we should display it {%- endcomment -%}
+      {%- assign ref_check = displayed_refs | split: "," | where_exp: "r", "r == post_ref" -%}
+      {%- if ref_check.size == 0 -%}
+        {%- comment -%} This ref hasn't been displayed yet {%- endcomment -%}
+        {%- assign best_post = nil -%}
+        {%- assign fallback_post = nil -%}
+
+        {%- comment -%} Find best matching post for this ref {%- endcomment -%}
+        {%- for p in all_posts -%}
+          {%- if p.ref == post_ref -%}
+            {%- assign p_lang = p.lang | default: "ko" -%}
+            {%- if p_lang == current_lang -%}
+              {%- assign best_post = p -%}
+            {%- elsif p_lang == "ko" -%}
+              {%- assign fallback_post = p -%}
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+
+        {%- comment -%} Use best match or fallback {%- endcomment -%}
+        {%- if best_post -%}
+          {%- assign post = best_post -%}
+          {% include archive-single.html type=entries_layout %}
+        {%- elsif fallback_post -%}
+          {%- assign post = fallback_post -%}
+          {% include archive-single.html type=entries_layout %}
+        {%- endif -%}
+
+        {%- comment -%} Mark this ref as displayed {%- endcomment -%}
+        {%- if displayed_refs == "" -%}
+          {%- assign displayed_refs = post_ref -%}
+        {%- else -%}
+          {%- assign displayed_refs = displayed_refs | append: "," | append: post_ref -%}
+        {%- endif -%}
+      {%- endif -%}
+    {%- else -%}
+      {%- comment -%} Post has no ref - show if it matches current language or is Korean {%- endcomment -%}
+      {%- if post_lang == current_lang or post_lang == "ko" -%}
+        {% include archive-single.html type=entries_layout %}
+      {%- endif -%}
+    {%- endif -%}
   {% endfor %}
 </div>
 
