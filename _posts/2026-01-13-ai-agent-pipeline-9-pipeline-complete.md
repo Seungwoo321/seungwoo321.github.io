@@ -5,6 +5,8 @@ tags: ["AI", "Claude Code", "프롬프트 엔지니어링", "에이전트", "자
 categories: AI-Agent
 permalink: /blog/:year/:month/:day/:title/
 last_modified_at: "2026-01-13"
+lang: ko
+ref: ai-agent-pipeline-9
 ---
 
 [지난 편](/blog/2026/01/09/ai-agent-pipeline-8-rollback-mechanism/)에서는 재시도와 롤백 메커니즘을 다뤘습니다.

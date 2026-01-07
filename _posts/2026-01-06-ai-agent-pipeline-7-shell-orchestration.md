@@ -5,6 +5,8 @@ tags: ["AI", "Claude Code", "프롬프트 엔지니어링", "에이전트", "자
 categories: AI-Agent
 permalink: /blog/:year/:month/:day/:title/
 last_modified_at: "2026-01-06"
+lang: ko
+ref: ai-agent-pipeline-7
 ---
 
 [지난 편](/blog/2026/01/02/ai-agent-pipeline-6-seven-agents-collaboration/)에서는 7개 에이전트의 협업 구조와 핸드오프 프로토콜을 다뤘습니다.

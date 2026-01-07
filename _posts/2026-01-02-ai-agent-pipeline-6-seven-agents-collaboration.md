@@ -5,6 +5,8 @@ tags: ["AI", "Claude Code", "프롬프트 엔지니어링", "에이전트", "자
 categories: AI-Agent
 permalink: /blog/:year/:month/:day/:title/
 last_modified_at: "2026-01-02"
+lang: ko
+ref: ai-agent-pipeline-6
 ---
 
 [지난 편](/blog/2025/12/30/ai-agent-pipeline-5-prompt-evolution/)에서는 에이전트 프롬프트를 완성하기까지의 과정을 다뤘습니다. 프롬프트를 다루면서 "실패", "성공"을 이야기했는데, 그 결과는 파이프라인을 실행하면서 확인한 것이었습니다.

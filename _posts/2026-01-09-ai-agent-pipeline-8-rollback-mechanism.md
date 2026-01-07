@@ -5,6 +5,8 @@ tags: ["AI", "Claude Code", "프롬프트 엔지니어링", "에이전트", "자
 categories: AI-Agent
 permalink: /blog/:year/:month/:day/:title/
 last_modified_at: "2026-01-09"
+lang: ko
+ref: ai-agent-pipeline-8
 ---
 
 [지난 편](/blog/2026/01/06/ai-agent-pipeline-7-shell-orchestration/)에서는 파이프라인 정상 실행 흐름을 다뤘습니다.
