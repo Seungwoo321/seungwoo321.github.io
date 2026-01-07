@@ -1,0 +1,21 @@
+{
+  "type": "object",
+  "properties": {
+    "commits": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "files": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "title": { "type": "string" },
+          "message": { "type": "string" }
+        },
+        "required": ["files", "title", "message"]
+      }
+    }
+  },
+  "required": ["commits"]
+}
