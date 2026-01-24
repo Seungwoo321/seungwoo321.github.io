@@ -19,19 +19,49 @@ last_modified_at: "2026-01-16"
 
 앱을 실행하면 먼저 카테고리와 토픽 목록이 나타납니다. RN 앱은 별도의 메타데이터 API에서 목록 데이터를 가져옵니다. 사용자가 토픽을 선택하면 WebView가 콘텐츠를 렌더링하는 웹앱을 로드합니다.
 
-(스크린샷 추가 예정)
+<figure style="background: #f5f5f5; padding: 20px; border-radius: 8px; margin: 24px 0;">
+  <div style="display: flex; gap: 16px; justify-content: center; align-items: center;">
+    <img src="/assets/images/posts/2026/01/blog-10/mobile/01-learning-topics.png" alt="학습 탭 토픽 목록 (모바일)" style="max-width: 25%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+    <img src="/assets/images/posts/2026/01/blog-10/tablet/01-learning-topics.png" alt="학습 탭 토픽 목록 (태블릿)" style="max-width: 65%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+  </div>
+  <figcaption style="text-align: center; margin-top: 12px; font-family: inherit;">학습 탭 토픽 목록 - 모바일(좌)과 태블릿(우)</figcaption>
+</figure>
 
-토픽 화면은 4개 섹션으로 구성됩니다: 개요, 핵심개념, 실습, 퀴즈. 핵심개념 섹션에서는 concepts-writer가 생성한 3단계 난이도 설명을 탭으로 전환하며 볼 수 있습니다. "쉬움"을 선택하면 "중학생도 이해할 수 있는 설명"이라는 배지가 표시되고, "전문가"를 선택하면 "20년 이상 전문가를 위한 깊은 설명"이라는 배지가 표시됩니다. 기본값은 "일반"입니다.
+토픽 화면은 3개 섹션으로 구성됩니다: 개요, 핵심개념, 퀴즈. 핵심개념 섹션에서는 concepts-writer가 생성한 3단계 난이도 설명을 탭으로 전환하며 볼 수 있습니다. "쉬움"을 선택하면 콘텐츠 하단에 "중학생도 이해할 수 있는 설명" 배지가 표시되고, "전문가"를 선택하면 "20년 이상 전문가를 위한 깊은 설명" 배지가 표시됩니다. 기본값인 "일반"에는 배지가 없습니다.
 
-(스크린샷 추가 예정)
+<figure style="background: #f5f5f5; padding: 20px; border-radius: 8px; margin: 24px 0;">
+  <div style="display: flex; gap: 16px; justify-content: center; align-items: center;">
+    <img src="/assets/images/posts/2026/01/blog-10/mobile/02-topic-concepts-normal.png" alt="핵심개념 일반 (모바일)" style="max-width: 25%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+    <img src="/assets/images/posts/2026/01/blog-10/tablet/02-topic-concepts-normal.png" alt="핵심개념 일반 (태블릿)" style="max-width: 65%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+  </div>
+  <figcaption style="text-align: center; margin-top: 12px; font-family: inherit;">핵심개념 - 일반 난이도</figcaption>
+</figure>
 
-실습 섹션에는 코드 패턴과 실험 예제가 담겨 있습니다. 다만 9편에서 다뤘듯이 practice-writer는 제거되었고, 현재는 concepts-writer가 이 부분을 함께 생성합니다.
+<figure style="background: #f5f5f5; padding: 20px; border-radius: 8px; margin: 24px 0;">
+  <div style="display: flex; gap: 16px; justify-content: center; align-items: center;">
+    <img src="/assets/images/posts/2026/01/blog-10/mobile/03-topic-concepts-easy.png" alt="핵심개념 쉬움 (모바일)" style="max-width: 25%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+    <img src="/assets/images/posts/2026/01/blog-10/tablet/03-topic-concepts-easy.png" alt="핵심개념 쉬움 (태블릿)" style="max-width: 65%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+  </div>
+  <figcaption style="text-align: center; margin-top: 12px; font-family: inherit;">핵심개념 - 쉬움 (중학생도 이해할 수 있는 설명)</figcaption>
+</figure>
 
-(스크린샷 추가 예정)
+<figure style="background: #f5f5f5; padding: 20px; border-radius: 8px; margin: 24px 0;">
+  <div style="display: flex; gap: 16px; justify-content: center; align-items: center;">
+    <img src="/assets/images/posts/2026/01/blog-10/mobile/04-topic-concepts-expert.png" alt="핵심개념 전문가 (모바일)" style="max-width: 25%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+    <img src="/assets/images/posts/2026/01/blog-10/tablet/04-topic-concepts-expert.png" alt="핵심개념 전문가 (태블릿)" style="max-width: 65%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+  </div>
+  <figcaption style="text-align: center; margin-top: 12px; font-family: inherit;">핵심개념 - 전문가 (기술적 깊이 있는 설명)</figcaption>
+</figure>
 
-마지막 퀴즈 섹션에서는 quiz-writer가 생성한 12문제로 학습 내용을 점검합니다. 난이도별로 쉬움 4문제, 일반 5문제, 전문가 3문제가 고정 배분됩니다.
+퀴즈 섹션에서는 quiz-writer가 생성한 12문제로 학습 내용을 점검합니다. 난이도별로 쉬움 4문제, 일반 5문제, 전문가 3문제가 고정 배분됩니다.
 
-(스크린샷 추가 예정)
+<figure style="background: #f5f5f5; padding: 20px; border-radius: 8px; margin: 24px 0;">
+  <div style="display: flex; gap: 16px; justify-content: center; align-items: center;">
+    <img src="/assets/images/posts/2026/01/blog-10/mobile/05-topic-quiz.png" alt="퀴즈 섹션 (모바일)" style="max-width: 25%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+    <img src="/assets/images/posts/2026/01/blog-10/tablet/05-topic-quiz.png" alt="퀴즈 섹션 (태블릿)" style="max-width: 65%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+  </div>
+  <figcaption style="text-align: center; margin-top: 12px; font-family: inherit;">퀴즈 섹션 - 12문제로 학습 내용 점검</figcaption>
+</figure>
 
 ---
 
