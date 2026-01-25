@@ -19,7 +19,7 @@ ref: ai-agent-pipeline-7
 
 Claude Max Plan을 구독하고 있었는데, 매주 사용 가능한 토큰을 다 소진하지 못하고 있었습니다. 그래서 남는 토큰으로 뭔가 해보고 싶었습니다.
 
-이 작업을 시작한 2025년 7-8월에는 에이전트 프레임워크에 대해 알지 못했습니다. Claude Code CLI로 프롬프트를 전달할 수 있었고, 반복 작업을 자동화하려면 쉘 스크립트가 자연스러운 선택이었습니다.
+이 작업을 시작한 2025년 8월에는 에이전트 프레임워크에 대해 알지 못했습니다. Claude Code CLI로 프롬프트를 전달할 수 있었고, 반복 작업을 자동화하려면 쉘 스크립트가 자연스러운 선택이었습니다.
 
 나중에 LangGraph나 CrewAI 같은 에이전트 프레임워크들을 알게 됐지만, 이들은 API 호출 방식이라 별도 과금이 필요했습니다. Max Plan 구독을 활용하려면 CLI 기반이어야 했기 때문에 쉘 스크립트를 계속 사용했습니다.
 
@@ -188,5 +188,5 @@ flowchart TB
 
 ---
 
-> 이 시리즈는 AI-DLC(AI-assisted Document Lifecycle) 방법론을 실제 프로젝트에 적용한 경험을 공유합니다.
+> 이 시리즈는 AI-DLC(AI-Driven Development Lifecycle) 방법론을 실제 프로젝트에 적용한 경험을 공유합니다.
 > AI-DLC에 대한 자세한 내용은 [경제지표 대시보드 개발기 시리즈](/blog/2025/10/06/economic-dashboard-1-why-started/)를 참고해주세요.

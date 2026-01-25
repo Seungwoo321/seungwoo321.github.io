@@ -31,11 +31,11 @@ JavaScriptだけでも数十のトピックがあり、各トピックには詳�
 
 ## 2. トピック文書の構造
 
-トピック文書は**大主題 > カテゴリ > トピック**の3段階構造です。
+トピック文書は**主題文書 > カテゴリ > トピック**の3段階構造です。
 
 ```
 docs/topic/
-├── javascript-core-concepts.md  ← 大主題（ファイル名）
+├── javascript-core-concepts.md  ← 主題文書（ファイル名）
 ├── javascript-browser-concepts.md
 ├── css-core-concepts.md
 ├── ...
@@ -45,7 +45,7 @@ docs/topic/
 ### 実例：javascript-core-concepts.md
 
 ```markdown
-# JavaScript コア概念           ← 大主題タイトル
+# JavaScript コア概念           ← 主題文書タイトル
 
 ## 📋 詳細概念リスト
 
@@ -66,8 +66,8 @@ docs/topic/
 
 | 段階 | 例 | 説明 |
 |:---:|:---|:---|
-| **大主題** | javascript-core-concepts | ファイル名。10文書 |
-| **カテゴリ** | 1. 変数完全マスター | 大主題あたり21〜42個 |
+| **主題文書** | javascript-core-concepts | ファイル名。10文書 |
+| **カテゴリ** | 1. 変数完全マスター | 主題文書あたり21〜42個 |
 | **トピック** | varを使うとどんな問題が... | カテゴリあたり10個。**約1,400行のコンテンツに拡張** |
 
 各トピックは**質問形式のタイトル + 一行説明**です。
@@ -84,7 +84,7 @@ docs/topic/
 | ... | ... | ... |
 | **合計** | **169 + α** | **1,690 + α** |
 
-全体規模は6 + α個の大主題、**169 + αカテゴリ**、**1,690 + αトピック**です。
+全体規模は6 + α個の主題文書、**169 + αカテゴリ**、**1,690 + αトピック**です。
 
 ---
 
@@ -341,5 +341,5 @@ HANDOFF LOG:
 
 ---
 
-> このシリーズはAI-DLC（AI-assisted Document Lifecycle）方法論を実際のプロジェクトに適用した経験を共有します。
+> このシリーズはAI-DLC（AI-Driven Development Lifecycle）方法論を実際のプロジェクトに適用した経験を共有します。
 > AI-DLCの詳細については[経済指標ダッシュボード開発記シリーズ](/ja/blog/2025/10/06/economic-dashboard-1-why-started/)を参照してください。

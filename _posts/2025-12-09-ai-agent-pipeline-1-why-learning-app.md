@@ -110,5 +110,5 @@ Max Plan을 구독하고 있었는데, 매주 사용 가능한 토큰을 다 소
 
 ---
 
-> 이 시리즈는 AI-DLC(AI-assisted Document Lifecycle) 방법론을 실제 프로젝트에 적용한 경험을 공유합니다.
+> 이 시리즈는 AI-DLC(AI-Driven Development Lifecycle) 방법론을 실제 프로젝트에 적용한 경험을 공유합니다.
 > AI-DLC에 대한 자세한 내용은 [경제지표 대시보드 개발기 시리즈](/blog/2025/10/06/economic-dashboard-1-why-started/)를 참고해주세요.

@@ -304,7 +304,7 @@ Update markers to hand off to the next agent:
 
 ## 5. 転換点：AI-DLCの適用
 
-行き詰まった状況で、AI-DLC（AI-assisted Document Lifecycle）方法論を適用してみることにしました。
+行き詰まった状況で、AI-DLC（AI-Driven Development Lifecycle）方法論を適用してみることにしました。
 
 AI-DLCはAIと協力してソフトウェアを開発する方法論です。ただし、[AI-DLCホワイトペーパー](https://github.com/Seungwoo321/aidlc-docs/blob/main/ai-dlc-whitepaper-ko.md)はDDD変形ベースでバックエンドとインフラの概念を含んでいるため、現在のプロジェクト（エージェントプロンプトをシェルでオーケストレーションするパイプライン）にそのまま適用するのは難しかったです。
 
@@ -316,5 +316,5 @@ AI-DLCで開発プロセスを進めつつ、実際のシステムアーキテ�
 
 ---
 
-> このシリーズはAI-DLC（AI-assisted Document Lifecycle）方法論を実際のプロジェクトに適用した経験を共有します。
+> このシリーズはAI-DLC（AI-Driven Development Lifecycle）方法論を実際のプロジェクトに適用した経験を共有します。
 > AI-DLCの詳細については、[経済指標ダッシュボード開発記シリーズ](/ja/blog/2025/10/06/economic-dashboard-1-why-started/)をご参照ください。

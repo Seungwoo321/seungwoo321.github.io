@@ -304,7 +304,7 @@ The prompts were hundreds of lines long with great detail. I split into 7 agents
 
 ## 5. Turning Point: Applying AI-DLC
 
-In this stuck situation, I decided to apply the AI-DLC (AI-assisted Document Lifecycle) methodology.
+In this stuck situation, I decided to apply the AI-DLC (AI-Driven Development Lifecycle) methodology.
 
 AI-DLC is a methodology for developing software in collaboration with AI. However, the [AI-DLC whitepaper](https://github.com/Seungwoo321/aidlc-docs/blob/main/ai-dlc-whitepaper-ko.md) is based on DDD variations and includes backend and infrastructure concepts, making it difficult to apply directly to the current project (a pipeline orchestrating agent prompts with shell scripts).
 
@@ -316,5 +316,5 @@ The next article will cover how that turned out.
 
 ---
 
-> This series shares experiences applying the AI-DLC (AI-assisted Document Lifecycle) methodology to an actual project.
+> This series shares experiences applying the AI-DLC (AI-Driven Development Lifecycle) methodology to an actual project.
 > For more details about AI-DLC, please refer to the [Economic Dashboard Development Series](/en/blog/2025/10/06/economic-dashboard-1-why-started/).

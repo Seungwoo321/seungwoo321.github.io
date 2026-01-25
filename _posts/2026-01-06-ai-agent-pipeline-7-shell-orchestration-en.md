@@ -20,7 +20,7 @@ This article summarizes the **shell script orchestration** I configured to run t
 
 I was subscribed to the Claude Max Plan, but I wasn't using all my available tokens each week. So I wanted to do something with the remaining tokens.
 
-When I started this work in July-August 2025, I didn't know about agent frameworks. I could pass prompts with the Claude Code CLI, and shell scripts were a natural choice for automating repetitive tasks.
+When I started this work in August 2025, I didn't know about agent frameworks. I could pass prompts with the Claude Code CLI, and shell scripts were a natural choice for automating repetitive tasks.
 
 Later I learned about agent frameworks like LangGraph and CrewAI, but these use API calls and require separate billing. To utilize the Max Plan subscription, I needed CLI-based approach, so I continued using shell scripts.
 
@@ -189,5 +189,5 @@ This is the normal execution flow of the pipeline. But it can fail midway. The n
 
 ---
 
-> This series shares experiences applying the AI-DLC (AI-assisted Document Lifecycle) methodology to an actual project.
+> This series shares experiences applying the AI-DLC (AI-Driven Development Lifecycle) methodology to an actual project.
 > For more details about AI-DLC, please refer to the [Economic Dashboard Development Series](/en/blog/2025/10/06/economic-dashboard-1-why-started/).

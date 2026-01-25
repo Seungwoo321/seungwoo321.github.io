@@ -29,11 +29,11 @@ JavaScript만 해도 수십 개 주제가 있고, 각 주제마다 세부 토픽
 
 ## 2. 토픽 문서 구조
 
-토픽 문서는 **대주제 > 카테고리 > 토픽** 3단계 구조입니다.
+토픽 문서는 **주제 문서 > 카테고리 > 토픽** 3단계 구조입니다.
 
 ```
 docs/topic/
-├── javascript-core-concepts.md  ← 대주제 (파일명)
+├── javascript-core-concepts.md  ← 주제 문서 (파일명)
 ├── javascript-browser-concepts.md
 ├── css-core-concepts.md
 ├── ...
@@ -43,7 +43,7 @@ docs/topic/
 ### 실제 예시: javascript-core-concepts.md
 
 ```markdown
-# JavaScript 핵심 개념           ← 대주제 제목
+# JavaScript 핵심 개념           ← 주제 문서 제목
 
 ## 📋 상세 개념 목록
 
@@ -64,8 +64,8 @@ docs/topic/
 
 | 단계 | 예시 | 설명 |
 |:---:|:---|:---|
-| **대주제** | javascript-core-concepts | 파일명. 10개 문서 |
-| **카테고리** | 1. 변수 완전 정복 | 대주제당 21~42개 |
+| **주제 문서** | javascript-core-concepts | 파일명. 10개 문서 |
+| **카테고리** | 1. 변수 완전 정복 | 주제 문서당 21~42개 |
 | **토픽** | var를 사용하면 어떤 문제가... | 카테고리당 10개. **약 1,400줄 콘텐츠로 확장** |
 
 각 토픽은 **질문 형태의 제목 + 한 줄 설명**입니다.
@@ -339,5 +339,5 @@ HANDOFF LOG:
 
 ---
 
-> 이 시리즈는 AI-DLC(AI-assisted Document Lifecycle) 방법론을 실제 프로젝트에 적용한 경험을 공유합니다.
+> 이 시리즈는 AI-DLC(AI-Driven Development Lifecycle) 방법론을 실제 프로젝트에 적용한 경험을 공유합니다.
 > AI-DLC에 대한 자세한 내용은 [경제지표 대시보드 개발기 시리즈](/blog/2025/10/06/economic-dashboard-1-why-started/)를 참고해주세요.

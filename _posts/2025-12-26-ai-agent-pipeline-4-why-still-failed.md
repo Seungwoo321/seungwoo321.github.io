@@ -303,7 +303,7 @@ Update markers to hand off to the next agent:
 
 ## 5. 전환점: AI-DLC 적용
 
-막막한 상황에서 AI-DLC(AI-assisted Document Lifecycle) 방법론을 적용해보기로 했습니다.
+막막한 상황에서 AI-DLC(AI-Driven Development Lifecycle) 방법론을 적용해보기로 했습니다.
 
 AI-DLC는 AI와 협업하여 소프트웨어를 개발하는 방법론입니다. 다만 [AI-DLC 백서](https://github.com/Seungwoo321/aidlc-docs/blob/main/ai-dlc-whitepaper-ko.md)는 DDD 변형 기반으로 백엔드와 인프라 개념을 포함하고 있어서, 현재 프로젝트(에이전트 프롬프트를 쉘로 오케스트레이션하는 파이프라인)에 그대로 적용하기는 어려웠습니다.
 
@@ -315,5 +315,5 @@ AI-DLC로 개발 프로세스를 진행하되, 실제 시스템 아키텍처는 
 
 ---
 
-> 이 시리즈는 AI-DLC(AI-assisted Document Lifecycle) 방법론을 실제 프로젝트에 적용한 경험을 공유합니다.
+> 이 시리즈는 AI-DLC(AI-Driven Development Lifecycle) 방법론을 실제 프로젝트에 적용한 경험을 공유합니다.
 > AI-DLC에 대한 자세한 내용은 [경제지표 대시보드 개발기 시리즈](/blog/2025/10/06/economic-dashboard-1-why-started/)를 참고해주세요.

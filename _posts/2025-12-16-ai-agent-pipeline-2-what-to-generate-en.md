@@ -31,11 +31,11 @@ The result of this deliberation is the **topic document**.
 
 ## 2. Topic Document Structure
 
-The topic document has a 3-level structure: **Major Subject > Category > Topic**.
+The topic document has a 3-level structure: **Subject Document > Category > Topic**.
 
 ```
 docs/topic/
-├── javascript-core-concepts.md  ← Major subject (filename)
+├── javascript-core-concepts.md  ← Subject document (filename)
 ├── javascript-browser-concepts.md
 ├── css-core-concepts.md
 ├── ...
@@ -45,7 +45,7 @@ docs/topic/
 ### Real Example: javascript-core-concepts.md
 
 ```markdown
-# JavaScript Core Concepts           ← Major subject title
+# JavaScript Core Concepts           ← Subject document title
 
 ## 📋 Detailed Concept List
 
@@ -66,8 +66,8 @@ docs/topic/
 
 | Level | Example | Description |
 |:---:|:---|:---|
-| **Major Subject** | javascript-core-concepts | Filename. 10 documents |
-| **Category** | 1. Mastering Variables | 21-42 per major subject |
+| **Subject Document** | javascript-core-concepts | Filename. 10 documents |
+| **Category** | 1. Mastering Variables | 21-42 per subject document |
 | **Topic** | What problems occur when using var... | 10 per category. **Expands to ~1,400 lines of content** |
 
 Each topic is a **question-style title + one-line description**.
@@ -84,7 +84,7 @@ This one line expands to about 1,400 lines of content.
 | ... | ... | ... |
 | **Total** | **169 + α** | **1,690 + α** |
 
-The overall scale is 6 + α major subjects, **169 + α categories**, **1,690 + α topics**.
+The overall scale is 6 + α subject documents, **169 + α categories**, **1,690 + α topics**.
 
 ---
 
@@ -341,5 +341,5 @@ The next post will cover the learning content generation pipeline.
 
 ---
 
-> This series shares experiences applying the AI-DLC (AI-assisted Document Lifecycle) methodology to a real project.
+> This series shares experiences applying the AI-DLC (AI-Driven Development Lifecycle) methodology to a real project.
 > For more details about AI-DLC, please refer to the [Economic Dashboard Development Series](/en/blog/2025/10/06/economic-dashboard-1-why-started/).

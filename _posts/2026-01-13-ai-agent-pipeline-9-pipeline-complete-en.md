@@ -158,5 +158,5 @@ The next article will look back on the journey so far and wrap up the series.
 
 ---
 
-> This series shares experiences applying the AI-DLC (AI-assisted Document Lifecycle) methodology to an actual project.
+> This series shares experiences applying the AI-DLC (AI-Driven Development Lifecycle) methodology to an actual project.
 > For more details about AI-DLC, please refer to the [Economic Dashboard Development Series](/en/blog/2025/10/06/economic-dashboard-1-why-started/).
