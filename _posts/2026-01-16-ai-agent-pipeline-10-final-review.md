@@ -98,9 +98,9 @@ last_modified_at: "2026-01-16"
 | 1 | [학습 앱을 만들기 시작한 이유](/blog/2025/12/09/ai-agent-pipeline-1-why-learning-app/) | 동기와 목표 |
 | 2 | [무엇을 생성할 것인가](/blog/2025/12/16/ai-agent-pipeline-2-what-to-generate/) | 토픽 문서 설계 |
 | 3 | [하나의 프롬프트로는 왜 안 됐을까](/blog/2025/12/23/ai-agent-pipeline-3-why-seven-agents/) | 단일 프롬프트 실패 |
-| 4 | [분리했는데 왜 여전히 안 됐을까](/blog/2025/12/30/ai-agent-pipeline-4-why-still-failed/) | 프롬프트 오염 |
-| 5 | [프롬프트 완성까지의 4단계](/blog/2026/01/06/ai-agent-pipeline-5-prompt-evolution/) | XML 태그 도입 |
-| 6 | [7개 에이전트는 어떻게 협업하는가](/blog/2026/01/13/ai-agent-pipeline-6-seven-agents-collaboration/) | WSM과 Contract |
+| 4 | [분리했는데 왜 여전히 안 됐을까](/blog/2025/12/26/ai-agent-pipeline-4-why-still-failed/) | 프롬프트 오염 |
+| 5 | [프롬프트 완성까지의 4단계](/blog/2025/12/30/ai-agent-pipeline-5-prompt-evolution/) | XML 태그 도입 |
+| 6 | [7개 에이전트는 어떻게 협업하는가](/blog/2026/01/02/ai-agent-pipeline-6-seven-agents-collaboration/) | WSM과 Contract |
 | 7 | [쉘 스크립트로 에이전트 실행하기](/blog/2026/01/06/ai-agent-pipeline-7-shell-orchestration/) | 정상 실행 흐름 |
 | 8 | [재시도와 롤백](/blog/2026/01/09/ai-agent-pipeline-8-rollback-mechanism/) | 실패 처리 흐름 |
 | 9 | [개선점 발견과 리팩토링](/blog/2026/01/13/ai-agent-pipeline-9-pipeline-complete/) | 에이전트 단순화 |

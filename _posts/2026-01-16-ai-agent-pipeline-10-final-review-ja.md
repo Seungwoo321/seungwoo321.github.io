@@ -101,9 +101,9 @@ hidden: true
 | 1 | [学習アプリを作り始めた理由](/ja/blog/2025/12/09/ai-agent-pipeline-1-why-learning-app/) | 動機と目標 |
 | 2 | [何を生成するか](/ja/blog/2025/12/16/ai-agent-pipeline-2-what-to-generate/) | トピック文書設計 |
 | 3 | [なぜ単一プロンプトではダメだったのか](/ja/blog/2025/12/23/ai-agent-pipeline-3-why-seven-agents/) | 単一プロンプト失敗 |
-| 4 | [分離してもなぜまだダメだったのか](/ja/blog/2025/12/30/ai-agent-pipeline-4-why-still-failed/) | プロンプト汚染 |
-| 5 | [プロンプト完成までの4段階](/ja/blog/2026/01/06/ai-agent-pipeline-5-prompt-evolution/) | XMLタグ導入 |
-| 6 | [7つのエージェントはどのように協業するか](/ja/blog/2026/01/13/ai-agent-pipeline-6-seven-agents-collaboration/) | WSMとContract |
+| 4 | [分離してもなぜまだダメだったのか](/ja/blog/2025/12/26/ai-agent-pipeline-4-why-still-failed/) | プロンプト汚染 |
+| 5 | [プロンプト完成までの4段階](/ja/blog/2025/12/30/ai-agent-pipeline-5-prompt-evolution/) | XMLタグ導入 |
+| 6 | [7つのエージェントはどのように協業するか](/ja/blog/2026/01/02/ai-agent-pipeline-6-seven-agents-collaboration/) | WSMとContract |
 | 7 | [シェルスクリプトでエージェントを実行する](/ja/blog/2026/01/06/ai-agent-pipeline-7-shell-orchestration/) | 正常実行フロー |
 | 8 | [リトライとロールバック](/ja/blog/2026/01/09/ai-agent-pipeline-8-rollback-mechanism/) | 失敗処理フロー |
 | 9 | [改善点の発見とリファクタリング](/ja/blog/2026/01/13/ai-agent-pipeline-9-pipeline-complete/) | エージェント単純化 |

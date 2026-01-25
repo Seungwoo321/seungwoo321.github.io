@@ -101,9 +101,9 @@ Here's a summary of what was covered across 10 articles.
 | 1 | [Why I Started Building a Learning App](/en/blog/2025/12/09/ai-agent-pipeline-1-why-learning-app/) | Motivation and goals |
 | 2 | [What to Generate](/en/blog/2025/12/16/ai-agent-pipeline-2-what-to-generate/) | Topic document design |
 | 3 | [Why a Single Prompt Didn't Work](/en/blog/2025/12/23/ai-agent-pipeline-3-why-seven-agents/) | Single prompt failure |
-| 4 | [Why It Still Failed After Splitting](/en/blog/2025/12/30/ai-agent-pipeline-4-why-still-failed/) | Prompt pollution |
-| 5 | [4 Stages to Prompt Completion](/en/blog/2026/01/06/ai-agent-pipeline-5-prompt-evolution/) | XML tag introduction |
-| 6 | [How 7 Agents Collaborate](/en/blog/2026/01/13/ai-agent-pipeline-6-seven-agents-collaboration/) | WSM and Contract |
+| 4 | [Why It Still Failed After Splitting](/en/blog/2025/12/26/ai-agent-pipeline-4-why-still-failed/) | Prompt pollution |
+| 5 | [4 Stages to Prompt Completion](/en/blog/2025/12/30/ai-agent-pipeline-5-prompt-evolution/) | XML tag introduction |
+| 6 | [How 7 Agents Collaborate](/en/blog/2026/01/02/ai-agent-pipeline-6-seven-agents-collaboration/) | WSM and Contract |
 | 7 | [Running Agents with Shell Scripts](/en/blog/2026/01/06/ai-agent-pipeline-7-shell-orchestration/) | Normal execution flow |
 | 8 | [Retry and Rollback](/en/blog/2026/01/09/ai-agent-pipeline-8-rollback-mechanism/) | Failure handling flow |
 | 9 | [Discovering Improvements and Refactoring](/en/blog/2026/01/13/ai-agent-pipeline-9-pipeline-complete/) | Agent simplification |
