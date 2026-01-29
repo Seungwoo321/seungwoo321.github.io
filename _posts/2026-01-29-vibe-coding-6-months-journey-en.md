@@ -44,7 +44,7 @@ I also made [tailwind-grid-layout](https://github.com/Seungwoo321/tailwind-grid-
 
 With PenguinJS, I didn't really understand what I had built. With tailwind-grid-layout, while trying to achieve 100% test coverage using the `--dangerously-skip-permissions` option, git reset was executed and my work was lost. That's when I started using git worktree to separate my work.
 
-Vibe coding without reviewing code had clear limitations. I needed structure.
+Vibe coding without reviewing code had clear limitations. In the end, the step where developers review code couldn't be skipped. I needed structure.
 
 ---
 
@@ -92,6 +92,8 @@ So the question changes:
 
 - ~~"Am I getting dumber because of AI?"~~
 - **"Let AI handle what AI does well, and what should I be doing?"**
+
+It comes down to code review. No matter how well AI writes code, the final review and judgment is the developer's responsibility.
 
 There was a time when we moved from hand-coding to IDE autocomplete. Back then, people probably thought "Won't my skills stagnate if I rely on autocomplete?" In 2022, GitHub Copilot officially launched, and tools like Cursor started offering tab completion, bringing another wave of change. I skipped this era. And now, coding agents write the code.
 
