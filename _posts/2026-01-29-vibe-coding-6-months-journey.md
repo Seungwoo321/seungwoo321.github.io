@@ -38,11 +38,11 @@ Claude Code를 쓰기 시작한 지 몇 달쯤 됐을 때, 문득 이런 생각�
 
 경제지표 대시보드를 개발하면서 기다리는 시간이 생겼습니다. AI가 코드를 작성하는 동안 나는 가만히 있는 거죠. 다른 일을 하기엔 너무 짧고, 그냥 기다리기엔 애매한 시간. 그래서 동시에 사이드 프로젝트들을 시작했습니다. 이쪽은 바이브 코딩을 해봐야겠다 싶었습니다.
 
-Flexbox Froggy가 재밌었어서, 비슷한 걸 JavaScript로 만들고 싶었습니다. AI 작업 지침 문서 하나로 시작했습니다. 구체적인 기획 없이, 실제 화면 결과를 보면서 "이건 이렇게, 저건 저렇게" 지시하며 진행했습니다. [PenguinJS](https://penguinjs-playground.vercel.app/ko) - 2개 게임까지 만들었고, 배포까지 했습니다. ([GitHub](https://github.com/Seungwoo321/penguinjs))
+Flexbox Froggy가 재밌었어서, 비슷한 걸 JavaScript로 만들고 싶었습니다. AI 작업 지침 문서 하나로 시작했습니다. 구체적인 기획 없이, 실제 화면 결과를 보면서 "이건 이렇게, 저건 저렇게" 지시하며 진행했습니다. [PenguinJS](https://penguinjs-playground.vercel.app/ko) - 배포까지 했습니다. ([GitHub](https://github.com/Seungwoo321/penguinjs))
 
-[tailwind-grid-layout](https://github.com/Seungwoo321/tailwind-grid-layout)도 만들었습니다. react-grid-layout의 Tailwind CSS 버전. npm에 배포까지 했습니다.
+그런데 조금씩 문제가 생기기 시작했습니다. 디자인이 틀리고, 테마가 안 맞고, UI가 깨지고. 콜스택 개념을 시각화하면서 애니메이션을 구현하고 코드 실행 단계를 매핑했는데, 처음에는 단순 스택 구조만 작업했다가 점점 마이크로태스크, 매크로태스크, 애니메이션, I/O, 웹워커까지 고려하게 됐습니다. 구체적인 기획이나 설계 없이 시작하다 보니 버그가 생겨도 어떤 방향으로 나아가야 하는지 알 수 없었습니다. 어찌어찌 동작은 하는데, 코드를 보면 내가 뭘 만든 건지 알 수가 없었습니다. 20개 게임을 목표로 했는데 2개 만들고 두 손 들었습니다.
 
-PenguinJS는 내가 뭘 만들었는지 모르겠었습니다. tailwind-grid-layout은 테스트 커버리지 100%를 만드는 과정에서 `--dangerously-skip-permissions` 옵션으로 작업하다가 git reset이 실행되어 작업이 날아가기도 했습니다. 그러면서 git worktree를 활용해 작업을 분리하게 됐습니다.
+[tailwind-grid-layout](https://github.com/Seungwoo321/tailwind-grid-layout)도 만들었습니다. 경제지표 대시보드에서 react-grid-layout을 사용하는데 Tailwind CSS와 잘 호환되지 않아서 시작한 프로젝트입니다. 테스트 커버리지 100%를 목표로 진행했는데, 문제는 이 수치에만 급급하다 보니 뒤늦게 스토리북에서 확인했을 때 버그들이 있었습니다. 테스트 코드 작성 중에 Claude Code의 `git reset --hard`를 경험하면서, 이후에는 git worktree로 분리하여 작업하는 습관을 갖게 됐습니다. 버그 수정도 개별 브랜치에서 동시에 진행하기 위해 워크트리를 활용했습니다.
 
 코드를 안 보는 바이브 코딩에는 한계가 확실했습니다. 결국 개발자가 코드를 리뷰하는 단계는 빠질 수 없었습니다. 체계가 필요했습니다.
 
@@ -56,7 +56,7 @@ PenguinJS는 내가 뭘 만들었는지 모르겠었습니다. tailwind-grid-lay
 
 경제지표 대시보드에 적용하면서 [경제지표 대시보드 AI DLC 시리즈](/blog/2025/10/06/economic-dashboard-1-why-started/)를 작성하기 시작했습니다.
 
-서브에이전트를 활용한 자동화도 시도했습니다. 250개 이상의 학습 콘텐츠를 자동 생성하는 파이프라인을 구축했고, 이 과정을 [AI 에이전트 파이프라인 시리즈](/blog/2025/12/14/ai-agent-pipeline-1-vibe-coding/)로 정리했습니다.
+서브에이전트를 활용한 자동화도 시도했습니다. 250개 이상의 학습 콘텐츠를 자동 생성하는 파이프라인을 구축했고, 이 과정을 [AI 에이전트 파이프라인 시리즈](/blog/2026/01/16/ai-agent-pipeline-10-final-review/)로 정리했습니다.
 
 ([AI-DLC 적용 문서](https://github.com/Seungwoo321/aidlc-docs/))
 

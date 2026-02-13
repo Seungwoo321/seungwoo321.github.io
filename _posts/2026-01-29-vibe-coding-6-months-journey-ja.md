@@ -38,11 +38,11 @@ Claude Codeを使い始めて数ヶ月経った頃、ふとこんな考えが浮
 
 経済指標ダッシュボードを開発しながら、待ち時間ができました。AIがコードを書いている間、私はじっとしているわけです。他の作業をするには短すぎ、ただ待つには微妙な時間。そこで同時にサイドプロジェクトを始めました。こっちはバイブコーディングを試してみようと思いました。
 
-Flexbox Froggyが面白かったので、似たようなものをJavaScriptで作りたかったのです。AI作業指示書一つで始めました。具体的な企画なしに、実際の画面結果を見ながら「これはこうして、あれはああして」と指示しながら進めました。[PenguinJS](https://penguinjs-playground.vercel.app/ko) - 2つのゲームまで作って、デプロイまでしました。（[GitHub](https://github.com/Seungwoo321/penguinjs)）
+Flexbox Froggyが面白かったので、似たようなものをJavaScriptで作りたかったのです。AI作業指示書一つで始めました。具体的な企画なしに、実際の画面結果を見ながら「これはこうして、あれはああして」と指示しながら進めました。[PenguinJS](https://penguinjs-playground.vercel.app/ko) - デプロイまでしました。（[GitHub](https://github.com/Seungwoo321/penguinjs)）
 
-[tailwind-grid-layout](https://github.com/Seungwoo321/tailwind-grid-layout)も作りました。react-grid-layoutのTailwind CSS版。npmにも公開しました。
+ところが、少しずつ問題が出始めました。デザインが違う、テーマが合わない、UIが崩れる。コールスタックの概念を視覚化しながらアニメーションを実装し、コード実行段階をマッピングしたのですが、最初は単純なスタック構造だけだったのが、徐々にマイクロタスク、マクロタスク、アニメーション、I/O、ウェブワーカーまで考慮するようになりました。具体的な企画や設計なしに始めたため、バグが出てもどの方向に進むべきかわかりませんでした。なんとか動くけど、コードを見ると自分が何を作ったのかわかりませんでした。20個のゲームを目標にしていましたが、2つ作ってギブアップしました。
 
-PenguinJSは自分が何を作ったのかよくわかりませんでした。tailwind-grid-layoutはテストカバレッジ100%を目指す過程で`--dangerously-skip-permissions`オプションで作業していたら、git resetが実行されて作業が消えてしまいました。それでgit worktreeを活用して作業を分離するようになりました。
+[tailwind-grid-layout](https://github.com/Seungwoo321/tailwind-grid-layout)も作りました。経済指標ダッシュボードでreact-grid-layoutを使っていたのですが、Tailwind CSSとうまく互換しなかったので始めたプロジェクトです。テストカバレッジ100%を目標に進めましたが、問題はその数字だけに執着したため、後でStorybookで確認したときにバグが見つかりました。テストコード作成中にClaude Codeの`git reset --hard`を経験し、それ以降はgit worktreeで分離して作業する習慣がつきました。バグ修正も個別ブランチで同時に進めるためにworktreeを活用しました。
 
 コードを見ないバイブコーディングには限界がはっきりしていました。結局、開発者がコードをレビューする段階は省けませんでした。体系が必要でした。
 
@@ -56,7 +56,7 @@ PenguinJSは自分が何を作ったのかよくわかりませんでした。ta
 
 経済指標ダッシュボードに適用しながら、[経済指標ダッシュボードAI DLCシリーズ](/blog/2025/10/06/economic-dashboard-1-why-started/)を書き始めました。
 
-サブエージェントを活用した自動化も試みました。250以上の学習コンテンツを自動生成するパイプラインを構築し、この過程を[AIエージェントパイプラインシリーズ](/blog/2025/12/14/ai-agent-pipeline-1-vibe-coding/)にまとめました。
+サブエージェントを活用した自動化も試みました。250以上の学習コンテンツを自動生成するパイプラインを構築し、この過程を[AIエージェントパイプラインシリーズ](/blog/2026/01/16/ai-agent-pipeline-10-final-review/)にまとめました。
 
 ([AI-DLC適用ドキュメント](https://github.com/Seungwoo321/aidlc-docs/))
 

@@ -38,11 +38,11 @@ The two weeks of struggling became meaningless in that moment. Running it in the
 
 While developing an economic indicators dashboard, I had waiting time. While AI writes code, I just sit there. Too short to do other work, too awkward to just wait. So I started side projects simultaneously. I thought I'd try vibe coding with these.
 
-I enjoyed Flexbox Froggy and wanted to make something similar in JavaScript. I started with a single AI task instruction document. Without concrete planning, I directed it while looking at actual screen results: "do this like this, do that like that." [PenguinJS](https://penguinjs-playground.vercel.app/ko) - I made 2 games and even deployed it. ([GitHub](https://github.com/Seungwoo321/penguinjs))
+I enjoyed Flexbox Froggy and wanted to make something similar in JavaScript. I started with a single AI task instruction document. Without concrete planning, I directed it while looking at actual screen results: "do this like this, do that like that." [PenguinJS](https://penguinjs-playground.vercel.app/ko) - I even deployed it. ([GitHub](https://github.com/Seungwoo321/penguinjs))
 
-I also made [tailwind-grid-layout](https://github.com/Seungwoo321/tailwind-grid-layout). A Tailwind CSS version of react-grid-layout. Published to npm.
+But problems started appearing. Designs were wrong, themes didn't match, UI was breaking. While visualizing the call stack concept with animations and mapping code execution steps, I started with just a simple stack structure, but gradually had to consider microtasks, macrotasks, animations, I/O, and web workers. Without concrete planning or design, when bugs appeared, I had no idea which direction to go. It somehow worked, but looking at the code, I couldn't understand what I had built. I aimed for 20 games but gave up after making 2.
 
-With PenguinJS, I didn't really understand what I had built. With tailwind-grid-layout, while trying to achieve 100% test coverage using the `--dangerously-skip-permissions` option, git reset was executed and my work was lost. That's when I started using git worktree to separate my work.
+I also made [tailwind-grid-layout](https://github.com/Seungwoo321/tailwind-grid-layout). I started this project because react-grid-layout wasn't working well with Tailwind CSS in the economic indicators dashboard. I aimed for 100% test coverage, but the problem was that by focusing only on that number, I later found bugs when checking in Storybook. While writing test code, I experienced Claude Code's `git reset --hard`, and after that, I developed the habit of working with git worktree separation. I also used worktrees to fix bugs simultaneously in separate branches.
 
 Vibe coding without reviewing code had clear limitations. In the end, the step where developers review code couldn't be skipped. I needed structure.
 
@@ -56,7 +56,7 @@ User stories → Unit separation → Domain model → Logical design → Impleme
 
 I started applying it to the economic indicators dashboard and began writing the [Economic Dashboard AI-DLC Series](/blog/2025/10/06/economic-dashboard-1-why-started/).
 
-I also tried automation using sub-agents. I built a pipeline that automatically generates over 250 learning contents and documented this process in the [AI Agent Pipeline Series](/blog/2025/12/14/ai-agent-pipeline-1-vibe-coding/).
+I also tried automation using sub-agents. I built a pipeline that automatically generates over 250 learning contents and documented this process in the [AI Agent Pipeline Series](/blog/2026/01/16/ai-agent-pipeline-10-final-review/).
 
 ([AI-DLC Documentation](https://github.com/Seungwoo321/aidlc-docs/))
 
