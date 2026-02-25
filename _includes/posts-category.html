@@ -1,5 +1,9 @@
+{%- assign current_lang = page.lang | default: "ko" -%}
 {%- for post in site.categories[include.taxonomy] -%}
+  {%- assign post_lang = post.lang | default: "ko" -%}
   {%- unless post.hidden -%}
-    {% include archive-single.html %}
+    {%- if post_lang == current_lang -%}
+      {% include archive-single.html type=include.type %}
+    {%- endif -%}
   {%- endunless -%}
 {%- endfor -%}

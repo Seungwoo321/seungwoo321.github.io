@@ -63,12 +63,18 @@ layout: default
   </article>
 
   {% comment %}<!-- only show related on a post page when `related: true` -->{% endcomment %}
+  {%- assign current_lang = page.lang | default: "ko" -%}
   {% if page.id and page.related and site.related_posts.size > 0 %}
     <div class="page__related">
       <h4 class="page__related-title">{{ site.data.ui-text[site.locale].related_label | default: "You May Also Enjoy" }}</h4>
       <div class="grid__wrapper">
-        {% for post in site.related_posts limit:4 %}
-          {% include archive-single.html type="grid" %}
+        {%- assign related_count = 0 -%}
+        {% for post in site.related_posts %}
+          {%- assign post_lang = post.lang | default: "ko" -%}
+          {%- if post_lang == current_lang and related_count < 4 -%}
+            {% include archive-single.html type="grid" %}
+            {%- assign related_count = related_count | plus: 1 -%}
+          {%- endif -%}
         {% endfor %}
       </div>
     </div>
@@ -77,11 +83,16 @@ layout: default
     <div class="page__related">
       <h4 class="page__related-title">{{ site.data.ui-text[site.locale].related_label | default: "You May Also Enjoy" }}</h4>
       <div class="grid__wrapper">
-        {% for post in site.posts limit:4 %}
+        {%- assign related_count = 0 -%}
+        {% for post in site.posts %}
+          {%- assign post_lang = post.lang | default: "ko" -%}
           {% if post.id == page.id %}
             {% continue %}
           {% endif %}
-          {% include archive-single.html type="grid" %}
+          {%- if post_lang == current_lang and related_count < 4 -%}
+            {% include archive-single.html type="grid" %}
+            {%- assign related_count = related_count | plus: 1 -%}
+          {%- endif -%}
         {% endfor %}
       </div>
     </div>
