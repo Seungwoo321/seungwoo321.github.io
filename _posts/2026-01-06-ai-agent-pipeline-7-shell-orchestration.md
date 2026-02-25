@@ -6,6 +6,7 @@ categories: AI-Agent
 permalink: /blog/:year/:month/:day/:title/
 last_modified_at: "2026-01-06"
 lang: ko
+locale: ko
 ref: ai-agent-pipeline-7
 ---
 

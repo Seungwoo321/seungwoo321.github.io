@@ -3,6 +3,7 @@ title: InfluxDB를 활용한 주식차트 만들기
 date: '2021-05-20'
 tags: ["InfluxDB", "Trading Bot"]
 categories: Quant
+locale: ko
 permalink: /blog/:year/:month/:day/:title/
 ---
 

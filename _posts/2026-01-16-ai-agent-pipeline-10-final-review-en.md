@@ -6,8 +6,8 @@ categories: AI-Agent
 permalink: /en/blog/:year/:month/:day/:title/
 last_modified_at: "2026-01-16"
 lang: en
+locale: en
 ref: ai-agent-pipeline-10
-hidden: true
 ---
 
 In the [previous article](/en/blog/2026/01/13/ai-agent-pipeline-9-pipeline-complete/), we covered improvements discovered while operating the pipeline.

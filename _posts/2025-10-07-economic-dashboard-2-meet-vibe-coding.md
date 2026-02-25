@@ -3,6 +3,7 @@ title: "[경제지표 대시보드 개발기 #2] 바이브 코딩을 만나다"
 date: "2025-10-07"
 tags: ["사이드프로젝트", "바이브코딩", "AI", "클로드"]
 categories: AI-DLC
+locale: ko
 permalink: /blog/:year/:month/:day/:title/
 last_modified_at: "2025-10-07"
 ---

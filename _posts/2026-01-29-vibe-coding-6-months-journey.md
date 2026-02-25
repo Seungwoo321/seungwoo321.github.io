@@ -6,6 +6,7 @@ categories: Essay
 permalink: /blog/:year/:month/:day/:title/
 last_modified_at: "2026-01-29"
 lang: ko
+locale: ko
 ---
 
 "내가 멍청해지고 있는 건 아닌가?"

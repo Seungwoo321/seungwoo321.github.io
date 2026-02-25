@@ -6,8 +6,8 @@ categories: AI-Agent
 permalink: /en/blog/:year/:month/:day/:title/
 last_modified_at: "2026-01-02"
 lang: en
+locale: en
 ref: ai-agent-pipeline-6
-hidden: true
 ---
 
 In the [previous article](/en/blog/2025/12/30/ai-agent-pipeline-5-prompt-evolution/), we covered the process of completing agent prompts. While discussing prompts, I talked about "failure" and "success"—those results were confirmed while running the pipeline.

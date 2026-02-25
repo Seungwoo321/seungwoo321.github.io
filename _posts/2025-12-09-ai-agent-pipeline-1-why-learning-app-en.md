@@ -8,7 +8,6 @@ last_modified_at: "2025-12-09"
 lang: en
 locale: en
 ref: ai-agent-pipeline-1
-hidden: true
 ---
 
 Have you ever gotten tired of studying with LLMs?

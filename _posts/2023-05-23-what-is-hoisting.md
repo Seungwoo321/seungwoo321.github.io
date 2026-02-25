@@ -4,6 +4,7 @@ date: "2023-05-23"
 last_modified_at: "2023-05-23"
 tags: ["JavaScript"]
 categories: JavaScript
+locale: ko
 permalink: /blog/:year/:month/:day/:title/
 ---
 ES6에서 let과 const는 호이스팅이 발생하지 않는 것처럼 보여서 호이스팅이 발생하지 않는다고 이해할 수 있지만 사실은 그렇지 않다. 이게 무슨 의미인지 정리했다.

@@ -3,6 +3,7 @@ title: Padding Hack으로 반응형 SVG 만들기
 date: 2019-12-15
 tags: ["SVG", "CSS"]
 categories: CSS
+locale: ko
 permalink: /blog/:year/:month/:day/:title/
 ---
 

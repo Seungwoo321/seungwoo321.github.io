@@ -3,6 +3,7 @@ title: Vue 3 + TypeScript 패턴 가이드
 date: "2025-05-27"
 tags: ["vue3", "typescript"]
 categories: TypeScript
+locale: ko
 permalink: /blog/:year/:month/:day/:title/
 last_modified_at: "2025-05-27"
 ---

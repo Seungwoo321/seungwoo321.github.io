@@ -3,6 +3,7 @@ title: 백준 <브루트 포스 - N과 M> 순열과 조합 정리
 date: "2023-12-29"
 tags: ["PS", "BOJ"]
 categories: PS
+locale: ko
 ---
 
 <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>

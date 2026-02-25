@@ -6,8 +6,8 @@ categories: AI-Agent
 permalink: /en/blog/:year/:month/:day/:title/
 last_modified_at: "2026-01-06"
 lang: en
+locale: en
 ref: ai-agent-pipeline-7
-hidden: true
 ---
 
 In the [previous article](/en/blog/2026/01/02/ai-agent-pipeline-6-seven-agents-collaboration/), we covered the collaboration structure of 7 agents and the handoff protocol.

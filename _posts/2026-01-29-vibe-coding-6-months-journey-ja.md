@@ -6,6 +6,7 @@ categories: Essay
 permalink: /blog/:year/:month/:day/:title/
 last_modified_at: "2026-01-29"
 lang: ja
+locale: ja
 ---
 
 「自分はバカになっているんじゃないか？」

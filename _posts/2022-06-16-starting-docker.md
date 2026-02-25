@@ -3,6 +3,7 @@ title: 프론트엔드 개발자의 Docker 입문기
 date: '2022-06-16'
 tags: ["Docker", "Trading Bot"]
 categories: Quant
+locale: ko
 permalink: /blog/:year/:month/:day/:title/
 ---
 

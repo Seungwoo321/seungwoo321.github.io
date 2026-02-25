@@ -3,6 +3,7 @@ title: 여러 개의 GitHub/CodeCommit 인증정보 관리하기
 date: "2019-04-21"
 tags: ["Git", "CodeCommit"]
 categories: Git
+locale: ko
 permalink: /blog/:year/:month/:day/:title/
 last_modified_at: "2019-04-21"
 ---

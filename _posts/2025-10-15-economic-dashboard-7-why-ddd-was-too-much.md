@@ -3,6 +3,7 @@ title: "[경제지표 대시보드 개발기 #7] 백엔드 중심 DDD, 프론트
 date: "2025-10-15"
 tags: ["사이드프로젝트", "AI-DLC", "DDD", "프론트엔드"]
 categories: AI-DLC
+locale: ko
 permalink: /blog/:year/:month/:day/:title/
 last_modified_at: "2025-10-15"
 ---

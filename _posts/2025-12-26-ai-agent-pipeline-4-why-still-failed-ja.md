@@ -6,8 +6,8 @@ categories: AI-Agent
 permalink: /ja/blog/:year/:month/:day/:title/
 last_modified_at: "2025-12-26"
 lang: ja
+locale: ja
 ref: ai-agent-pipeline-4
-hidden: true
 ---
 
 [前回の記事](/ja/blog/2025/12/23/ai-agent-pipeline-3-why-seven-agents/)では、一つのプロンプトがなぜうまくいかなかったか、そして7つのエージェントに分離した過程を扱いました。

@@ -3,6 +3,7 @@ title: 자바스크립트에서 큐와 스택 자료구조 구현하기
 date: '2023-03-02'
 tags: ["Frontend", "JavaScript", "PS"]
 categories: JavaScript
+locale: ko
 permalink: /blog/:year/:month/:day/:title/
 ---
 

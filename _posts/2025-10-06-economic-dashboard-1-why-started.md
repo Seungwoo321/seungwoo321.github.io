@@ -3,6 +3,7 @@ title: "[경제지표 대시보드 개발기 #1] 경제지표 대시보드를 �
 date: "2025-10-06"
 tags: ["AI-DLC"]
 categories: AI-DLC
+locale: ko
 permalink: /blog/:year/:month/:day/:title/
 last_modified_at: "2025-10-06"
 ---

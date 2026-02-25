@@ -8,7 +8,6 @@ last_modified_at: "2025-12-16"
 lang: en
 locale: en
 ref: ai-agent-pipeline-2
-hidden: true
 ---
 
 In the [previous post](/en/blog/2025/12/09/ai-agent-pipeline-1-why-learning-app/), I talked about why I started building a learning app.

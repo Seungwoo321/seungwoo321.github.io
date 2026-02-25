@@ -3,6 +3,7 @@ title: Account has insufficient Available Balance
 date: '2021-12-10'
 tags: ["Trading Bot", "trouble shooting"]
 categories: Quant
+locale: ko
 permalink: /blog/:year/:month/:day/:title/
 ---
 

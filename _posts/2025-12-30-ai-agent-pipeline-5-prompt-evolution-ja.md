@@ -6,8 +6,8 @@ categories: AI-Agent
 permalink: /ja/blog/:year/:month/:day/:title/
 last_modified_at: "2025-12-30"
 lang: ja
+locale: ja
 ref: ai-agent-pipeline-5
-hidden: true
 ---
 
 [前回の記事](/ja/blog/2025/12/26/ai-agent-pipeline-4-why-still-failed/)では、行き詰まった状況でAI-DLC方法論を適用することを決めた話を扱いました。

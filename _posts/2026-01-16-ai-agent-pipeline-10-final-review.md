@@ -3,6 +3,7 @@ title: "[AI 에이전트 파이프라인 #10] 완성된 앱과 회고"
 date: "2026-01-16"
 tags: ["AI", "Claude Code", "프롬프트 엔지니어링", "에이전트", "자동화"]
 categories: AI-Agent
+locale: ko
 permalink: /blog/:year/:month/:day/:title/
 last_modified_at: "2026-01-16"
 ---

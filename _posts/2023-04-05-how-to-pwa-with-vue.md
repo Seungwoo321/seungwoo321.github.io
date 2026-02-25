@@ -3,6 +3,7 @@ title: 오리진이 다른 리소스를 서비스워커로 캐싱하기
 date: "2023-03-28"
 tags: ["Workbox", "Frontend", "PWA", "Cache"]
 categories: Web
+locale: ko
 permalink: /blog/:year/:month/:day/:title/
 ---
 

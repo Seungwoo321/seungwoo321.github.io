@@ -6,8 +6,8 @@ categories: AI-Agent
 permalink: /ja/blog/:year/:month/:day/:title/
 last_modified_at: "2026-01-09"
 lang: ja
+locale: ja
 ref: ai-agent-pipeline-8
-hidden: true
 ---
 
 [前回の記事](/ja/blog/2026/01/06/ai-agent-pipeline-7-shell-orchestration/)では、パイプラインの正常実行フローを扱いました。

@@ -6,8 +6,8 @@ categories: AI-Agent
 permalink: /en/blog/:year/:month/:day/:title/
 last_modified_at: "2025-12-30"
 lang: en
+locale: en
 ref: ai-agent-pipeline-5
-hidden: true
 ---
 
 In the [previous article](/en/blog/2025/12/26/ai-agent-pipeline-4-why-still-failed/), we covered the story of deciding to apply the AI-DLC methodology when stuck.

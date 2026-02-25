@@ -3,6 +3,7 @@ title: 자바스크립트의 동작원리
 date: '2022-01-19'
 tags: ["Frontend", "JavaScript"]
 categories: JavaScript
+locale: ko
 permalink: /blog/:year/:month/:day/:title/
 ---
 

@@ -3,6 +3,7 @@ title: 영원히 변하지 않을 자바스크립트의 초석 개념 3가지
 date: '2023-07-03'
 tags: ["Frontend", "JavaScript"]
 categories: JavaScript
+locale: ko
 ---
 
 ECMAScript 3판을 다루는 '자바스크립트를 깨우치다'란 책을 읽었다. 그리고 이 책에서 말하는 영원히 변하지 않을 자바스크립트 초석 개념이라고 생각하는 3가지에 대해서 정리했다.

@@ -8,7 +8,6 @@ last_modified_at: "2025-12-09"
 lang: ja
 locale: ja
 ref: ai-agent-pipeline-1
-hidden: true
 ---
 
 LLMで勉強していて疲れたことはありませんか？

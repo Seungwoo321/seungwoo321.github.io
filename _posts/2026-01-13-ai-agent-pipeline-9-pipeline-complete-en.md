@@ -6,8 +6,8 @@ categories: AI-Agent
 permalink: /en/blog/:year/:month/:day/:title/
 last_modified_at: "2026-01-13"
 lang: en
+locale: en
 ref: ai-agent-pipeline-9
-hidden: true
 ---
 
 In the [previous article](/en/blog/2026/01/09/ai-agent-pipeline-8-rollback-mechanism/), we covered the retry and rollback mechanism.

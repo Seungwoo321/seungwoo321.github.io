@@ -3,6 +3,7 @@ title: 브라우저 렌더링 과정
 date: '2022-01-24'
 tags: ["Frontend", "JavaScript"]
 categories: Web
+locale: ko
 permalink: /blog/:year/:month/:day/:title/
 ---
 

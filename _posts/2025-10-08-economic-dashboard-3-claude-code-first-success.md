@@ -3,6 +3,7 @@ title: "[경제지표 대시보드 개발기 #3] 클로드 코드와 첫 성공"
 date: "2025-10-08"
 tags: ["사이드프로젝트", "클로드코드", "바이브코딩", "AI"]
 categories: AI-DLC
+locale: ko
 permalink: /blog/:year/:month/:day/:title/
 last_modified_at: "2025-10-08"
 ---

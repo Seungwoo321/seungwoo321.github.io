@@ -3,6 +3,7 @@ title: "[경제지표 대시보드 개발기 #5] AWS AI-DLC를 만나다"
 date: "2025-10-10"
 tags: ["사이드프로젝트", "AI-DLC", "AWS", "방법론"]
 categories: AI-DLC
+locale: ko
 permalink: /blog/:year/:month/:day/:title/
 last_modified_at: "2025-10-10"
 ---

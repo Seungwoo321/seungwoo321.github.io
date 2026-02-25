@@ -6,8 +6,8 @@ categories: AI-Agent
 permalink: /ja/blog/:year/:month/:day/:title/
 last_modified_at: "2026-01-16"
 lang: ja
+locale: ja
 ref: ai-agent-pipeline-10
-hidden: true
 ---
 
 [前回の記事](/ja/blog/2026/01/13/ai-agent-pipeline-9-pipeline-complete/)では、パイプラインを運用しながら発見した改善点を扱いました。

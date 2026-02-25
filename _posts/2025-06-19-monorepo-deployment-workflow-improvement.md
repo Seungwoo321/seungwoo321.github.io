@@ -3,6 +3,7 @@ title: 모노레포 배포 워크플로우 개선기 TypeScript 마이그레이�
 date: "2025-06-19"
 tags: ["vue", "typescript", "github-actions", "monorepo", "deployment", "ci-cd", "npm", "changesets", "vue-pivottable"]
 categories: Vue Pivottable
+locale: ko
 permalink: /blog/:year/:month/:day/:title/
 last_modified_at: "2025-06-19"
 ---

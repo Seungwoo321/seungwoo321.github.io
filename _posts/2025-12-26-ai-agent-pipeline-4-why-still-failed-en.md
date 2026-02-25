@@ -6,8 +6,8 @@ categories: AI-Agent
 permalink: /en/blog/:year/:month/:day/:title/
 last_modified_at: "2025-12-26"
 lang: en
+locale: en
 ref: ai-agent-pipeline-4
-hidden: true
 ---
 
 In the [previous article](/en/blog/2025/12/23/ai-agent-pipeline-3-why-seven-agents/), we covered why a single prompt didn't work and the process of splitting into 7 agents.

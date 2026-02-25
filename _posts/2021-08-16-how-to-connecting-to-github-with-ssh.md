@@ -3,6 +3,7 @@ title: SSH로 GitHub / CodeCommit 연결하기
 date: '2021-08-16'
 tags: ["Git", "CodeCommit"]
 categories: Git
+locale: ko
 permalink: /blog/:year/:month/:day/:title/
 ---
 

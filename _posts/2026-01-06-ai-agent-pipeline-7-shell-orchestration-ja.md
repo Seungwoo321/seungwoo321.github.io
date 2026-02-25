@@ -6,8 +6,8 @@ categories: AI-Agent
 permalink: /ja/blog/:year/:month/:day/:title/
 last_modified_at: "2026-01-06"
 lang: ja
+locale: ja
 ref: ai-agent-pipeline-7
-hidden: true
 ---
 
 [前回の記事](/ja/blog/2026/01/02/ai-agent-pipeline-6-seven-agents-collaboration/)では、7つのエージェントの協業構造とハンドオフプロトコルを扱いました。

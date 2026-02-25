@@ -6,8 +6,8 @@ categories: AI-Agent
 permalink: /ja/blog/:year/:month/:day/:title/
 last_modified_at: "2026-01-02"
 lang: ja
+locale: ja
 ref: ai-agent-pipeline-6
-hidden: true
 ---
 
 [前回の記事](/ja/blog/2025/12/30/ai-agent-pipeline-5-prompt-evolution/)では、エージェントプロンプトを完成させるまでの過程を扱いました。プロンプトを扱いながら「失敗」「成功」と話しましたが、その結果はパイプラインを実行しながら確認したものでした。

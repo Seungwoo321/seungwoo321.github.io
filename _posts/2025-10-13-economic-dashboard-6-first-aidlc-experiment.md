@@ -3,6 +3,7 @@ title: "[경제지표 대시보드 개발기 #6] AI-DLC 첫 실험기 — AI와 
 date: "2025-10-13"
 tags: ["사이드프로젝트", "AI-DLC", "프롬프트", "문서화"]
 categories: AI-DLC
+locale: ko
 permalink: /blog/:year/:month/:day/:title/
 last_modified_at: "2025-10-13"
 ---

@@ -3,6 +3,7 @@ title: 트레이딩 봇 2.0 개발 후기
 date: '2022-01-28'
 tags: ["Trading Bot"]
 categories: Quant
+locale: ko
 permalink: /blog/:year/:month/:day/:title/
 ---
 

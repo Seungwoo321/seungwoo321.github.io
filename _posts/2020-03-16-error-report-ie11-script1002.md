@@ -3,6 +3,7 @@ title: IE 11 Syntax Error - Script1002
 date: '2020-03-16'
 tags: ["IE", "trouble shooting"]
 categories: Vue Pivottable
+locale: ko
 permalink: /blog/:year/:month/:day/:title/
 ---
 

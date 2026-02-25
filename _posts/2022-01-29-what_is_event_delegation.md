@@ -3,6 +3,7 @@ title: 이벤트 위임(Event Delegation)
 date: '2022-01-29'
 tags: ["Frontend", "JavaScript"]
 categories: Web
+locale: ko
 permalink: /blog/:year/:month/:day/:title/
 ---
 

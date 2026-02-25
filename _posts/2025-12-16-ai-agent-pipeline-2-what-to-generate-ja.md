@@ -8,7 +8,6 @@ last_modified_at: "2025-12-16"
 lang: ja
 locale: ja
 ref: ai-agent-pipeline-2
-hidden: true
 ---
 
 [前回](/ja/blog/2025/12/09/ai-agent-pipeline-1-why-learning-app/)では、なぜ学習アプリを作り始めたかについて話しました。

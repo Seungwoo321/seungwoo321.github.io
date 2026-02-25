@@ -6,8 +6,8 @@ categories: AI-Agent
 permalink: /ja/blog/:year/:month/:day/:title/
 last_modified_at: "2026-01-13"
 lang: ja
+locale: ja
 ref: ai-agent-pipeline-9
-hidden: true
 ---
 
 [前回の記事](/ja/blog/2026/01/09/ai-agent-pipeline-8-rollback-mechanism/)では、リトライとロールバックメカニズムを扱いました。

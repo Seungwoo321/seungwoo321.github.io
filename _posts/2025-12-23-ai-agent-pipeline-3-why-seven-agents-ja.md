@@ -6,8 +6,8 @@ categories: AI-Agent
 permalink: /ja/blog/:year/:month/:day/:title/
 last_modified_at: "2025-12-23"
 lang: ja
+locale: ja
 ref: ai-agent-pipeline-3
-hidden: true
 ---
 
 [前回の記事](/ja/blog/2025/12/16/ai-agent-pipeline-2-what-to-generate/)では、メタデータパイプラインでcategory.yamlと空のコンテンツファイルを自動生成しました。

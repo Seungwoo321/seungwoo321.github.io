@@ -3,6 +3,7 @@ title: CSS 박스 모델
 date: '2022-10-16'
 tags: ["Frontend", "CSS"]
 categories: CSS
+locale: ko
 permalink: /blog/:year/:month/:day/:title/
 ---
 

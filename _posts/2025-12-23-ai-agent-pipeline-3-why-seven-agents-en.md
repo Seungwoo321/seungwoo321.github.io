@@ -6,8 +6,8 @@ categories: AI-Agent
 permalink: /en/blog/:year/:month/:day/:title/
 last_modified_at: "2025-12-23"
 lang: en
+locale: en
 ref: ai-agent-pipeline-3
-hidden: true
 ---
 
 In the [previous article](/en/blog/2025/12/16/ai-agent-pipeline-2-what-to-generate/), we used the metadata pipeline to automatically generate category.yaml and empty content files.

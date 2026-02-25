@@ -4,6 +4,7 @@ date: "2023-05-19"
 last_modified_at: "2023-05-24"
 tags: ["PS", "BOJ"]
 categories: PS
+locale: ko
 permalink: /blog/:year/:month/:day/:title/
 ---
 
