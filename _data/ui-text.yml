@@ -601,11 +601,11 @@ ko: &DEFAULT_KO
   page                       : "페이지"
   pagination_previous        : "이전"
   pagination_next            : "다음"
-  breadcrumb_home_label      : "Home"
+  breadcrumb_home_label      : "홈"
   breadcrumb_separator       : "/"
   menu_label                 : "토글 메뉴"
-  search_label               :
-  toc_label                  : "On This Page"
+  search_label               : "검색"
+  toc_label                  : "목차"
   ext_link_label             : "직접 링크"
   less_than                  : "최대"
   minute_read                : "분 소요"
@@ -1130,11 +1130,11 @@ ja: &DEFAULT_JA
   breadcrumb_home_label      : "ホーム"
   breadcrumb_separator       : "/"
   menu_label                 : "メニュー"
-  search_label               :
+  search_label               : "検索"
   toc_label                  : "目次"
   ext_link_label             : "リンク"
-  less_than                  :
-  minute_read                :
+  less_than                  : "約"
+  minute_read                : "分で読めます"
   share_on_label             : "共有"
   meta_label                 :
   tags_label                 : "タグ:"
@@ -1166,6 +1166,7 @@ ja: &DEFAULT_JA
   search_placeholder_text    : "検索キーワードを入力してください..."
   search_algolia_no_results  :
   results_found              : "件"
+  back_to_top                : "トップへ戻る"
 ja-JP:
   <<: *DEFAULT_JA
 
