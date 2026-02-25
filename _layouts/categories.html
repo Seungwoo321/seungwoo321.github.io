@@ -4,20 +4,44 @@ layout: archive
 
 {{ content }}
 
-{% assign categories_max = 0 %}
-{% for category in site.categories %}
-  {% if category[1].size > categories_max %}
-    {% assign categories_max = category[1].size %}
-  {% endif %}
-{% endfor %}
+{%- assign current_lang = page.lang | default: "ko" -%}
+
+{%- comment -%} Build language-filtered category index {%- endcomment -%}
+{%- assign filtered_categories = "" | split: "" -%}
+{%- assign category_counts = "" | split: "" -%}
+
+{%- for category in site.categories -%}
+  {%- assign cat_posts = "" | split: "" -%}
+  {%- for post in category[1] -%}
+    {%- assign post_lang = post.lang | default: "ko" -%}
+    {%- if post_lang == current_lang -%}
+      {%- assign cat_posts = cat_posts | push: post -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {%- if cat_posts.size > 0 -%}
+    {%- assign cat_data = category[0] | append: ":::" | append: cat_posts.size -%}
+    {%- assign filtered_categories = filtered_categories | push: cat_data -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- assign categories_max = 0 -%}
+{%- for cat_data in filtered_categories -%}
+  {%- assign cat_size = cat_data | split: ":::" | last | plus: 0 -%}
+  {%- if cat_size > categories_max -%}
+    {%- assign categories_max = cat_size -%}
+  {%- endif -%}
+{%- endfor -%}
 
 <ul class="taxonomy__index">
   {% for i in (1..categories_max) reversed %}
-    {% for category in site.categories %}
-      {% if category[1].size == i %}
+    {% for cat_data in filtered_categories %}
+      {%- assign cat_parts = cat_data | split: ":::" -%}
+      {%- assign cat_name = cat_parts[0] -%}
+      {%- assign cat_size = cat_parts[1] | plus: 0 -%}
+      {% if cat_size == i %}
         <li>
-          <a href="#{{ category[0] | slugify }}">
-            <strong>{{ category[0] }}</strong> <span class="taxonomy__count">{{ i }}</span>
+          <a href="#{{ cat_name | slugify }}">
+            <strong>{{ cat_name }}</strong> <span class="taxonomy__count">{{ cat_size }}</span>
           </a>
         </li>
       {% endif %}
@@ -28,12 +52,19 @@ layout: archive
 {% assign entries_layout = page.entries_layout | default: 'list' %}
 {% for i in (1..categories_max) reversed %}
   {% for category in site.categories %}
-    {% if category[1].size == i %}
+    {%- assign cat_posts = "" | split: "" -%}
+    {%- for post in category[1] -%}
+      {%- assign post_lang = post.lang | default: "ko" -%}
+      {%- if post_lang == current_lang -%}
+        {%- assign cat_posts = cat_posts | push: post -%}
+      {%- endif -%}
+    {%- endfor -%}
+    {% if cat_posts.size == i %}
       <section id="{{ category[0] | slugify | downcase }}" class="taxonomy__section">
         <h2 class="archive__subtitle">{{ category[0] }}</h2>
         <div class="entries-{{ entries_layout }}">
-          {% for post in category.last %}
-            {% include archive-single.html type=entries_layout %}
+          {% for post in cat_posts %}
+            {% include archive-single.html type=entries_layout post=post %}
           {% endfor %}
         </div>
         <a href="#page-title" class="back-to-top">{{ site.data.ui-text[site.locale].back_to_top | default: 'Back to Top' }} &uarr;</a>

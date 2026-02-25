@@ -4,20 +4,43 @@ layout: archive
 
 {{ content }}
 
-{% assign tags_max = 0 %}
-{% for tag in site.tags %}
-  {% if tag[1].size > tags_max %}
-    {% assign tags_max = tag[1].size %}
-  {% endif %}
-{% endfor %}
+{%- assign current_lang = page.lang | default: "ko" -%}
+
+{%- comment -%} Build language-filtered tag index {%- endcomment -%}
+{%- assign filtered_tags = "" | split: "" -%}
+
+{%- for tag in site.tags -%}
+  {%- assign tag_posts = "" | split: "" -%}
+  {%- for post in tag[1] -%}
+    {%- assign post_lang = post.lang | default: "ko" -%}
+    {%- if post_lang == current_lang -%}
+      {%- assign tag_posts = tag_posts | push: post -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {%- if tag_posts.size > 0 -%}
+    {%- assign tag_data = tag[0] | append: ":::" | append: tag_posts.size -%}
+    {%- assign filtered_tags = filtered_tags | push: tag_data -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- assign tags_max = 0 -%}
+{%- for tag_data in filtered_tags -%}
+  {%- assign tag_size = tag_data | split: ":::" | last | plus: 0 -%}
+  {%- if tag_size > tags_max -%}
+    {%- assign tags_max = tag_size -%}
+  {%- endif -%}
+{%- endfor -%}
 
 <ul class="taxonomy__index">
   {% for i in (1..tags_max) reversed %}
-    {% for tag in site.tags %}
-      {% if tag[1].size == i %}
+    {% for tag_data in filtered_tags %}
+      {%- assign tag_parts = tag_data | split: ":::" -%}
+      {%- assign tag_name = tag_parts[0] -%}
+      {%- assign tag_size = tag_parts[1] | plus: 0 -%}
+      {% if tag_size == i %}
         <li>
-          <a href="#{{ tag[0] | slugify }}">
-            <strong>{{ tag[0] }}</strong> <span class="taxonomy__count">{{ i }}</span>
+          <a href="#{{ tag_name | slugify }}">
+            <strong>{{ tag_name }}</strong> <span class="taxonomy__count">{{ tag_size }}</span>
           </a>
         </li>
       {% endif %}
@@ -28,12 +51,19 @@ layout: archive
 {% assign entries_layout = page.entries_layout | default: 'list' %}
 {% for i in (1..tags_max) reversed %}
   {% for tag in site.tags %}
-    {% if tag[1].size == i %}
+    {%- assign tag_posts = "" | split: "" -%}
+    {%- for post in tag[1] -%}
+      {%- assign post_lang = post.lang | default: "ko" -%}
+      {%- if post_lang == current_lang -%}
+        {%- assign tag_posts = tag_posts | push: post -%}
+      {%- endif -%}
+    {%- endfor -%}
+    {% if tag_posts.size == i %}
       <section id="{{ tag[0] | slugify | downcase }}" class="taxonomy__section">
         <h2 class="archive__subtitle">{{ tag[0] }}</h2>
         <div class="entries-{{ entries_layout }}">
-          {% for post in tag.last %}
-            {% include archive-single.html type=entries_layout %}
+          {% for post in tag_posts %}
+            {% include archive-single.html type=entries_layout post=post %}
           {% endfor %}
         </div>
         <a href="#page-title" class="back-to-top">{{ site.data.ui-text[site.locale].back_to_top | default: 'Back to Top' }} &uarr;</a>

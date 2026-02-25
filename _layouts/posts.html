@@ -6,50 +6,17 @@ layout: archive
 
 {%- assign current_lang = page.lang | default: site.default_lang | default: "ko" -%}
 
-{%- comment -%} Build filtered posts list {%- endcomment -%}
+{%- comment -%} Build filtered posts list - only current language {%- endcomment -%}
 {%- assign filtered_posts = "" | split: "" -%}
-{%- assign displayed_refs = "" -%}
 
 {%- for post in site.posts -%}
   {%- assign post_lang = post.lang | default: "ko" -%}
-  {%- assign post_ref = post.ref -%}
 
-  {%- if post_ref -%}
-    {%- assign ref_check = displayed_refs | split: "," | where_exp: "r", "r == post_ref" -%}
-    {%- if ref_check.size == 0 -%}
-      {%- assign best_post = nil -%}
-      {%- assign fallback_post = nil -%}
-
-      {%- for p in site.posts -%}
-        {%- if p.ref == post_ref -%}
-          {%- assign p_lang = p.lang | default: "ko" -%}
-          {%- if p_lang == current_lang -%}
-            {%- assign best_post = p -%}
-          {%- elsif p_lang == "ko" -%}
-            {%- assign fallback_post = p -%}
-          {%- endif -%}
-        {%- endif -%}
-      {%- endfor -%}
-
-      {%- if best_post -%}
-        {%- assign filtered_posts = filtered_posts | push: best_post -%}
-      {%- elsif fallback_post -%}
-        {%- assign filtered_posts = filtered_posts | push: fallback_post -%}
-      {%- endif -%}
-
-      {%- if displayed_refs == "" -%}
-        {%- assign displayed_refs = post_ref -%}
-      {%- else -%}
-        {%- assign displayed_refs = displayed_refs | append: "," | append: post_ref -%}
-      {%- endif -%}
+  {%- unless post.hidden -%}
+    {%- if post_lang == current_lang -%}
+      {%- assign filtered_posts = filtered_posts | push: post -%}
     {%- endif -%}
-  {%- else -%}
-    {%- if post_lang == current_lang or post_lang == "ko" -%}
-      {%- unless post.hidden -%}
-        {%- assign filtered_posts = filtered_posts | push: post -%}
-      {%- endunless -%}
-    {%- endif -%}
-  {%- endif -%}
+  {%- endunless -%}
 {%- endfor -%}
 
 <ul class="taxonomy__index">

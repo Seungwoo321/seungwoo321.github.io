@@ -1,48 +1,20 @@
-{%- comment -%} Detect current language and find Korean original ref {%- endcomment -%}
+{%- comment -%} Detect current language {%- endcomment -%}
 {%- assign current_lang = page.lang | default: "ko" -%}
-{%- assign current_ref = page.ref -%}
-
-{%- comment -%} Find the Korean original post to get proper prev/next {%- endcomment -%}
-{%- assign ko_original = page -%}
-{%- if current_ref and current_lang != "ko" -%}
-  {%- for p in site.posts -%}
-    {%- if p.ref == current_ref and p.lang == "ko" -%}
-      {%- assign ko_original = p -%}
-      {%- break -%}
-    {%- endif -%}
-  {%- endfor -%}
-{%- endif -%}
 
 {%- comment -%} Find language-appropriate previous post (older) {%- endcomment -%}
 {%- assign prev_url = "" -%}
 {%- assign prev_title = "" -%}
-{%- assign prev_found = false -%}
 {%- assign found_current = false -%}
 
 {%- comment -%} Iterate through posts (newest to oldest) to find previous (older) {%- endcomment -%}
 {%- for p in site.posts -%}
   {%- assign p_lang = p.lang | default: "ko" -%}
-  {%- if p_lang == "ko" and p.hidden != true -%}
-    {%- if found_current and prev_found == false -%}
-      {%- comment -%} This is the previous (older) post, find translation if needed {%- endcomment -%}
-      {%- assign prev_ref = p.ref -%}
-      {%- if prev_ref and current_lang != "ko" -%}
-        {%- for tp in site.posts -%}
-          {%- if tp.ref == prev_ref and tp.lang == current_lang -%}
-            {%- assign prev_url = tp.url -%}
-            {%- assign prev_title = tp.title -%}
-            {%- assign prev_found = true -%}
-            {%- break -%}
-          {%- endif -%}
-        {%- endfor -%}
-      {%- endif -%}
-      {%- if prev_found == false -%}
-        {%- assign prev_url = p.url -%}
-        {%- assign prev_title = p.title -%}
-        {%- assign prev_found = true -%}
-      {%- endif -%}
+  {%- if p_lang == current_lang and p.hidden != true -%}
+    {%- if found_current and prev_url == "" -%}
+      {%- assign prev_url = p.url -%}
+      {%- assign prev_title = p.title -%}
     {%- endif -%}
-    {%- if p.ref == current_ref or p.url == ko_original.url -%}
+    {%- if p.url == page.url -%}
       {%- assign found_current = true -%}
     {%- endif -%}
   {%- endif -%}
@@ -51,34 +23,18 @@
 {%- comment -%} Find language-appropriate next post (newer) {%- endcomment -%}
 {%- assign next_url = "" -%}
 {%- assign next_title = "" -%}
-{%- assign next_found = false -%}
 {%- assign found_current = false -%}
 
 {%- comment -%} Iterate through posts in reverse (oldest to newest) to find next (newer) {%- endcomment -%}
 {%- assign reversed_posts = site.posts | reverse -%}
 {%- for p in reversed_posts -%}
   {%- assign p_lang = p.lang | default: "ko" -%}
-  {%- if p_lang == "ko" and p.hidden != true -%}
-    {%- if found_current and next_found == false -%}
-      {%- comment -%} This is the next (newer) post, find translation if needed {%- endcomment -%}
-      {%- assign next_ref = p.ref -%}
-      {%- if next_ref and current_lang != "ko" -%}
-        {%- for tp in site.posts -%}
-          {%- if tp.ref == next_ref and tp.lang == current_lang -%}
-            {%- assign next_url = tp.url -%}
-            {%- assign next_title = tp.title -%}
-            {%- assign next_found = true -%}
-            {%- break -%}
-          {%- endif -%}
-        {%- endfor -%}
-      {%- endif -%}
-      {%- if next_found == false -%}
-        {%- assign next_url = p.url -%}
-        {%- assign next_title = p.title -%}
-        {%- assign next_found = true -%}
-      {%- endif -%}
+  {%- if p_lang == current_lang and p.hidden != true -%}
+    {%- if found_current and next_url == "" -%}
+      {%- assign next_url = p.url -%}
+      {%- assign next_title = p.title -%}
     {%- endif -%}
-    {%- if p.ref == current_ref or p.url == ko_original.url -%}
+    {%- if p.url == page.url -%}
       {%- assign found_current = true -%}
     {%- endif -%}
   {%- endif -%}
