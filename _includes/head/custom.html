@@ -21,3 +21,77 @@
   src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7701657858733816"
   crossOrigin="anonymous"
 ></script>
+
+<!-- Prism.js for syntax highlighting -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script>
+// Custom wireframe language for Prism (based on VSCode extension tmLanguage)
+Prism.languages.wireframe = {
+  'comment': [
+    { pattern: /\/\/.*/, greedy: true },
+    { pattern: /\/\*[\s\S]*?\*\//, greedy: true }
+  ],
+  'string': {
+    pattern: /(["'])(?:\\.|(?!\1)[^\\])*\1/,
+    greedy: true
+  },
+  'boolean': /\b(?:true|false)\b/,
+  'keyword': /\b(?:page|header|main|footer|sidebar|section|row|col)\b/,
+  'class-name': /\b(?:card|modal|drawer|accordion|text|title|link|input|textarea|select|checkbox|radio|switch|slider|button|button-group|image|icon|avatar|badge|placeholder|table|list|alert|toast|progress|spinner|tooltip|popover|dropdown|nav|tabs|breadcrumb|pagination|divider)\b/,
+  'property': /\b(?:span|sm|md|lg|xl|order|flex|direction|justify|align|wrap|gap|p|m|pt|pr|pb|pl|px|py|mt|mr|mb|ml|mx|my|w|h|minW|maxW|minH|maxH|primary|secondary|outline|ghost|danger|success|warning|info|disabled|required|checked|active|expanded|open|collapsed|fixed|vertical|horizontal|ordered|striped|bordered|hover|muted|external|pill|variant|color|size|type|placeholder|value|label|level|name|src|alt|href|items|columns|rows|options|min|max|position|bg|border|rounded|centered|bold|weight)\b/,
+  'number': /\b\d+(?:\.\d+)?\b/,
+  'operator': /=/,
+  'punctuation': /[{}[\](),:]/
+};
+</script>
+
+<!-- Wireweave DSL Renderer -->
+<script type="module" src="/assets/js/wireweave-renderer.js"></script>
+<style>
+  .wireframe-wrapper {
+    margin: 1em 0;
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .wireframe-tabs {
+    display: flex;
+    background: #f6f8fa;
+    border-bottom: 1px solid #e1e4e8;
+  }
+  .wireframe-tab {
+    padding: 8px 16px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 14px;
+    color: #586069;
+    border-bottom: 2px solid transparent;
+  }
+  .wireframe-tab:hover {
+    color: #24292e;
+  }
+  .wireframe-tab.active {
+    color: #24292e;
+    border-bottom-color: #f66a0a;
+    background: #fff;
+  }
+  .wireframe-panel {
+    display: none;
+    padding: 16px;
+    background: #fff;
+  }
+  .wireframe-panel.active {
+    display: block;
+  }
+  .wireframe-panel-code pre {
+    margin: 0;
+    background: #f6f8fa;
+    border-radius: 4px;
+  }
+  .wireframe-shadow-host {
+    display: block;
+    width: 100%;
+  }
+</style>
