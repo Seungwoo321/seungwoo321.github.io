@@ -1,11 +1,11 @@
 ---
-title: "태그"
+title: "タグ"
 layout: tags
-permalink: /tags/
+permalink: /ja/tags/
 author_profile: true
 classes: wide
 sidebar:
   nav: "categories"
-lang: ko
+lang: ja
 ref: tags
 ---
