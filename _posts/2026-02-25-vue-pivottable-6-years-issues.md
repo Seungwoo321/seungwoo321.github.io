@@ -20,6 +20,8 @@ ref: vibe-coding-vue-pivottable-issues
 
 vue-pivottable은 2019년에 만든 프로젝트입니다. PivotTable.js를 Vue로 포팅한 것인데, 그 이후로 GitHub 이슈 대응이 계속 밀렸습니다.
 
+![6년간 쌓인 GitHub 이슈들](/assets/images/posts/2026/vue-pivottable-6-years/github-issues-before.png)
+
 2020년 2월, 누군가 물었습니다. "하나의 피벗 테이블에서 여러 값에 각각 다른 집계 함수를 적용할 수 있나요?" 원본 PivotTable.js에도 없는 기능이었습니다. 구현 난이도가 높아 보였습니다. 보류.
 
 2020년 4월, Nuxt.js에서 SSR 오류가 발생한다는 이슈가 올라왔습니다. 당시 SSR에 대한 이해도가 낮았습니다. 빠른 해결책이 떠오르지 않았습니다. 보류.
@@ -50,17 +52,56 @@ vue-pivottable은 2019년에 만든 프로젝트입니다. PivotTable.js를 Vue�
 
 처음에는 드롭다운 기반 UI로 만들었는데, 여러 값을 관리하기 불편했습니다. 태그 기반 UI에 모달 편집 방식으로 바꿨습니다.
 
+<div style="display: flex; gap: 16px; margin: 24px 0;">
+  <figure style="flex: 1; margin: 0;">
+    <img src="/assets/images/posts/2026/vue-pivottable-6-years/multi-value-renderer.png" alt="Multi Value Renderer">
+    <figcaption style="text-align: center; font-size: 0.9em; color: #666;">PivotTable</figcaption>
+  </figure>
+  <figure style="flex: 1; margin: 0;">
+    <img src="/assets/images/posts/2026/vue-pivottable-6-years/multi-value-renderer-ui.png" alt="Multi Value Renderer UI">
+    <figcaption style="text-align: center; font-size: 0.9em; color: #666;">PivotTable UI</figcaption>
+  </figure>
+</div>
+
+👉 [Vue 3 데모](https://multivalue-vue3.pages.dev/) \| [Vue 2 데모](https://multivalue-vue2.pages.dev/)
+
 ### 소계와 접기/펼치기 (Issue #47)
 
 원본 PivotTable.js에는 nagarajanchinnasamy가 만든 subtotal.js 플러그인이 있었습니다. 계층적 데이터의 소계 계산과 접기/펼치기 기능을 제공했는데, jQuery 기반이라 Vue에서 쓸 수 없었습니다.
 
 @vue-pivottable/subtotal-renderer로 재구현했습니다. 가장 까다로웠던 건 헤더 colspan 처리였습니다. 초기 버전은 colspan을 전혀 처리하지 않아서 헤더가 중복 출력됐습니다. 기존 vue-pivottable의 spanSize 함수를 참고해서 전면 재작성했습니다.
 
+<div style="display: flex; gap: 16px; margin: 24px 0;">
+  <figure style="flex: 1; margin: 0;">
+    <img src="/assets/images/posts/2026/vue-pivottable-6-years/subtotal-renderer.png" alt="Subtotal Renderer">
+    <figcaption style="text-align: center; font-size: 0.9em; color: #666;">PivotTable</figcaption>
+  </figure>
+  <figure style="flex: 1; margin: 0;">
+    <img src="/assets/images/posts/2026/vue-pivottable-6-years/subtotal-renderer-ui.png" alt="Subtotal Renderer UI">
+    <figcaption style="text-align: center; font-size: 0.9em; color: #666;">PivotTable UI</figcaption>
+  </figure>
+</div>
+
+👉 [Vue 3 데모](https://subtotal-vue3.pages.dev/) \| [Vue 2 데모](https://subtotal-vue2.pages.dev/)
+
 ### Nuxt SSR 지원 (Issue #20)
 
 vue-pivottable은 브라우저 환경을 전제로 개발되어 SSR 과정에서 window/document 접근 오류가 발생했습니다.
 
 @vue-pivottable/nuxt를 만들었습니다. nuxt.config에 한 줄 추가하면 클라이언트 사이드 전용 로딩이 자동으로 처리됩니다. Nuxt 2와 Nuxt 3 모두 지원합니다.
+
+<div style="display: flex; gap: 16px; margin: 24px 0;">
+  <figure style="flex: 1; margin: 0;">
+    <img src="/assets/images/posts/2026/vue-pivottable-6-years/nuxt-module.png" alt="Nuxt Module">
+    <figcaption style="text-align: center; font-size: 0.9em; color: #666;">PivotTable</figcaption>
+  </figure>
+  <figure style="flex: 1; margin: 0;">
+    <img src="/assets/images/posts/2026/vue-pivottable-6-years/nuxt-module-ui.png" alt="Nuxt Module UI">
+    <figcaption style="text-align: center; font-size: 0.9em; color: #666;">PivotTable UI</figcaption>
+  </figure>
+</div>
+
+👉 [Nuxt 3 데모](https://nuxt3-pivottable.pages.dev/) \| [Nuxt 2 데모](https://nuxt2-pivottable.pages.dev/)
 
 ---
 
@@ -96,7 +137,20 @@ DroppableGridContainer에 실시간 마우스 추적 로직을 추가했습니�
 
 8방향 리사이즈 핸들도 개선했습니다. static 아이템과 충돌할 때 리사이즈가 그냥 무시되던 문제가 있었습니다. 이제는 각 방향별로 충돌을 검사하고, 충돌 시 빨간색 테두리로 시각적 피드백을 제공합니다.
 
-[라이브 데모](https://tailwind-grid-layout.pages.dev/)와 [Storybook](https://tailwind-grid-layout-storybook.pages.dev/)도 배포했습니다. 테스트는 339개 통과합니다.
+<div style="display: flex; gap: 16px; margin: 24px 0;">
+  <figure style="flex: 1; margin: 0;">
+    <img src="/assets/images/posts/2026/vue-pivottable-6-years/tailwind-grid-layout-demo.png" alt="Tailwind Grid Layout Demo">
+    <figcaption style="text-align: center; font-size: 0.9em; color: #666;">라이브 데모</figcaption>
+  </figure>
+  <figure style="flex: 1; margin: 0;">
+    <img src="/assets/images/posts/2026/vue-pivottable-6-years/tailwind-grid-layout-storybook.png" alt="Tailwind Grid Layout Storybook">
+    <figcaption style="text-align: center; font-size: 0.9em; color: #666;">Storybook</figcaption>
+  </figure>
+</div>
+
+👉 [라이브 데모](https://tailwind-grid-layout.pages.dev/) \| [Storybook](https://tailwind-grid-layout-storybook.pages.dev/)
+
+테스트는 339개 통과합니다.
 
 ---
 
@@ -104,4 +158,6 @@ DroppableGridContainer에 실시간 마우스 추적 로직을 추가했습니�
 
 6년간 미뤄온 이슈들을 일주일 만에 해결했습니다. "어렵겠다"고 생각했던 것들이 막상 해보니 그렇지도 않았습니다. 미루는 동안 쌓인 심리적 부담이 실제 난이도보다 컸던 것 같습니다.
 
-새로 만든 패키지 3개(multi-value-renderer, subtotal-renderer, nuxt-module)는 모두 Vue 2와 Vue 3를 지원합니다. npm에 배포했고 데모 사이트도 있습니다.
+새로 만든 패키지 3개(multi-value-renderer, subtotal-renderer, nuxt-module)는 모두 Vue 2와 Vue 3를 지원합니다. npm에 배포했습니다.
+
+👉 GitHub: [github.com/vue-pivottable](https://github.com/vue-pivottable) (Vue 3: [vue3-pivottable](https://github.com/vue-pivottable/vue3-pivottable))

@@ -20,6 +20,8 @@ There were issues I had been putting off for 6 years. I resolved all 12 of them 
 
 vue-pivottable is a project I created in 2019. It's a Vue port of PivotTable.js, and GitHub issue responses have been constantly delayed since then.
 
+![GitHub issues accumulated over 6 years](/assets/images/posts/2026/vue-pivottable-6-years/github-issues-before.png)
+
 In February 2020, someone asked: "Can I apply different aggregation functions to multiple values in a single pivot table?" It was a feature that didn't even exist in the original PivotTable.js. Implementation difficulty seemed high. Postponed.
 
 In April 2020, an issue came up about SSR errors in Nuxt.js. My understanding of SSR was low at the time. I couldn't think of a quick solution. Postponed.
@@ -50,17 +52,56 @@ I created @vue-pivottable/multi-value-renderer. The aggregatorMap prop specifies
 
 Initially I made a dropdown-based UI, but managing multiple values was inconvenient. I switched to a tag-based UI with modal editing.
 
+<div style="display: flex; gap: 16px; margin: 24px 0;">
+  <figure style="flex: 1; margin: 0;">
+    <img src="/assets/images/posts/2026/vue-pivottable-6-years/multi-value-renderer.png" alt="Multi Value Renderer">
+    <figcaption style="text-align: center; font-size: 0.9em; color: #666;">PivotTable</figcaption>
+  </figure>
+  <figure style="flex: 1; margin: 0;">
+    <img src="/assets/images/posts/2026/vue-pivottable-6-years/multi-value-renderer-ui.png" alt="Multi Value Renderer UI">
+    <figcaption style="text-align: center; font-size: 0.9em; color: #666;">PivotTable UI</figcaption>
+  </figure>
+</div>
+
+👉 [Vue 3 Demo](https://multivalue-vue3.pages.dev/) \| [Vue 2 Demo](https://multivalue-vue2.pages.dev/)
+
 ### Subtotals and Expand/Collapse (Issue #47)
 
 The original PivotTable.js had a subtotal.js plugin made by nagarajanchinnasamy. It provided subtotal calculation and expand/collapse for hierarchical data, but being jQuery-based, it couldn't be used in Vue.
 
 I reimplemented it as @vue-pivottable/subtotal-renderer. The trickiest part was header colspan handling. The initial version didn't handle colspan at all, causing headers to duplicate. I completely rewrote it referencing the existing vue-pivottable spanSize function.
 
+<div style="display: flex; gap: 16px; margin: 24px 0;">
+  <figure style="flex: 1; margin: 0;">
+    <img src="/assets/images/posts/2026/vue-pivottable-6-years/subtotal-renderer.png" alt="Subtotal Renderer">
+    <figcaption style="text-align: center; font-size: 0.9em; color: #666;">PivotTable</figcaption>
+  </figure>
+  <figure style="flex: 1; margin: 0;">
+    <img src="/assets/images/posts/2026/vue-pivottable-6-years/subtotal-renderer-ui.png" alt="Subtotal Renderer UI">
+    <figcaption style="text-align: center; font-size: 0.9em; color: #666;">PivotTable UI</figcaption>
+  </figure>
+</div>
+
+👉 [Vue 3 Demo](https://subtotal-vue3.pages.dev/) \| [Vue 2 Demo](https://subtotal-vue2.pages.dev/)
+
 ### Nuxt SSR Support (Issue #20)
 
 vue-pivottable was developed assuming a browser environment, causing window/document access errors during SSR.
 
 I created @vue-pivottable/nuxt. Add one line to nuxt.config and client-side-only loading is automatically handled. It supports both Nuxt 2 and Nuxt 3.
+
+<div style="display: flex; gap: 16px; margin: 24px 0;">
+  <figure style="flex: 1; margin: 0;">
+    <img src="/assets/images/posts/2026/vue-pivottable-6-years/nuxt-module.png" alt="Nuxt Module">
+    <figcaption style="text-align: center; font-size: 0.9em; color: #666;">PivotTable</figcaption>
+  </figure>
+  <figure style="flex: 1; margin: 0;">
+    <img src="/assets/images/posts/2026/vue-pivottable-6-years/nuxt-module-ui.png" alt="Nuxt Module UI">
+    <figcaption style="text-align: center; font-size: 0.9em; color: #666;">PivotTable UI</figcaption>
+  </figure>
+</div>
+
+👉 [Nuxt 3 Demo](https://nuxt3-pivottable.pages.dev/) \| [Nuxt 2 Demo](https://nuxt2-pivottable.pages.dev/)
 
 ---
 
@@ -96,7 +137,20 @@ I added real-time mouse tracking logic to DroppableGridContainer. Optimized perf
 
 I also improved 8-direction resize handles. There was a problem where resize was just ignored when colliding with static items. Now it checks collision for each direction and provides visual feedback with a red border on collision.
 
-I also deployed [live demo](https://tailwind-grid-layout.pages.dev/) and [Storybook](https://tailwind-grid-layout-storybook.pages.dev/). 339 tests pass.
+<div style="display: flex; gap: 16px; margin: 24px 0;">
+  <figure style="flex: 1; margin: 0;">
+    <img src="/assets/images/posts/2026/vue-pivottable-6-years/tailwind-grid-layout-demo.png" alt="Tailwind Grid Layout Demo">
+    <figcaption style="text-align: center; font-size: 0.9em; color: #666;">Live Demo</figcaption>
+  </figure>
+  <figure style="flex: 1; margin: 0;">
+    <img src="/assets/images/posts/2026/vue-pivottable-6-years/tailwind-grid-layout-storybook.png" alt="Tailwind Grid Layout Storybook">
+    <figcaption style="text-align: center; font-size: 0.9em; color: #666;">Storybook</figcaption>
+  </figure>
+</div>
+
+👉 [Live Demo](https://tailwind-grid-layout.pages.dev/) \| [Storybook](https://tailwind-grid-layout-storybook.pages.dev/)
+
+339 tests pass.
 
 ---
 
@@ -104,4 +158,6 @@ I also deployed [live demo](https://tailwind-grid-layout.pages.dev/) and [Storyb
 
 I resolved issues I had postponed for 6 years in a week. Things I thought "would be hard" turned out not to be when I actually tried. The psychological burden accumulated while postponing seems to have been greater than the actual difficulty.
 
-All 3 new packages (multi-value-renderer, subtotal-renderer, nuxt-module) support both Vue 2 and Vue 3. They're published on npm with demo sites available.
+All 3 new packages (multi-value-renderer, subtotal-renderer, nuxt-module) support both Vue 2 and Vue 3. They're published on npm.
+
+👉 GitHub: [github.com/vue-pivottable](https://github.com/vue-pivottable) (Vue 3: [vue3-pivottable](https://github.com/vue-pivottable/vue3-pivottable))
