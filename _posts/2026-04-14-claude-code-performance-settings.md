@@ -20,17 +20,16 @@ ref: claude-code-performance-settings
 
 2026년 4월 2일, AMD AI 그룹의 시니어 디렉터 Stella Laurenzo가 GitHub 이슈 [#42796](https://github.com/anthropics/claude-code/issues/42796)을 올렸습니다. 6,852개의 Claude Code 세션 JSONL 파일, 17,871개의 thinking 블록, 234,760건의 tool call, 18,000건 이상의 사용자 프롬프트를 분석한 결과였습니다.
 
-숫자가 보여주는 것은 명확했습니다.
+Stella는 1월 30일부터 4월 1일까지의 데이터를 세 기간으로 나누어 분석했습니다.
 
-| 지표 | 3월 8일 이전 | 3월 8일 이후 | 변화 |
-|------|------------|------------|------|
-| 파일 읽기 대비 수정 비율 | 6.6 | 2.0 | -70% |
-| 파일을 읽지 않고 수정한 비율 | 6.2% | 33.7% | +444% |
-| 사용자 좌절 지표 | 5.8% | 9.8% | +68% |
-| 사용자 인터럽트 (1K 호출당) | 0.9 | 5.9 | +556% |
-| 추정 사고 깊이 | ~2,200자 | ~600자 | -73% |
+| 지표 | Good (1/30-2/12) | Transition (2/13-3/7) | Degraded (3/8-3/23) |
+|------|:-:|:-:|:-:|
+| 파일 읽기 대비 수정 비율 | 6.6 | 2.8 (-57%) | 2.0 (-70%) |
+| 파일을 읽지 않고 수정한 비율 | 6.2% | 24.2% | 33.7% |
+| 사용자 인터럽트 (1K 호출당) | 0.9 | 1.9 | 5.9 |
+| 추정 사고 깊이 | ~2,200자 | ~720자 (-67%) | ~600자 (-73%) |
 
-파일을 읽지 않고 수정하는 비율이 6%에서 34%로 뛴 것은 단순한 체감이 아니라 측정 가능한 품질 저하였습니다. 사고 깊이가 73% 줄어든 것은 모델이 생각 자체를 덜 하게 됐다는 뜻입니다.
+주목할 점은 2월 중순(Transition)에 이미 저하가 상당히 진행되었다는 것입니다. Read:Edit 비율은 6.6에서 2.8로, 사고 깊이는 2,200자에서 720자로 — 3월 8일 이전에 이미 절반 이상 떨어져 있었습니다. 3월 8일은 저하가 시작된 시점이 아니라, 커뮤니티에서 품질 문제가 독립적으로 보고되기 시작한 시점입니다.
 
 이 데이터가 공개되고 [Hacker News](https://news.ycombinator.com/item?id=47660925)에서 큰 논의가 벌어졌습니다. Claude Code 팀의 Boris Cherny도 직접 [댓글](https://news.ycombinator.com/item?id=47664442)을 남기며 일부 문제를 인정했습니다.
 
@@ -68,7 +67,7 @@ effort level은 Claude가 한 턴에 얼마나 깊이 사고할지를 제어하�
 | Pro, Max | `medium` |
 | API key, Team, Enterprise, 서드파티(Bedrock, Vertex AI, Foundry) | `high` |
 
-문제는 이 기본값이 변경된 것이 조용히 이뤄졌다는 점입니다. Boris Cherny 본인이 [X(트위터)](https://x.com/bcherny/status/2029970236460691885)에서 "we recently changed the default effort to medium"이라고 밝혔고, [yage.ai의 분석](https://yage.ai/share/claude-code-runtime-regression-en-20260407.html)에서는 이 변경이 릴리스 노트에 전혀 기재되지 않았음을 확인했습니다. Pro와 Max 구독자 — Claude Code 개인 사용자의 대부분 — 가 자신도 모르는 사이에 `medium`으로 동작하고 있었습니다. API 사용자나 팀 플랜은 `high`가 기본이라 영향을 받지 않았습니다.
+문제는 이 기본값 변경이 조용히 이뤄졌다는 점입니다. Boris Cherny 본인이 Stella Laurenzo의 이슈 코멘트에서 **3월 3일에 medium(85)으로 변경**했다고 밝혔고, [X(트위터)](https://x.com/bcherny/status/2029970236460691885)에서도 "we recently changed the default effort to medium"이라고 확인했습니다. [yage.ai의 분석](https://yage.ai/share/claude-code-runtime-regression-en-20260407.html)에서는 이 변경이 릴리스 노트에 전혀 기재되지 않았음을 지적했습니다. Pro와 Max 구독자 — Claude Code 개인 사용자의 대부분 — 가 자신도 모르는 사이에 `medium`으로 동작하고 있었습니다. API 사용자나 팀 플랜은 `high`가 기본이라 영향을 받지 않았습니다.
 
 `medium`에서는 Claude가 쿼리를 "간단하다"고 판단하면 사고 과정(thinking)을 아예 건너뛸 수 있습니다. 공식 문서에도 "At the default effort level (`high`), Claude almost always thinks. At lower effort levels, Claude may skip thinking for simpler queries"라고 명시되어 있습니다. Stella Laurenzo의 분석에서 사고 깊이가 73% 감소한 것과 맞물리는 변화입니다.
 
@@ -116,11 +115,11 @@ Anthropic도 이 문제를 완전히 모르는 것은 아닙니다. 자사 엔�
 
 여기서 중요한 전제가 있습니다. **adaptive thinking이 켜져 있으면 이 값은 사실상 무시됩니다.** adaptive thinking은 사고 깊이를 동적으로 결정하기 때문에, 수동으로 지정한 토큰 상한을 덮어씁니다. `MAX_THINKING_TOKENS`가 효과를 발휘하려면 반드시 `CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING=1`과 함께 사용해야 합니다.
 
-커뮤니티에서 추천하는 값은 사용 패턴에 따라 다양합니다. [everything-claude-code](https://github.com/nicobailon/everything-claude-code)에서는 일반적인 작업에 10,000을, [Dev.to의 ultrathink 가이드](https://dev.to/yemreak)에서는 31,999를, [Decode Claude](https://www.decodeclaude.com/)에서는 복잡한 작업에 63,999를 제시합니다. GitHub 이슈 [#27429](https://github.com/anthropics/claude-code/issues/27429)에서는 Opus 4.6의 최대 출력 토큰이 128,000인 점을 감안해 95,000을 안전한 상한으로 권장합니다. 128,000으로 설정하면 내부적으로 +1이 더해져 128,001이 되고, API 제한을 초과할 수 있기 때문입니다.
+커뮤니티에서 추천하는 값은 사용 패턴에 따라 다양합니다. [everything-claude-code](https://github.com/nicobailon/everything-claude-code)에서는 일반적인 작업에 10,000을, [Dev.to의 ultrathink 가이드](https://dev.to/yemreak)에서는 31,999를, [Decode Claude](https://www.decodeclaude.com/)에서는 복잡한 작업에 63,999를 제시합니다. Opus 4.6의 최대 출력 토큰이 128,000이므로, 128,000으로 설정하면 내부적으로 +1이 더해져 API 제한을 초과할 수 있습니다. GitHub 이슈 [#27429](https://github.com/anthropics/claude-code/issues/27429)에서는 95,000으로 설정했을 때 Opus에서는 작동하지만 Sonnet 서브에이전트(최대 출력 64,000)에서 크래시가 발생하는 문제가 보고되기도 했습니다.
 
 기본값 31,999의 약 2~3배인 63,999~95,000 정도가 복잡한 작업에서 사고 깊이를 확보하면서도 안정적인 범위로 보입니다. 어떤 값이 "정답"이라기보다, 기본값이 부족하다고 느끼면 올려보고 자기 작업 패턴에 맞는 지점을 찾는 것이 현실적입니다.
 
-다만 부작용도 있습니다. 사고 토큰도 비용으로 잡히기 때문에 세션당 토큰 소비가 늘어납니다. GitHub 이슈 [#5257](https://github.com/anthropics/claude-code/issues/5257)에서는 이 값을 설정하면 "hello" 같은 사소한 메시지에도 extended thinking이 강제된다는 점이 보고됐고, Anthropic 측은 하위 호환성을 이유로 변경하지 않겠다며 이슈를 종료했습니다.
+다만 부작용도 있습니다. 사고 토큰도 비용으로 잡히기 때문에 세션당 토큰 소비가 늘어납니다. GitHub 이슈 [#5257](https://github.com/anthropics/claude-code/issues/5257)에서는 이 값을 설정하면 "hello" 같은 사소한 메시지에도 extended thinking이 강제된다는 점이 보고됐습니다. 이 이슈는 60일간 활동이 없어 GitHub Actions 봇에 의해 자동 종료되었으며, 별도의 공식 답변은 없었습니다.
 
 ---
 
@@ -132,7 +131,7 @@ Anthropic도 이 문제를 완전히 모르는 것은 아닙니다. 자사 엔�
 
 auto memory는 Claude가 세션 간에 기억할 만한 내용 — 빌드 커맨드, 디버깅 인사이트, 아키텍처 메모, 코드 스타일 선호 등 — 을 `~/.claude/projects/<project>/memory/MEMORY.md`에 자동 저장하고, 매 대화 시작 시 처음 200줄(또는 25KB)을 컨텍스트에 로드하는 기능입니다.
 
-도입 직후에는 토큰 소비량이 비정상적으로 높아지는 버그([#29178](https://github.com/anthropics/claude-code/issues/29178))가 있었고, 이는 v2.1.62에서 이틀 만에 수정됐습니다. 하지만 그 외의 문제들은 현재까지 미해결 상태입니다.
+도입 직후에는 토큰 소비량이 비정상적으로 높아지는 버그([#29178](https://github.com/anthropics/claude-code/issues/29178))가 보고됐고, Anthropic은 v2.1.62에서 수정했다고 답변했습니다. 하지만 업데이트 이후에도 여러 사용자가 동일한 증상이 지속된다고 재보고했으며, 원래 작성자 역시 이후 "다시 사용량이 급격히 소진된다"고 댓글을 남겼습니다. 그 외의 문제들도 현재까지 미해결 상태입니다.
 
 GitHub 이슈 [#23544](https://github.com/anthropics/claude-code/issues/23544)에서 @arthurworsley는 auto memory를 "사용자 통제 밖의 그림자 상태(shadow state)"라고 설명했습니다. `CLAUDE.md`를 직접 관리하는 사용자 입장에서, Claude가 자의적으로 저장한 메모가 컨텍스트에 같이 실리면 의도한 지시와 충돌할 수 있습니다. 이슈 [#23750](https://github.com/anthropics/claude-code/issues/23750)에서는 실제로 auto memory가 `CLAUDE.md`와 모순되는 지시를 만들어낸 사례가 보고됐습니다.
 
