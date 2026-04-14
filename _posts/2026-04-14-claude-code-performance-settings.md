@@ -1,5 +1,5 @@
 ---
-title: "Claude Code 성능 저하 사태와 커뮤니티가 찾아낸 설정들"
+title: "Claude Code 성능 저하 사태와 설정으로 대응하기"
 date: "2026-04-14"
 tags: ["Claude Code", "AI", "Performance", "Community"]
 categories: Essay
