@@ -1,0 +1,26 @@
+{% if page.series %}
+  {%- assign current_lang = page.lang | default: "ko" -%}
+  {%- assign series_posts = site.posts | where: "series", page.series | sort: "date" -%}
+  {%- assign series_count = 0 -%}
+  {%- for post in series_posts -%}
+    {%- assign post_lang = post.lang | default: "ko" -%}
+    {%- if post_lang == current_lang -%}
+      {%- assign series_count = series_count | plus: 1 -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {%- if series_count > 0 -%}
+    <nav class="nav__list series-nav">
+      <h3 class="nav__title" style="padding-left: 0;"><i class="fas fa-layer-group"></i> {{ site.data.ui-text[current_lang].series_label | default: site.data.ui-text[site.locale].series_label | default: "Series" }}</h3>
+      <ul class="nav__items">
+        {%- for post in series_posts -%}
+          {%- assign post_lang = post.lang | default: "ko" -%}
+          {%- if post_lang == current_lang -%}
+            <li>
+              <a href="{{ post.url | relative_url }}"{% if post.url == page.url %} class="active"{% endif %}>{{ post.title | markdownify | strip_html | strip_newlines }}</a>
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    </nav>
+  {%- endif -%}
+{% endif %}
