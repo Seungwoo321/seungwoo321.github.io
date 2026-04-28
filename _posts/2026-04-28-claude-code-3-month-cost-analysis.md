@@ -169,6 +169,8 @@ burn day Top 15 중 14개가 opus-4-6 단독 95% 이상이라는 점도 일관�
 
 해석은 이렇습니다. 변경 전 기간에는 거대한 캐시 컨텍스트를 로드해서 짧은 출력을 생성하는 패턴이 우세했습니다(탐색/분석/디버깅 위주). 변경 후 기간에는 캐시 컨텍스트를 더 간결하게 가져가면서 한 컨텍스트에서 긴 출력을 생성하는 패턴으로 옮겨갔습니다(구현/문서화 위주). **같은 캐시를 또 읽기보다, 한 컨텍스트에서 더 많은 결과물을 만드는 방향으로 일하는 방식 자체가 바뀐** 셈입니다.
 
+한 가지 보강해두고 싶은 메커니즘이 있습니다. Anthropic prompt caching은 prefix 단위로 동작하기 때문에 **매 요청마다 캐시 prefix 전체를 강제로 read**합니다. read하지 않을 선택지는 없어요. Claude Code 특성상 한 세션 안에서 시스템 프롬프트, 도구 정의, 대화 히스토리, 도구 호출 결과가 계속 누적되고, 매 turn마다 그 누적분이 cache prefix로 들어갑니다. 즉 세션이 길어질수록 prefix가 부풀고, 매 turn의 cache read 비용도 같이 커집니다. 그 상태에서 짧은 응답을 받는 패턴이 반복되면 output 1개당 들어가는 total 토큰이 부풀어 — 변경 전 16.3 같은 숫자가 나옵니다. 그래서 단순히 "캐시 = 효율"이 아니라, **작업 패턴에 따라 캐시는 자산이 되기도 하고 부채가 되기도 합니다.** 캐시를 작게 유지하는 것 자체가 효율 전략이 되는 이유입니다.
+
 이 워크플로우 변화를 구체적으로 받쳐준 도구가 하나 있습니다. 직접 만들고 있는 [Clawket](https://github.com/clawket/clawket)이라는 작업 관리 레이어입니다.
 
 [![Clawket — LLM-native work management](https://raw.githubusercontent.com/clawket/clawket/main/assets/main.png)](https://github.com/clawket/clawket)
