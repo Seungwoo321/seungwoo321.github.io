@@ -8,6 +8,7 @@ last_modified_at: "2026-04-02"
 lang: ko
 locale: ko
 ref: harness-engineering-origin
+series: "claude-code"
 ---
 
 "이제는 하네스 엔지니어링이다" — 링크드인에서 누군가 이런 글을 올린 걸 봤습니다. 카카오톡 오픈 채팅방에서도 "이제 하네스 엔지니어링을 공부해야 하는 건가요?"라는 채팅이 올라왔습니다. 하네스? 뭐지? 하고 그냥 넘겼습니다.

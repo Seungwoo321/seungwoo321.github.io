@@ -8,6 +8,7 @@ last_modified_at: "2026-04-02"
 lang: ja
 locale: ja
 ref: harness-engineering-origin
+series: "claude-code"
 ---
 
 「もうハーネスエンジニアリングの時代だ」— LinkedInで誰かがこんな投稿をしているのを見ました。KakaoTalkのオープンチャットでも「ハーネスエンジニアリングを勉強しないといけないんですか？」というメッセージが流れていました。ハーネス？何だろう？と思いつつ、そのままスルーしました。

@@ -8,6 +8,7 @@ last_modified_at: "2026-04-02"
 lang: en
 locale: en
 ref: harness-engineering-origin
+series: "claude-code"
 ---
 
 "It's the age of harness engineering now" — I saw someone post this on LinkedIn. In a KakaoTalk open chat, someone asked, "Do we need to study harness engineering now?" Harness? What's that? I scrolled past.
