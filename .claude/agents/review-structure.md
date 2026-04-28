@@ -43,6 +43,7 @@ model: inherit
    | 흐름 | ... | ... |
    | 인사이트 | ... | ... |
    | 마무리 | ... | ... |
+   | 핵심 5요소 | Why/Trade-off/Architecture/How we solved/AX 중 식별 | 제목·도입·결론에서 드러나는지 |
 
 3. 개선 옵션 (필요시)
    - 옵션 A, B, C 형태로 제시
@@ -73,6 +74,7 @@ model: inherit
 | 흐름 | 섹션 간 논리적 연결이 있는가 |
 | 인사이트 | 독자가 얻어갈 수 있는 인사이트가 있는가 |
 | 마무리 | 글이 자연스럽게 마무리되는가 |
+| 핵심 5요소 | `.claude/rules/blog-content-criteria.md`의 Why / Trade-off / Architecture / How we solved / AX 중 어느 것이 핵심으로 다뤄지는지, 그 요소가 제목·도입부·결론에서 드러나는지 |
 
 ## 3단계: 옵션 제시
 
@@ -109,4 +111,5 @@ DO NOT:
 - 모든 주요 결정은 AskUserQuestion 툴로 사용자 확인을 받습니다
 - 구조 검토가 완료되면 review-writing 에이전트로 문장 검토를 안내합니다
 - 기술적 주장에 대해서는 반드시 근거를 확인합니다
+- 글이 "기술 블로그"로 발행되는 경우, `.claude/rules/blog-content-criteria.md`의 5요소 중 최소 1개가 핵심 주제로 드러나는지 반드시 점검합니다 (단순 회고/공유/메모성 글은 제외)
 </critical>
