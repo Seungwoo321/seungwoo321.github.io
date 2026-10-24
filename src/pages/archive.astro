@@ -1,0 +1,12 @@
+---
+import Base from '../layouts/Base.astro';
+import PostRow from '../components/PostRow.astro';
+import { posts } from '../lib/posts';
+const all=await posts();const categories=[...new Set(all.flatMap(p=>p.data.categories))];
+---
+<Base title="모든 기록 — DEV LOG"><section class="page-heading shell"><span class="eyebrow">THE ARCHIVE</span><h1>쌓아온 기록들<span class="accent">.</span></h1><p>직접 만들며 배운 것들, 지나온 고민과 선택의 흔적.</p></section><section class="archive-list shell"><div class="archive-toolbar"><div class="archive-filters"><button data-category="" aria-pressed="true">전체</button>{categories.map(c=><button data-category={c} aria-pressed="false">{c}</button>)}</div><span class="archive-count" aria-live="polite">{all.length}개의 기록</span></div><p class="tag-filter" hidden></p><div class="archive-items">{all.map((post,i)=><div class="archive-entry" data-categories={JSON.stringify(post.data.categories)} data-tags={JSON.stringify(post.data.tags)}><PostRow post={post} index={i}/></div>)}</div><p class="archive-empty" hidden>아직 이 갈래의 기록이 없습니다.</p></section><script>
+const buttons=document.querySelectorAll<HTMLButtonElement>('[data-category]');
+const entries=document.querySelectorAll<HTMLElement>('.archive-entry');
+function filter(){const params=new URLSearchParams(location.search);const category=params.get('category')||'';const tag=params.get('tag')||'';let count=0;buttons.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.category===category)));entries.forEach(e=>{const visible=(!category||JSON.parse(e.dataset.categories!).includes(category))&&(!tag||JSON.parse(e.dataset.tags!).includes(tag));e.hidden=!visible;if(visible)count++});document.querySelector('.archive-count')!.textContent=`${count}개의 기록`;document.querySelector<HTMLElement>('.archive-empty')!.hidden=count>0;const label=document.querySelector<HTMLElement>('.tag-filter')!;label.hidden=!tag;label.textContent=`#${tag} 태그의 기록`}
+buttons.forEach(b=>b.addEventListener('click',()=>{const url=new URL(location.href);url.search='';if(b.dataset.category)url.searchParams.set('category',b.dataset.category);history.pushState({},'',url);filter()}));window.addEventListener('popstate',filter);filter();
+</script></Base>

@@ -1,0 +1,7 @@
+---
+import Base from '../layouts/Base.astro';
+import { getEntry, render } from 'astro:content';
+const page=await getEntry('pages','about');
+const {Content}=await render(page!);
+---
+<Base title="소개 — DEV LOG"><section class="page-heading shell"><span class="eyebrow">BEHIND THE JOURNAL</span><h1>경험을 기록하는 이유<span class="accent">.</span></h1><p>개발자 Seungwoo321, 그리고 이 공간에 대하여.</p></section><div class="about-grid shell"><aside class="about-profile"><img src="/assets/images/avata.png" alt="Seungwoo321 프로필" width="90" height="90"/><h2>Seungwoo321</h2><p>프론트엔드 개발자<br/>만들고, 배우고, 기록합니다.</p><a class="text-link" href="https://github.com/Seungwoo321">GitHub ↗</a></aside><article class="prose about-prose"><Content/></article></div></Base>

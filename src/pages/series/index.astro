@@ -1,0 +1,7 @@
+---
+import Base from '../../layouts/Base.astro';
+import SeriesCover from '../../components/SeriesCover.astro';
+import { posts, seriesGroups, dateLabel } from '../../lib/posts';
+const groups=seriesGroups(await posts());
+---
+<Base title="시리즈 — DEV LOG"><section class="page-heading shell"><span class="eyebrow">CONNECTED STORIES</span><h1>경험은 이어집니다<span class="accent">.</span></h1><p>한 편에 담기 어려운 시행착오와 고민들.<br/>처음의 질문부터 다음 시도까지, 순서대로 읽어보세요.</p></section><section class="series-cards shell">{groups.map(g=><a class="series-card" href={`/series/${g.id}/`}><SeriesCover id={g.id}/><div class="series-card-content"><h2>{g.name}</h2><span class="series-count">{g.items.length}개의 기록</span><p>{g.items[0].data.title}</p><span>{dateLabel(g.items[0].data.date)} — {dateLabel(g.items.at(-1)!.data.date)}</span></div></a>)}</section></Base>

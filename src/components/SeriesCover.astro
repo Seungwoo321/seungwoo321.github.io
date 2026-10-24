@@ -1,0 +1,53 @@
+---
+import { seriesName } from '../lib/posts';
+const { id } = Astro.props as { id: string };
+const gridId = `cover-grid-${crypto.randomUUID()}`;
+const kind = id === 'claude-code' ? 'workflow' : id === 'ai-agent-pipeline' ? 'pipeline' : id === 'economic-dashboard' ? 'dashboard' : id === 'vue-pivottable' ? 'matrix' : 'trading';
+---
+<div class={`series-visual visual-${kind}`}>
+<svg viewBox="0 0 480 270" role="img" aria-label={`${seriesName(id)} 시리즈 커버`} xmlns="http://www.w3.org/2000/svg">
+  <defs><pattern id={gridId} width="24" height="24" patternUnits="userSpaceOnUse"><path d="M 24 0 L 0 0 0 24" fill="none" stroke="currentColor" stroke-opacity=".07" stroke-width="1"/></pattern></defs>
+  <rect width="480" height="270" fill="var(--cover-bg)"/><rect width="480" height="270" fill={`url(#${gridId})`}/>
+  {kind === 'workflow' && <>
+    <text x="28" y="34" class="cover-label">HUMAN × AGENT</text><text x="27" y="92" class="cover-title">Beyond</text><text x="27" y="137" class="cover-title">the prompt.</text>
+    <path d="M257 71H294V104H342V167H294V204H257" fill="none" stroke="var(--cover-accent)" stroke-width="2"/>
+    <rect x="266" y="53" width="151" height="40" rx="3" fill="var(--cover-panel)" stroke="var(--cover-stroke)"/><text x="282" y="78" class="cover-code">01 / CONTEXT</text>
+    <rect x="301" y="115" width="151" height="40" rx="3" fill="var(--cover-accent)"/><text x="317" y="140" class="cover-code" fill="white">02 / BUILD</text>
+    <rect x="266" y="177" width="151" height="40" rx="3" fill="var(--cover-panel)" stroke="var(--cover-stroke)"/><text x="282" y="202" class="cover-code">03 / VERIFY</text>
+    <circle cx="257" cy="71" r="4" fill="var(--cover-accent)"/><circle cx="257" cy="204" r="4" fill="var(--cover-accent)"/>
+    <text x="28" y="242" class="cover-foot">판단하고, 맡기고, 다시 확인하는 일.</text>
+  </>}
+  {kind === 'pipeline' && <>
+    <text x="28" y="34" class="cover-label">AGENT ENGINEERING / FIELD NOTES</text>
+    <rect x="28" y="57" width="180" height="124" rx="4" fill="var(--cover-ink)"/><circle cx="42" cy="71" r="2" fill="#ffffff70"/><circle cx="51" cy="71" r="2" fill="#ffffff40"/><circle cx="60" cy="71" r="2" fill="#ffffff20"/>
+    <text x="43" y="101" class="cover-code" fill="#aab6ca">$ pipeline.run()</text><text x="43" y="125" class="cover-code" fill="#fff">→ plan</text><text x="43" y="148" class="cover-code" fill="#fff">→ build</text><text x="43" y="171" class="cover-code" fill="#87a8ff">→ verify</text>
+    <path d="M208 117H253M330 117H369M406 150V190H290V158" stroke="var(--cover-accent)" stroke-width="2" fill="none"/>
+    <rect x="253" y="79" width="77" height="77" rx="4" fill="var(--cover-panel)" stroke="var(--cover-stroke)"/><text x="291" y="108" text-anchor="middle" class="cover-label">AGENT</text><text x="291" y="137" text-anchor="middle" font-size="26" fill="var(--cover-accent)">⌘</text>
+    <rect x="369" y="79" width="77" height="77" rx="4" fill="var(--cover-accent)"/><path d="m390 117 10 10 19-23" fill="none" stroke="white" stroke-width="3"/><circle cx="290" cy="190" r="4" fill="var(--cover-accent)"/>
+    <text x="28" y="242" class="cover-foot">하나의 요청이 실행 가능한 과정이 되기까지.</text>
+  </>}
+  {kind === 'dashboard' && <>
+    <text x="28" y="34" class="cover-label">PROJECT / ECONOMIC DASHBOARD</text>
+    <rect x="28" y="57" width="424" height="161" rx="4" fill="var(--cover-panel)" stroke="var(--cover-stroke)"/>
+    <path d="M28 83H452M99 83V218" stroke="var(--cover-stroke)"/><circle cx="42" cy="70" r="2" fill="var(--cover-accent)"/><text x="54" y="74" class="cover-code">E-TORCH</text>
+    {[105,124,143,162].map((y,i)=><rect x="41" y={y} width={i===0?42:32} height="4" rx="2" fill={i===0?'var(--cover-accent)':'var(--cover-stroke)'}/>)}
+    <text x="119" y="108" class="cover-label">COLLECT → NORMALIZE → VISUALIZE</text>
+    <path d="M119 141H431M119 170H431M119 199H431" stroke="var(--cover-stroke)" stroke-dasharray="3 4"/>
+    <path d="M120 188 147 167 174 176 201 138 228 150 255 134 282 144 309 119 336 133 363 119 390 130 430 111" stroke="var(--cover-accent)" stroke-width="3" fill="none"/>
+    <path d="M120 199 147 189 174 197 201 170 228 181 255 163 282 170 309 159 336 166 363 143 390 153 430 142" stroke="var(--cover-accent)" stroke-width="2" opacity=".3" fill="none"/>
+    <text x="28" y="242" class="cover-foot">데이터를 모으는 일에서 제품을 만드는 일로.</text>
+  </>}
+  {kind === 'matrix' && <>
+    <text x="28" y="34" class="cover-label">OPEN SOURCE / VUE PIVOTTABLE</text><text x="27" y="95" class="cover-title">Rows.</text><text x="27" y="140" class="cover-title">Columns.</text><text x="27" y="185" class="cover-title" fill="var(--cover-accent)">Lessons.</text>
+    <rect x="262" y="59" width="189" height="156" rx="3" fill="var(--cover-panel)" stroke="var(--cover-stroke)"/>
+    {Array.from({length:5},(_,row)=>Array.from({length:6},(_,col)=><rect x={270+col*29} y={68+row*28} width="23" height="22" rx="1" fill="var(--cover-accent)" opacity={.08+((row*3+col*2)%8)*.1}/>))}
+    <text x="28" y="242" class="cover-foot">컴포넌트 하나를 오래 유지보수하며 배운 것들.</text>
+  </>}
+  {kind === 'trading' && <>
+    <text x="28" y="34" class="cover-label">PROJECT / TRADING SYSTEM</text><text x="27" y="93" class="cover-title">From idea</text><text x="27" y="138" class="cover-title">to execution.</text>
+    <path d="M257 74H448M257 113H448M257 152H448M257 191H448" stroke="var(--cover-stroke)" stroke-dasharray="3 4"/>
+    {[{x:274,y:137,h:30},{x:301,y:117,h:39},{x:328,y:129,h:20},{x:355,y:97,h:32},{x:382,y:78,h:39},{x:409,y:95,h:22},{x:436,y:58,h:40}].map((c,i)=><g><path d={`M${c.x} ${c.y-12}V${c.y+c.h+12}`} stroke="var(--cover-accent)" opacity={i%3===2?.35:1}/><rect x={c.x-5} y={c.y} width="10" height={c.h} fill="var(--cover-accent)" opacity={i%3===2?.3:1}/></g>)}
+    <text x="28" y="197" class="cover-code">strategy / order / risk</text><text x="28" y="242" class="cover-foot">전략보다 먼저 마주친 시스템의 문제들.</text>
+  </>}
+</svg>
+</div>

@@ -1,0 +1,17 @@
+---
+import { render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import AdSlot from '../components/AdSlot.astro';
+import { posts, postUrl, summary, readMinutes, dateLabel, seriesName, seriesId } from '../lib/posts';
+export async function getStaticPaths(){return (await posts()).map(post=>({params:{path:postUrl(post).replace(/^\/|\/$/g,'')},props:{post}}))}
+const { post }=Astro.props;
+const {Content,headings}=await render(post);
+const all=await posts();
+const groupId=seriesId(post);
+const series=groupId?all.filter(p=>seriesId(p)===groupId).sort((a,b)=>a.data.date.getTime()-b.data.date.getTime()):[];
+const index=series.findIndex(p=>p.id===post.id); const prev=series[index-1]; const next=series[index+1];
+---
+<Base title={`${post.data.title} — DEV LOG`} description={summary(post)}>
+<article class="article-page shell"><div class="article-topline"><a href="/archive/">← 모든 기록</a><span>{post.data.categories[0] || '개발 일기'}</span></div><header class="article-header"><div class="eyebrow">{groupId ? seriesName(groupId) : 'FIELD NOTES'}{series.length>0 && <span> · {index+1} / {series.length}</span>}</div><h1>{post.data.title}</h1><div class="article-meta"><img src="/assets/images/avata.png" width="32" height="32" alt=""/><strong>Seungwoo321</strong><time datetime={post.data.date.toISOString()}>{dateLabel(post.data.date)}</time><span>· {readMinutes(post)}분 읽기</span></div><div class="article-tags">{post.data.tags.map(t=><a href={`/archive/?tag=${encodeURIComponent(t)}`}>#{t}</a>)}</div></header>
+<div class="reading-grid"><div class="article-main">{series.length>0 && <details class="series-index"><summary><span class="eyebrow">SERIES</span><strong>{seriesName(groupId!)}</strong><span>{index+1} / {series.length} ⌄</span></summary><ol>{series.map(p=><li class:list={{current:p.id===post.id}}><a href={postUrl(p)} aria-current={p.id===post.id?'page':undefined}>{p.data.title}</a></li>)}</ol></details>}<div class="prose"><Content/></div><div class="article-end"><span class="accent">✳</span><p>직접 경험하고, 고민하고, 기록했습니다.</p><a href="/about/">Seungwoo321의 개발 일기</a></div>{series.length>0 && <nav class="post-navigation" aria-label="시리즈 이전·다음 글"><div>{prev && <a href={postUrl(prev)}><span>← 이전 기록</span><strong>{prev.data.title}</strong></a>}</div><div>{next && <a href={postUrl(next)}><span>다음 기록 →</span><strong>{next.data.title}</strong></a>}</div></nav>}<a class="back-archive" href="/archive/">← 다른 기록 둘러보기</a></div><aside class="article-sidebar"><nav class="toc" aria-label="이 글의 목차"><span class="eyebrow">이 글의 흐름</span>{headings.filter(h=>h.depth===2||h.depth===3).map(h=><a class:list={{sub:h.depth===3}} href={`#${h.slug}`}>{h.text}</a>)}</nav><AdSlot/></aside></div></article>
+</Base>

@@ -1,0 +1,6 @@
+---
+import Base from '../layouts/Base.astro';
+import { getEntry, render } from 'astro:content';
+const page=await getEntry('pages','projects');const {Content}=await render(page!);
+---
+<Base title="프로젝트 — DEV LOG"><section class="page-heading shell"><span class="eyebrow">BUILT WITH CURIOSITY</span><h1>생각에서, 만들어보기로<span class="accent">.</span></h1><p>궁금해서 시작하고, 직접 만들며 배웠습니다.<br/>오픈소스와 사이드 프로젝트의 기록입니다.</p></section><section class="shell projects-content prose"><Content/></section></Base>

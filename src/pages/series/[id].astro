@@ -1,0 +1,8 @@
+---
+import Base from '../../layouts/Base.astro';
+import PostRow from '../../components/PostRow.astro';
+import { posts, seriesGroups } from '../../lib/posts';
+export async function getStaticPaths(){return seriesGroups(await posts()).map(group=>({params:{id:group.id},props:{group}}))}
+const {group}=Astro.props;
+---
+<Base title={`${group.name} — DEV LOG`}><section class="page-heading shell"><a class="subtle-link" href="/series/">← 모든 시리즈</a><div class="eyebrow spaced-label">{group.items.length}개의 이어지는 기록</div><h1>{group.name}<span class="accent">.</span></h1><p>처음의 질문부터 차근차근, 시간의 흐름을 따라 읽어보세요.</p></section><section class="archive-list shell narrow-list">{group.items.map((post,i)=><PostRow post={post} index={i}/>)}</section></Base>
