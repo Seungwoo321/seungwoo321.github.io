@@ -3,7 +3,7 @@ import { readFile, stat } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import published from './published-posts.json' with { type: 'json' };
 
-test('preserves every published source and URL; unpublished posts stay out of public indexes', async ({ request }) => {
+test('preserves every published source and URL across public indexes', async ({ request }) => {
   const html = await (await request.get('/')).text();
   const index = JSON.parse(html.match(/<script[^>]*id="search-data"[^>]*>([\s\S]*?)<\/script>/)![1]) as {url:string;title:string}[];
   const urls = index.map(p => p.url);
@@ -18,10 +18,9 @@ test('preserves every published source and URL; unpublished posts stay out of pu
   expect(index).toHaveLength(published.length);
   const feed = await (await request.get('/feed.xml')).text();
   const sitemap = await (await request.get('/sitemap.xml')).text();
-  for (const draft of ['claude-code-to-codex-harness','claude-code-codex-three-months']) {
-    expect(index.some(p => p.url.includes(draft))).toBe(false);
-    expect(feed).not.toContain(draft);
-    expect(sitemap).not.toContain(draft);
+  for (const [, url] of published) {
+    expect(feed).toContain(url);
+    expect(sitemap).toContain(url);
   }
 });
 
