@@ -1,0 +1,44 @@
+<script>
+  const blocks = [...document.querySelectorAll<HTMLElement>('.prose pre[data-language="mermaid"]')];
+  if (blocks.length) {
+    const { default: mermaid } = await import('mermaid');
+    const diagrams = blocks.map(block => ({ source: block.textContent || '', element: block }));
+    let rendering = false;
+    async function renderDiagrams() {
+      if (rendering) return;
+      rendering = true;
+      const theme = document.documentElement.dataset.theme;
+      mermaid.initialize({ startOnLoad: false, securityLevel: 'strict', theme: theme === 'dark' ? 'dark' : 'default' });
+      try {
+        for (const [index, diagram] of diagrams.entries()) {
+          try {
+            const { svg } = await mermaid.render(`mermaid-${index}`, diagram.source);
+            const element = document.createElement('div');
+            element.className = 'mermaid-diagram';
+            element.tabIndex = 0;
+            element.setAttribute('role', 'region');
+            element.setAttribute('aria-label', '다이어그램');
+            element.innerHTML = svg;
+            const graphic = element.querySelector('svg')!;
+            graphic.style.width = `${graphic.viewBox.baseVal.width}px`;
+            diagram.element.replaceWith(element);
+            diagram.element = element;
+          } catch (error) {
+            console.error('Could not render Mermaid diagram', error);
+          }
+        }
+      } finally {
+        rendering = false;
+        if (theme !== document.documentElement.dataset.theme) void renderDiagrams();
+      }
+    }
+    new MutationObserver(() => void renderDiagrams()).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+    await document.fonts.ready;
+    await renderDiagrams();
+  }
+</script>
+
+<style is:global>
+  .prose .mermaid-diagram { max-width: 100%; overflow-x: auto; margin: 24px 0; padding: 16px; border: 1px solid var(--line); border-radius: 8px; }
+  .prose .mermaid-diagram > svg { display: block; height: auto; margin: auto; }
+</style>
