@@ -2,8 +2,15 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import childProcess from 'node:child_process';
 import { syncBuiltinESMExports } from 'node:module';
+import { readFileSync } from 'node:fs';
 import { validatePlan, cronDates, releaseDecision, calendarWorkflow, calendarFile, main } from '../scripts/publication.mjs';
 const revision='a'.repeat(40);
+
+test('Pages artifact includes the hidden well-known publication metadata',()=>{
+  const workflow=readFileSync(new URL('../.github/workflows/astro-pages.yml',import.meta.url),'utf8');
+  const upload=workflow.slice(workflow.indexOf('- uses: actions/upload-pages-artifact@'));
+  assert.match(upload,/with:\s+path: dist\s+include-hidden-files: true/);
+});
 
 test('calendar converts Korean publication times to UTC and rounds seconds upward across years',()=>{
   assert.deepEqual(cronDates(['2026-11-03T09:30:00+09:00','2026-11-03T00:30:00Z']),['30 0 3 11 *']);

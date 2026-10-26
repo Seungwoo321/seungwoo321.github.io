@@ -69,6 +69,7 @@ jobs:
         if: steps.gate.outputs.publish == 'true'
         with:
           path: dist
+          include-hidden-files: true
   deploy:
     needs: build
     if: needs.build.outputs.publish == 'true'
