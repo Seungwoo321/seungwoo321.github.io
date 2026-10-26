@@ -1,7 +1,8 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 export type Post = CollectionEntry<'posts'>;
+export const publicationTime = Date.now();
 export async function posts() {
-  return (await getCollection('posts')).filter(p => p.data.published && p.data.date.getTime() <= Date.now()).sort((a,b) => b.data.date.getTime() - a.data.date.getTime() || a.id.localeCompare(b.id));
+  return (await getCollection('posts')).filter(p => p.data.published && p.data.date.getTime() <= (import.meta.env.DEV ? Date.now() : publicationTime)).sort((a,b) => b.data.date.getTime() - a.data.date.getTime() || a.id.localeCompare(b.id));
 }
 export function postUrl(post: Post) {
   const match = post.id.match(/^(\d{4})-(\d{2})-(\d{2})-(.+)$/);

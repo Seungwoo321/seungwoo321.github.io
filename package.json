@@ -8,7 +8,9 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "test": "node --test tests/*.test.mjs && playwright test"
+    "test": "node --test tests/*.test.mjs && playwright test",
+    "deploy": "node scripts/publication.mjs deploy",
+    "schedule": "node scripts/publication.mjs schedule"
   },
   "dependencies": {
     "@astrojs/markdown-remark": "^7.3.4",
