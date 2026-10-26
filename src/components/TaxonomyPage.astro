@@ -1,0 +1,12 @@
+---
+import Base from '../layouts/Base.astro';
+import { posts } from '../lib/posts';
+const { field, title } = Astro.props as { field: 'categories'|'tags'; title:string };
+const all=await posts();
+const terms=[...new Set(all.flatMap(p=>p.data[field]))].sort((a,b)=>a.localeCompare(b,'ko'));
+const query=field==='tags'?'tag':'category';
+---
+<Base title={`${title} — DEV LOG`}>
+  <section class="page-heading shell"><span class="eyebrow">THE ARCHIVE</span><h1>{title}<span class="accent">.</span></h1><p>관심 있는 주제의 경험을 찾아보세요.</p></section>
+  <section class="archive-list shell"><div class="archive-filters">{terms.map(term=><a id={term.toLowerCase().replace(/\s+/g,'-')} href={`/archive/?${query}=${encodeURIComponent(term)}`} style="border:1px solid var(--line);padding:9px 16px;font-size:12px">{term} <span class="accent">{all.filter(p=>p.data[field].includes(term)).length}</span></a>)}</div></section>
+</Base>

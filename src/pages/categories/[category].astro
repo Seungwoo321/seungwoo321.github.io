@@ -1,0 +1,8 @@
+---
+import { posts } from '../../lib/posts';
+export async function getStaticPaths(){
+  const categories=[...new Set((await posts()).flatMap(p=>p.data.categories))];
+  return categories.map(category=>({params:{category:category.toLowerCase().replace(/\s+/g,'-')},props:{category}}));
+}
+return Astro.redirect(`/archive/?category=${encodeURIComponent(Astro.props.category)}`);
+---

@@ -107,3 +107,42 @@ test('all published articles fit a narrow 320px reading viewport', async ({ page
   }
   expect(overflow).toEqual([]);
 });
+
+test('legacy navigation and production verification assets remain available', async ({ page, request }) => {
+  await page.goto('/blog/');
+  await expect(page).toHaveURL(/\/archive\/$/);
+  await page.goto('/categories/ai-agent/');
+  await expect(page).toHaveURL(/category=AI-Agent/);
+  await expect(page.locator('.archive-entry:visible')).toHaveCount(10);
+  await page.goto('/tags/');
+  await expect(page.locator('main h1')).toContainText('태그');
+  await page.locator('.archive-filters a').filter({hasText:'Docker'}).first().click();
+  await expect(page.locator('.archive-entry:visible')).not.toHaveCount(0);
+  const ads = await request.get('/ads.txt');
+  expect(ads.status()).toBe(200);
+  expect(await ads.text()).toContain('pub-7701657858733816');
+  for (const path of ['/google603171b62dec4aac.html','/naverd0af24031866c2cb391f545d6da12043.html']) expect((await request.get(path)).status()).toBe(200);
+});
+
+test('production integrations load on the public host and stay off local previews', async ({ page, request }) => {
+  const external:string[]=[];
+  await page.route(/https:\/\/(pagead2\.googlesyndication\.com|www\.googletagmanager\.com)\//,route=>{external.push(route.request().url());return route.abort()});
+  await page.goto('/');
+  await expect(page.locator('meta[name="generator"]')).toHaveAttribute('content',/Astro/);
+  await expect(page.locator('meta[name="google-site-verification"]')).toHaveAttribute('content','px1TntEZ-EKoV9k9xHvbO7KsQMLwj_Ajab5nprTM_pM');
+  await expect(page.locator('.ad-slot')).toHaveCount(0);
+  expect(external).toHaveLength(0);
+  await page.route('https://seungwoo321.github.io/**',async route=>{
+    const url=new URL(route.request().url());
+    const response=await request.get(url.pathname+url.search);
+    await route.fulfill({response});
+  });
+  try {
+    await page.goto('https://seungwoo321.github.io/');
+    await expect.poll(()=>external.length).toBe(2);
+    expect(external.some(url=>url.includes('ca-pub-7701657858733816'))).toBe(true);
+    expect(external.some(url=>url.includes('G-H6MFMXFRLY'))).toBe(true);
+  } finally {
+    await page.unrouteAll({ behavior:'wait' });
+  }
+});

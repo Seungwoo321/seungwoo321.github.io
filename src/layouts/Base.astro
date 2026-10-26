@@ -11,10 +11,31 @@ const canonical = new URL(path.replace(/\.html\/$/, '.html'), Astro.site);
 <html lang="ko">
 <head>
   <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="generator" content={Astro.generator} />
+  <meta name="google-site-verification" content="px1TntEZ-EKoV9k9xHvbO7KsQMLwj_Ajab5nprTM_pM" />
+  <meta name="google-adsense-account" content="ca-pub-7701657858733816" />
+  <link rel="apple-touch-icon" href="/assets/favicons/apple-icon-180x180.png" />
   <title>{title}</title><meta name="description" content={description} /><link rel="canonical" href={canonical} />
   <meta property="og:title" content={title} /><meta property="og:description" content={description} /><meta property="og:type" content="website" /><meta property="og:url" content={canonical} />
   <meta name="theme-color" content="#fcfcfd" /><link rel="icon" href="/favicon.svg" type="image/svg+xml" /><link rel="alternate" type="application/rss+xml" title="DEV LOG" href="/feed.xml" />
   <script is:inline>try{document.documentElement.dataset.theme=localStorage.getItem('devlog-theme')||'light'}catch{}</script>
+  {import.meta.env.PROD && <script is:inline>
+    if (location.hostname === 'seungwoo321.github.io') {
+      const ads = document.createElement('script');
+      ads.async = true;
+      ads.crossOrigin = 'anonymous';
+      ads.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7701657858733816';
+      document.head.appendChild(ads);
+      const analytics = document.createElement('script');
+      analytics.async = true;
+      analytics.src = 'https://www.googletagmanager.com/gtag/js?id=G-H6MFMXFRLY';
+      document.head.appendChild(analytics);
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ window.dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'G-H6MFMXFRLY');
+    }
+  </script>}
 </head>
 <body>
   <a class="skip-link" href="#main">본문으로 건너뛰기</a>
