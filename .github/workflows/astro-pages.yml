@@ -1,12 +1,7 @@
 name: Deploy Astro to GitHub Pages
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
-  schedule:
-    # Rebuild future-dated posts daily at 09:00 Asia/Seoul.
-    - cron: '0 0 * * *'
 
 permissions:
   contents: read
