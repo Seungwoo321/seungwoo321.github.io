@@ -5,3 +5,15 @@ dist/
 test-results/
 playwright-report/
 .DS_Store
+
+# local tool and editor artifacts
+.history/
+.playwright-mcp/
+CLAUDE.local.md
+.claude/settings.local.json
+__pycache__/
+
+# Jekyll-era leftovers (Astro serves public/ and builds into dist/)
+/_site/
+/_drafts/
+/assets/
